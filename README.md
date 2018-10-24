@@ -8,6 +8,10 @@ A representation of an entity (e.g municipal, individual, agency, organization e
 
 [Demo](https://emis-stakeholders.herokuapp.com/v1/parties)
 
+## Domain Model
+
+![EMIS Stakeholder Domain Model](https://raw.githubusercontent.com/CodeTanzania/emis-stakeholder/develop/specifications/stakeholder.model.png)
+
 ## Requirements
 
 - [nodejs v8.11.1+](https://nodejs.org)
