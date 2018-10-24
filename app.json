@@ -1,0 +1,32 @@
+{
+  "name": "stakeholder",
+  "description": "A representation of an entity consisting of contact information and other descriptive information of interest in emergency(or disaster) management.",
+  "repository": "https://github.com/CodeTanzania/emis-stakeholder.git",
+  "keywords": [
+    "codetanzania",
+    "emis",
+    "emis-module",
+    "mongoose",
+    "party",
+    "user",
+    "identity",
+    "institution",
+    "organization",
+    "person",
+    "people"
+  ],
+  "addons": [
+    "mongolab"
+  ],
+  "env":
+  {
+    "NPM_CONFIG_PRODUCTION":
+    {
+      "value": "false"
+    },
+    "YARN_PRODUCTION":
+    {
+      "value": "false"
+    }
+  }
+}

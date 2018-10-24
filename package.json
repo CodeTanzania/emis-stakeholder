@@ -1,0 +1,139 @@
+{
+  "name": "@codetanzania/emis-stakeholder",
+  "version": "1.0.0",
+  "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test",
+    "dev": "BASE_PATH=./examples node ./examples/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeTanzania/emis-stakeholder.git"
+  },
+  "keywords": [
+    "codetanzania",
+    "emis",
+    "emis-module",
+    "mongoose",
+    "party",
+    "user",
+    "identity",
+    "institution",
+    "organization",
+    "person",
+    "people"
+  ],
+  "contributors": [
+    {
+      "name": "lykmapipo",
+      "email": "lallyelias87@gmail.com",
+      "url": "https://github.com/lykmapipo"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeTanzania/emis-stakeholder/issues",
+    "email": "lallyelias87@gmail.com"
+  },
+  "homepage": "https://github.com/CodeTanzania/emis-stakeholder",
+  "sandbox": {
+    "url": "https://emis-stakeholders.herokuapp.com",
+    "apidoc": "https://codetanzania.github.io/emis-stakeholder/",
+    "client_id": "",
+    "client_secret": "",
+    "urls": [
+      {
+        "resource": "Party",
+        "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
+        "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
+        "scopes": [
+          "party:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
+      },
+      {
+        "resource": "Role",
+        "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
+        "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
+        "scopes": [
+          "role:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
+      },
+      {
+        "resource": "Permission",
+        "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
+        "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@benmaruchu/faker": "^4.2.1",
+    "@codetanzania/majifix-common": "^0.11.1",
+    "@lykmapipo/env": "^0.3.1",
+    "@lykmapipo/express-common": "^0.9.2",
+    "@lykmapipo/permission": "^0.3.0",
+    "@codetanzania/emis-role": "^1.0.1",
+    "async": "^2.6.1",
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "grunt": "^1.0.3",
+    "grunt-apidoc": "^0.11.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-mocha-test": "^0.13.3",
+    "jshint-stylish": "^2.2.1",
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "mongoose": "^5.3.6",
+    "mongoose-geojson-schemas": "^0.8.1",
+    "mongoose-rest-actions": "^0.18.2",
+    "mongoose-schema-jsonschema": "^1.1.15",
+    "mongoose-valid8": "^1.1.0",
+    "sinon": "^7.0.0",
+    "sinon-chai": "^3.2.0",
+    "sinon-mongoose": "^2.2.1",
+    "supertest": "^3.3.0"
+  },
+  "peerDependencies": {
+    "@lykmapipo/env": "^0.3.1",
+    "@lykmapipo/express-common": "^0.9.2",
+    "@lykmapipo/permission": "^0.3.0",
+    "@codetanzania/emis-role": "^1.0.1",
+    "async": "^2.6.1",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "mongoose-geojson-schemas": "^0.8.1",
+    "mongoose-valid8": "^1.1.0",
+    "mongoose-rest-actions": "^0.18.2",
+    "mongoose-schema-jsonschema": "^1.1.15"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=8.11.1",
+    "npm": ">=5.6.0"
+  }
+}

@@ -1,0 +1,1 @@
+web: BASE_PATH=./examples node ./examples/app.js

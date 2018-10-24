@@ -1,0 +1,12 @@
+{
+  "name": "Stakeholder",
+  "title": "Stakeholder",
+  "version": "1.0.0",
+  "url": "https://emis-stakeholders.herokuapp.com/v1",
+  "sampleUrl": "https://emis-stakeholders.herokuapp.com/v1",
+  "template":
+  {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
