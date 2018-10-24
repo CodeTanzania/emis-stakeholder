@@ -1,6 +1,6 @@
 {
   "name": "stakeholder",
-  "description": "A representation of an entity consisting of contact information and other descriptive information of interest in emergency(or disaster) management.",
+  "description": "A representation of an entity consisting of contact information and other descriptive information of interest in emergency management.",
   "repository": "https://github.com/CodeTanzania/emis-stakeholder.git",
   "keywords": [
     "codetanzania",
