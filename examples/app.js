@@ -11,6 +11,7 @@ const path = require('path');
 const _ = require('lodash');
 const async = require('async');
 const mongoose = require('mongoose');
+const faker = require('@benmaruchu/faker');
 const {
   Party,
   Role,
@@ -72,7 +73,7 @@ function boot() {
     function seedParties(roles, next) {
       const parties = Party.fake(20);
       _.forEach(parties, function (party, index) {
-        party.roles = [].concat(roles[index % roles.length]);
+        party.role = roles[index % roles.length];
       });
       Party.insertMany(parties, next);
     }
