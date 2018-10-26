@@ -39,8 +39,6 @@ app.start((error, env) => {
   ...
 });
 
-POST /parties/:id/members
-DELETE /parties/:id/members/:id
 ```
 
 ## Demo
