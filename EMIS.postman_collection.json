@@ -1,0 +1,388 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EMIS",
+		"_postman_id": "35bedb95-a39e-5d34-4f22-ec4f302d7e1c",
+		"description": "API Endpoints for EMIS API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://emis-stakeholders.herokuapp.com",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Request to Discover Stakeholder API"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Discover Role Data Schemas - JSONSchema"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/schema",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Discover Party Data Schemas - JSONSchema"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - No API Parameters"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholder.herokuapp.com/v1/parties?page=2",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?page=2",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Pagination"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?fields=type,name,phone,email",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?fields=type,name,phone,email",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "type,name,phone,email",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Select Specific Fields"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?sort=name",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?sort=name",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "name",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Sort Ascending"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?sort=-name",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?sort=-name",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-name",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Sort Descending"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[type]=Sector",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[type]=Sector",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "filter[type]",
+							"value": "Sector",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Filter Equal"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[phases][$in]=Mitigation",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[phases][$in]=Mitigation",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "filter[phases][$in]",
+							"value": "Mitigation",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Filter In"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[type]=Sector&filter[phases][$in]=Mitigation",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?filter[type]=Sector&filter[phases][$in]=Mitigation",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "filter[type]",
+							"value": "Sector",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "filter[phases][$in]",
+							"value": "Mitigation",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get Parties - Filter with multipe fields"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Danfordshire\",\n    \"mobile\": \"(255) 714 095 061\",\n    \"email\": \"antoinette21@gmail.com\"\n}"
+				},
+				"description": "Create a new party - Quick"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"Committee\",\n    \"phases\": [\n        \"Mitigation\",\n        \"Preparedness\"\n    ],\n    \"name\": \"National RelieF Committee\",\n    \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/jodytaggart/128.jpg\",\n    \"mobile\": \"(754) 414-7282\",\n    \"landline\": \"254.931.2382\",\n    \"fax\": \"561.283.2503 x0589\",\n    \"email\": \"nette91@gmail.com\",\n    \"website\": \"http://mavis.org\",\n    \"about\": \"Qui quasi facilis. Dolor aut repellendus odit non minus laudantium. Rerum omnis deleniti ut ab. Velit doloribus dolor minima ut alias omnis aut a illum.\",\n    \"physicalAddress\": \"24753 Denis Place\",\n    \"postalAddress\": \"201 Hauck Walk\",\n    \"locale\": \"en\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -70.35119859994722,\n            50.85773060352426\n        ]\n    }\n}"
+				},
+				"description": "Create a party - Detailed"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties/5bd38497ca0c3d00040ce6ca",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties/5bd38497ca0c3d00040ce6ca",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get a specific party"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties/5bd38497ca0c3d00040ce6ca",
+			"request": {
+				"url": "https://emis-stakeholders.herokuapp.com/v1/parties/5bd38497ca0c3d00040ce6ca",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phases\": [\n        \"Mitigation\",\n        \"Preparedness\",\n        \"Recovery\"\n    ]\n}"
+				},
+				"description": "Update specific party"
+			},
+			"response": []
+		},
+		{
+			"name": "https://emis-stakeholders.herokuapp.com/v1/parties?q=avon",
+			"request": {
+				"url": {
+					"raw": "https://emis-stakeholders.herokuapp.com/v1/parties?q=sect",
+					"protocol": "https",
+					"host": [
+						"emis-stakeholders",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"parties"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "sect",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Search Parties"
+			},
+			"response": []
+		}
+	]
+}
