@@ -1,8 +1,8 @@
 # emis-stakeholder
 
-[![Build Status](https://travis-ci.org/codetanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/codetanzania/emis-stakeholder)
-[![Dependencies Status](https://david-dm.org/codetanzania/emis-stakeholder/status.svg?style=flat-square)](https://david-dm.org/codetanzania/emis-stakeholder)
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/codetanzania/emis-stakeholder/tree/develop)
+[![Build Status](https://travis-ci.org/CodeTanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/codetanzania/emis-stakeholder)
+[![Dependencies Status](https://david-dm.org/CodeTanzania/emis-stakeholder/status.svg?style=flat-square)](https://david-dm.org/CodeTanzania/emis-stakeholder)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CodeTanzania/emis-stakeholder/tree/develop)
 
 A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.
 
