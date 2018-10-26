@@ -57,4 +57,16 @@ describe('Party Statics', () => {
     expect(Party.DEFAULT_TIMEZONE).to.not.be.empty;
   });
 
+  it('should expose default party disaster phases as constant', () => {
+    expect(Party.DEFAULT_DISASTER_PHASE).to.exist;
+    expect(Party.DEFAULT_DISASTER_PHASE).to.be.a('string');
+    expect(Party.DEFAULT_DISASTER_PHASE).to.not.be.empty;
+  });
+
+  it('should expose acceptable party disaster phases as constant', () => {
+    expect(Party.DISASTER_PHASES).to.exist;
+    expect(Party.DISASTER_PHASES).to.be.an('array');
+    expect(Party.DISASTER_PHASES).to.have.length.at.least(1);
+  });
+
 });

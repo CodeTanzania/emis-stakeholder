@@ -40,6 +40,19 @@ describe('Party Schema', () => {
     expect(type.options.fake).to.be.true;
   });
 
+  it('should have phases field', () => {
+    const phases = Party.path('phases');
+
+    expect(phases).to.exist;
+    expect(phases).to.be.an.instanceof(Schema.Types.Array);
+    expect(phases.options).to.exist;
+    expect(phases.options).to.be.an('object');
+    expect(phases.options.type).to.exist;
+    expect(phases.options.index).to.be.true;
+    expect(phases.options.searchable).to.be.true;
+    expect(phases.options.fake).to.exist;
+  });
+
   it('should have name field', () => {
     const name = Party.path('name');
 
