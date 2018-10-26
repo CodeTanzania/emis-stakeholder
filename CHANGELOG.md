@@ -1,3 +1,7 @@
+# 1.0.2 / 26-10-2018
+- Force responsibilities to undefined if not given
+- Force latest dependencies
+
 # 1.0.1 / 26-10-2018
 - Update API Doc to include Role and Permission
 - Update usage doc
