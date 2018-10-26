@@ -70,10 +70,21 @@ function boot() {
       Role.seed(roles, next);
     },
 
-    function seedParties(roles, next) {
+    function seedMembers(roles, next) {
+      const members = Party.fake(5);
+      _.forEach(members, function (member, index) {
+        member.role = roles[index % roles.length];
+      });
+      Party.insertMany(members, function (error, _members) {
+        next(error, roles, _members);
+      })
+    },
+
+    function seedParties(roles, members, next) {
       const parties = Party.fake(20);
       _.forEach(parties, function (party, index) {
         party.role = roles[index % roles.length];
+        party.members = [].concat(members);
       });
       Party.insertMany(parties, next);
     }

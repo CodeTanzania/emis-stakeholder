@@ -243,6 +243,44 @@ describe('Party Schema', () => {
     expect(avatar.options.fake).to.exist;
   });
 
+  it('should have physicalAddress field', function () {
+    const physicalAddress = Party.path('physicalAddress');
+
+    expect(physicalAddress).to.exist;
+    expect(physicalAddress).to.be.an.instanceof(Schema.Types.String);
+    expect(physicalAddress.options).to.exist;
+    expect(physicalAddress.options).to.be.an('object');
+    expect(physicalAddress.options.type).to.exist;
+    expect(physicalAddress.options.searchable).to.be.true;
+    expect(physicalAddress.options.trim).to.be.true;
+    expect(physicalAddress.options.index).to.be.true;
+    expect(physicalAddress.options.fake).to.exist;
+  });
+
+  it('should have postalAddress field', function () {
+    const postalAddress = Party.path('postalAddress');
+
+    expect(postalAddress).to.exist;
+    expect(postalAddress).to.be.an.instanceof(Schema.Types.String);
+    expect(postalAddress.options).to.exist;
+    expect(postalAddress.options).to.be.an('object');
+    expect(postalAddress.options.type).to.exist;
+    expect(postalAddress.options.trim).to.be.true;
+    expect(postalAddress.options.searchable).to.be.true;
+    expect(postalAddress.options.index).to.be.true;
+    expect(postalAddress.options.fake).to.exist;
+  });
+
+  it('should have location field', () => {
+    const location = Party.path('location');
+    const type = Party.path('location.type');
+    const coordinates = Party.path('location.coordinates');
+
+    expect(location).to.exist;
+    expect(type).to.be.instanceof(Schema.Types.String);
+    expect(coordinates).to.be.instanceof(Schema.Types.Array);
+  });
+
   it('should have role field', () => {
     const role = Party.path('role');
 
@@ -257,6 +295,22 @@ describe('Party Schema', () => {
     expect(role.options.index).to.be.true;
     expect(role.options.exists).to.be.true;
     expect(role.options.autopopulate).to.exist;
+  });
+
+  it('should have members field', () => {
+
+    const members = Party.path('members');
+
+    expect(members).to.exist;
+    expect(members).to.be.instanceof(Schema.Types.Array);
+    expect(members.options).to.exist;
+    expect(members.options).to.be.an('object');
+    expect(members.options.type).to.exist;
+    expect(members.options.ref).to.exist;
+    expect(members.options.ref).to.be.equal(Party.MODEL_NAME);
+    expect(members.options.default).to.be.undefined;
+    expect(members.options.index).to.be.true;
+    expect(members.options.autopopulate).to.be.exist;
   });
 
 });
