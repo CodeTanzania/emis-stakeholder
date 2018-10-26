@@ -11,7 +11,12 @@ module.exports = function (grunt) {
   grunt.initConfig({
     apidoc: {
       api: {
-        src: ['node_modules/@codetanzania/majifix-common/lib', 'lib/'],
+        src: [
+          'node_modules/@codetanzania/majifix-common/lib',
+          'lib/',
+          'node_modules/@codetanzania/emis-role/lib',
+          'node_modules/@lykmapipo/permission/lib'
+        ],
         dest: 'docs/',
         options: {
           debug: true,
@@ -28,7 +33,9 @@ module.exports = function (grunt) {
         src: [
           'test/**/*.js',
           'test/unit/**/*.js',
-          '!test/integration/**/*.js'
+          '!test/integration/**/*.js',
+          'node_modules/@lykmapipo/permission/test/unit/**/*.js',
+          'node_modules/@codetanzania/emis-role/test/unit/**/*.js'
         ]
       },
       integration: {
@@ -39,7 +46,9 @@ module.exports = function (grunt) {
         src: [
           'test/**/*.js',
           'test/integration/**/*.js',
-          '!test/unit/**/*.js'
+          '!test/unit/**/*.js',
+          'node_modules/@lykmapipo/permission/test/integration/**/*.js',
+          'node_modules/@codetanzania/emis-role/test/integration/**/*.js'
         ]
       }
     },
