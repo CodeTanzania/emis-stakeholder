@@ -1,0 +1,19 @@
+[
+{
+  "type": "Other",
+  "phases": ["Mitigation"],
+  "name": "John Doe",
+  "nickname": "Doo",
+  "abbreviation": "JD",
+  "title": "Investor Applications Producer",
+  "locale": "en",
+  "timezone": "Africa/Tripoli",
+  "email": "minnie.abernathy@gmail.com",
+  "mobile": "(798) 682-0677",
+  "landline": "979.807.4687",
+  "fax": "(731) 297-7147 x171",
+  "website": "http://rick.net",
+  "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/anjhero/128.jpg",
+  "physicalAddress": "648 Keeling Shore",
+  "postalAddress": "032 Bonita Mills"
+}]
