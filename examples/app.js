@@ -35,7 +35,7 @@ async.waterfall([
     Party.seed(next);
   }
 ], (error, results) => {
-  console.log(error);
+
   /* expose module info */
   app.get('/', (request, response) => {
     response.status(200);
