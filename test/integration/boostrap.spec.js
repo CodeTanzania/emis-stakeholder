@@ -1,31 +1,35 @@
 'use strict';
 
 
+/* ensure test env */
+process.env.NODE_ENV = 'test';
+process.env.MONGODB_URI =
+  (process.env.MONGODB_URI || 'mongodb://localhost/emis-stakeholder');
+
+
 /* dependencies */
 const mongoose = require('mongoose');
-const MONGODB_URI = 'mongodb://localhost/emis-stakeholder';
-const CONNECTION_OPTION = { useNewUrlParser: true };
 
 
-/* wipe test database instance */
-function wipe(done) {
+/* clean and restore database */
+const wipe = done => {
   if (mongoose.connection && mongoose.connection.dropDatabase) {
     mongoose.connection.dropDatabase(done);
   } else {
     done();
   }
-}
+};
 
 
-/* setup test database instance */
-before(function (done) {
-  mongoose.connect(MONGODB_URI, CONNECTION_OPTION, done);
+/* setup database */
+before((done) => {
+  mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, done);
 });
 
 
-/* clear test database instance */
+/* clear database */
 before(wipe);
 
 
-/* clear test database instance */
+/* clear database */
 after(wipe);

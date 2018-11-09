@@ -17,7 +17,8 @@
     "people"
   ],
   "addons": [
-    "mongolab"
+    "mongolab",
+    "heroku-redis"
   ],
   "env":
   {

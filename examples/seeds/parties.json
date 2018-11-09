@@ -1,0 +1,67 @@
+[
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Lally Elias",
+  "nickname": "lykmapipo",
+  "abbreviation": "LE",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "lallyelias87@gmail.com",
+  "mobile": "255714095061"
+},
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Benson Maruchu",
+  "nickname": "benmaruchu",
+  "abbreviation": "BM",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "benmaruchu@gmail.com",
+  "mobile": "255719818179"
+},
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Nancy Victor",
+  "nickname": "navish",
+  "abbreviation": "NV",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "navish45@gmail.com",
+  "mobile": "255782120252"
+},
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Isaac Kasongoyo",
+  "nickname": "navish",
+  "abbreviation": "NV",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "kasongoyo@gmail.com",
+  "mobile": "255713935778"
+},
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Edgar Vitus Mlowe",
+  "nickname": "edga",
+  "abbreviation": "EVM",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "mloweedgarvitus@gmail.com",
+  "mobile": "255654988047"
+},
+{
+  "type": "Other",
+  "phases": ["Mitigation", "Preparedness", "Response", "Recovery"],
+  "name": "Beatrice Charles",
+  "nickname": "beaty",
+  "abbreviation": "BC",
+  "title": "ICT Officer",
+  "locale": "en",
+  "email": "charsbeaty@gmail.com",
+  "mobile": "255687902733"
+}]
