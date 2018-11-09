@@ -1552,6 +1552,88 @@
   },
   {
     "type": "post",
+    "url": "/notifications",
+    "title": "Create New Notification",
+    "version": "1.0.0",
+    "name": "PostNotification",
+    "group": "Party",
+    "description": "<p>Send new notification to parties</p>",
+    "filename": "lib/party.http.router.js",
+    "groupTitle": "",
+    "sampleRequest": [
+      {
+        "url": "https://emis-stakeholders.herokuapp.com/v1/notifications"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>Accepted content type</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept-Encoding",
+            "defaultValue": "gzip, deflate",
+            "description": "<p>Accepted encoding type</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n  \"Accept\": \"application/json\"\n  \"Authorization\": \"Bearer ey6utFreRdy5\"\n  \"Accept-Encoding\": \"gzip, deflate\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
     "url": "/parties",
     "title": "Create New Party",
     "version": "1.0.0",
@@ -2845,17 +2927,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -2897,7 +2978,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"type\": \"System\",\n  \"name\": \"Administrator\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
+          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"name\": \"Ward Executive Officer\",\n  \"abbreviation\": \"WEO\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
           "type": "json"
         }
       ]
@@ -2997,17 +3078,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3049,7 +3129,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"type\": \"System\",\n  \"name\": \"Administrator\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
+          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"name\": \"Ward Executive Officer\",\n  \"abbreviation\": \"WEO\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
           "type": "json"
         }
       ]
@@ -3195,17 +3275,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "data.type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "data.name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "data.name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "data.abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3296,7 +3375,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"data\": [\n    {\n      \"_id\": \"5b60785cc1ab060972b0442c\",\n      \"type\": \"System\",\n      \"name\": \"Administrator\",\n      \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n      \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n    }\n  ],\n  \"total\": 20,\n  \"size\": 10,\n  \"limit\": 10,\n  \"skip\": 0,\n  \"page\": 1,\n  \"pages\": 2,\n  \"lastModified\": \"2018-07-29T10:11:38.111Z\"\n}",
+          "content": "{\n  \"data\": [\n    {\n      \"_id\": \"5b60785cc1ab060972b0442c\",\n      \"name\": \"Ward Executive Officer\",\n      \"abbreviation\": \"WEO\",\n      \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n      \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n    }\n  ],\n  \"total\": 20,\n  \"size\": 10,\n  \"limit\": 10,\n  \"skip\": 0,\n  \"page\": 1,\n  \"pages\": 2,\n  \"lastModified\": \"2018-07-29T10:11:38.111Z\"\n}",
           "type": "json"
         }
       ]
@@ -3396,17 +3475,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3448,7 +3526,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"type\": \"System\",\n  \"name\": \"Administrator\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
+          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"name\": \"Ward Executive Officer\",\n  \"abbreviation\": \"WEO\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
           "type": "json"
         }
       ]
@@ -3548,17 +3626,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3600,7 +3677,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"type\": \"System\",\n  \"name\": \"Administrator\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
+          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"name\": \"Ward Executive Officer\",\n  \"abbreviation\": \"WEO\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
           "type": "json"
         }
       ]
@@ -3700,17 +3777,16 @@
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
-            "field": "type",
-            "defaultValue": "System",
-            "description": "<p>Human readable category of a role</p>"
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique human readable name of a role</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Unique human readable name of a role</p>"
+            "optional": true,
+            "field": "abbreviation",
+            "description": "<p>Human readable short form of a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3752,7 +3828,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"type\": \"System\",\n  \"name\": \"Administrator\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
+          "content": "{\n  \"_id\": \"5b60785cc1ab060972b0442c\",\n  \"name\": \"Ward Executive Officer\",\n  \"abbreviation\": \"WEO\",\n  \"updatedAt\": \"2018-07-31T14:55:24.667Z\",\n  \"createdAt\": \"2018-07-31T14:55:24.667Z\"\n}",
           "type": "json"
         }
       ]
