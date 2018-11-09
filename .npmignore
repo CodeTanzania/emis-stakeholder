@@ -19,3 +19,4 @@ Gruntfile.js
 doc
 docs
 EMIS.postman_collection.json
+.env
