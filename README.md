@@ -1,6 +1,6 @@
 # emis-stakeholder
 
-[![Build Status](https://travis-ci.org/CodeTanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/codetanzania/emis-stakeholder)
+[![Build Status](https://travis-ci.org/CodeTanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/CodeTanzania/emis-stakeholder)
 [![Dependencies Status](https://david-dm.org/CodeTanzania/emis-stakeholder/status.svg?style=flat-square)](https://david-dm.org/CodeTanzania/emis-stakeholder)
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CodeTanzania/emis-stakeholder/tree/develop)
 
