@@ -34,6 +34,7 @@ describe('Email Notification', () => {
   let party = Party.fake();
 
   before(() => {
+    process.env.SMTP_FROM = faker.internet.email();
     process.env.DEBUG = true;
   });
 
