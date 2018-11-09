@@ -3,12 +3,31 @@
 
 /* dependencies */
 const path = require('path');
+const async = require('async');
 const { expect } = require('chai');
+const kue = require('kue');
 const faker = require('@benmaruchu/faker');
 const { worker } = require('mongoose-kue');
 const { Message } = require('@lykmapipo/postman');
 const { Party } = require(path.join(__dirname, '..', '..'));
 
+
+//TODO refactor
+const redis = kue.redis.createClientFactory({
+  redis: {}
+});
+const cleanup = (callback) => {
+  redis
+    .keys('q*', function (error, rows) {
+      if (error) {
+        callback(error);
+      } else {
+        async.each(rows, function (row, next) {
+          redis.del(row, next);
+        }, callback);
+      }
+    });
+};
 
 describe('Email Notification', () => {
 
@@ -16,6 +35,10 @@ describe('Email Notification', () => {
 
   before(() => {
     process.env.DEBUG = true;
+  });
+
+  before((done) => {
+    cleanup(done);
   });
 
   before((done) => {
@@ -94,6 +117,10 @@ describe('Email Notification', () => {
 
   after((done) => {
     Party.deleteMany(done);
+  });
+
+  before((done) => {
+    cleanup(done);
   });
 
   after(() => {
