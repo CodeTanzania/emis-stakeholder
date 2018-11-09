@@ -1,3 +1,20 @@
+# 1.1.0 / 09-10-2018
+- Add persistent partie and roles seed
+- Add env variables on example
+- Add SMTP_FROM to fix travis crash
+- Allow queue email send
+- Add email notification integration spec
+- Add runInBackround plugin to party schema
+- Add POST /notifications route
+- Add helpers to get party distinct phone numbers
+- Add helpers to get party distinct emails
+- Add postman dependencies
+- Add party upsert logic
+- Add party seed logic
+- Add party upsert integration spec
+- ADD party seed integration spec
+
+
 # 1.0.2 / 26-10-2018
 - Force responsibilities to undefined if not given
 - Force latest dependencies
