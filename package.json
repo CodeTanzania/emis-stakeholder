@@ -1,11 +1,12 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "dev": "BASE_PATH=./examples node ./examples/app.js"
+    "dev": "BASE_PATH=./examples node ./examples/app.js",
+    "worker": "BASE_PATH=./examples node ./examples/worker.js"
   },
   "repository": {
     "type": "git",
@@ -93,11 +94,11 @@
   },
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
-    "@codetanzania/emis-role": "^1.0.3",
+    "@codetanzania/emis-role": "^1.0.4",
     "@codetanzania/majifix-common": "^0.11.1",
     "@lykmapipo/env": "^0.3.2",
     "@lykmapipo/express-common": "^0.9.3",
-    "@lykmapipo/permission": "^0.4.0",
+    "@lykmapipo/permission": "^0.4.1",
     "@lykmapipo/postman": "^0.5.1",
     "async": "^2.6.1",
     "chai": "^4.2.0",
@@ -113,7 +114,7 @@
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
-    "mongoose": "^5.3.10",
+    "mongoose": "^5.3.12",
     "mongoose-geojson-schemas": "^0.8.2",
     "mongoose-kue": "^0.7.1",
     "mongoose-rest-actions": "^0.20.2",
@@ -128,9 +129,9 @@
   "peerDependencies": {
     "@lykmapipo/env": "^0.3.2",
     "@lykmapipo/express-common": "^0.9.3",
-    "@lykmapipo/permission": "^0.4.0",
+    "@lykmapipo/permission": "^0.4.1",
     "@lykmapipo/postman": "^0.5.1",
-    "@codetanzania/emis-role": "^1.0.3",
+    "@codetanzania/emis-role": "^1.0.4",
     "async": "^2.6.1",
     "express": "^4.16.4",
     "kue": "^0.11.6",
