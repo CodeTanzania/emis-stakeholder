@@ -1,3 +1,8 @@
+# 1.1.1 / 18-11-2018
+- Force latest dependencies
+- Update module jsdoc 
+- Add example queue worker
+
 # 1.1.0 / 09-10-2018
 - Add persistent partie and roles seed
 - Add env variables on example
