@@ -27,6 +27,27 @@ describe('Party Statics', () => {
     expect(Party.MODEL_NAME).to.be.equal('Party');
   });
 
+  it('should expose collection name as constant', () => {
+    expect(Party.COLLECTION_NAME).to.exist;
+    expect(Party.COLLECTION_NAME).to.be.equal('parties');
+  });
+
+  it('should expose population options as constant', () => {
+    expect(Party.OPTION_AUTOPOPULATE).to.exist;
+    expect(Party.OPTION_AUTOPOPULATE).to.be.eql({
+      select: {
+        type: 1,
+        name: 1,
+        title: 1,
+        email: 1,
+        mobile: 1,
+        locale: 1,
+        timezone: 1
+      },
+      maxDepth: 1
+    });
+  });
+
   it('should expose default locale as constant', () => {
     expect(Party.DEFAULT_LOCALE).to.exist;
     expect(Party.DEFAULT_LOCALE).to.be.a('string');
