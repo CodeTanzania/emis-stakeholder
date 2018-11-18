@@ -29,57 +29,122 @@ const path = require('path');
 const _ = require('lodash');
 const app = require('@lykmapipo/express-common');
 const mongoose = require('mongoose');
+const pkg = require(path.join(__dirname, 'package.json'));
 require('mongoose-schema-jsonschema')(mongoose);
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Role, roleRouter } = require('@codetanzania/emis-role');
-
-
-/* declarations */
-const pkg = require(path.join(__dirname, 'package.json'));
-const fields = [
-  'name',
-  'description',
-  'version',
-  'license',
-  'homepage',
-  'repository',
-  'bugs',
-  'sandbox',
-  'contributors'
-];
-
-
-/* extract information from package.json */
-const info = _.merge({}, _.pick(pkg, fields));
-
-
-/* export package(module) info */
-exports.info = info;
-
-
-/* import models */
 const Party = require(path.join(__dirname, 'lib', 'party.model'));
+const partyRouter = require(path.join(__dirname, 'lib', 'party.http.router'));
 
 
-/* export models */
-exports.Party = Party;
-exports.Role = Role;
+/**
+ * @name info
+ * @description package information
+ * @type {Object}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.info = _.merge({}, _.pick(pkg, [
+  'name', 'description', 'version', 'license',
+  'homepage', 'repository', 'bugs', 'sandbox', 'contributors'
+]));
+
+
+/**
+ * @name Permission
+ * @description Permission model
+ * @type {mongoose.Model}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 exports.Permission = Permission;
 
 
-/* import routers*/
-const partyRouter =
-  require(path.join(__dirname, 'lib', 'party.http.router'));
+/**
+ * @name Role
+ * @description Role model
+ * @type {mongoose.Model}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.Role = Role;
 
 
-/* export party router */
-exports.apiVersion = partyRouter.apiVersion;
-exports.partyRouter = partyRouter;
-exports.roleRouter = roleRouter;
+/**
+ * @name Party
+ * @description Party model
+ * @type {mongoose.Model}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.Party = Party;
+
+
+/**
+ * @name permissionRouter
+ * @description permission http router
+ * @type {express.Router}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 exports.permissionRouter = permissionRouter;
 
 
-/* export app */
+/**
+ * @name roleRouter
+ * @description role http router
+ * @type {express.Router}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.roleRouter = roleRouter;
+
+
+/**
+ * @name partyRouter
+ * @description party http router
+ * @type {express.Router}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.partyRouter = partyRouter;
+
+
+/**
+ * @name apiVersion
+ * @description http router api version
+ * @type {String}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.apiVersion = partyRouter.apiVersion;
+
+
+/**
+ * @name app
+ * @description express app
+ * @type {Object}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
 Object.defineProperty(exports, 'app', {
   get() {
     /* @todo bind oauth middlewares authenticate, token, authorize */
