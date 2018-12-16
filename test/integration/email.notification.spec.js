@@ -2,14 +2,14 @@
 
 
 /* dependencies */
-const path = require('path');
 const async = require('async');
 const { expect } = require('chai');
 const kue = require('kue');
 const faker = require('@benmaruchu/faker');
 const { worker } = require('mongoose-kue');
 const { Message } = require('@lykmapipo/postman');
-const { Party } = require(path.join(__dirname, '..', '..'));
+const { include } = require('@lykmapipo/include');
+const { Party } = include(__dirname, '..', '..');
 
 
 //TODO refactor

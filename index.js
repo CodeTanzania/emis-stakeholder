@@ -25,16 +25,14 @@
 
 
 /* dependencies */
-const path = require('path');
 const _ = require('lodash');
 const app = require('@lykmapipo/express-common');
-const mongoose = require('mongoose');
-const pkg = require(path.join(__dirname, 'package.json'));
-require('mongoose-schema-jsonschema')(mongoose);
+const { include } = require('@lykmapipo/include');
+const pkg = include(__dirname, 'package.json');
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Role, roleRouter } = require('@codetanzania/emis-role');
-const Party = require(path.join(__dirname, 'lib', 'party.model'));
-const partyRouter = require(path.join(__dirname, 'lib', 'party.http.router'));
+const Party = include(__dirname, 'lib', 'party.model');
+const partyRouter = include(__dirname, 'lib', 'party.http.router');
 
 
 /**

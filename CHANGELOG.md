@@ -1,3 +1,10 @@
+# 1.2.0 / 16-12-2018
+- Build latest apidoc
+- Add taggable plugin   
+- Fixes #6
+- Force lateste dependencies & audit fix
+- Improve example app
+
 # 1.1.1 / 18-11-2018
 - Force latest dependencies
 - Update module jsdoc 

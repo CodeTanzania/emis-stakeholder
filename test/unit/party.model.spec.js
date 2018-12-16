@@ -2,9 +2,10 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
-const Party = require(path.join(__dirname, '..', '..', 'lib', 'party.model'));
+const { include } = require('@lykmapipo/include');
+const { Feature } = require('@codetanzania/emis-feature');
+const Party = include(__dirname, '..', '..', 'lib', 'party.model');
 
 
 describe('Party Instance', () => {
@@ -17,6 +18,18 @@ describe('Party Instance', () => {
     expect(party.preValidate.name).to.be.equal('preValidate');
   });
 
+  it('should set centre from feature', (done) => {
+    const location = Feature.fake();
+    const party = Party.fake();
+    party.centre = undefined;
+    party.location = location;
+    party.preValidate(() => {
+      expect(party.centre).to.exist;
+      expect(party.centre).to.eql(location.centroid);
+      done();
+    });
+  });
+
 });
 
 
@@ -25,6 +38,26 @@ describe('Party Statics', () => {
   it('should expose model name as constant', () => {
     expect(Party.MODEL_NAME).to.exist;
     expect(Party.MODEL_NAME).to.be.equal('Party');
+  });
+
+  it('should expose collection name as constant', () => {
+    expect(Party.COLLECTION_NAME).to.exist;
+    expect(Party.COLLECTION_NAME).to.be.equal('parties');
+  });
+
+  it('should expose population options as constant', () => {
+    expect(Party.OPTION_AUTOPOPULATE).to.exist;
+    expect(Party.OPTION_AUTOPOPULATE).to.be.eql({
+      select: {
+        name: 1,
+        title: 1,
+        email: 1,
+        mobile: 1,
+        landline: 1,
+        role: 1
+      },
+      maxDepth: 1
+    });
   });
 
   it('should expose default locale as constant', () => {

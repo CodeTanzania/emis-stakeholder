@@ -62,7 +62,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "party",
             "defaultValue": "undefined",
@@ -204,13 +204,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
-            "field": "location",
+            "field": "centre",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
-            "type": "Object",
+            "type": "Feature",
+            "optional": true,
+            "field": "location",
+            "defaultValue": "undefined",
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
             "optional": true,
             "field": "role",
             "defaultValue": "undefined",
@@ -218,7 +226,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "members",
             "defaultValue": "undefined",
@@ -349,7 +357,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "data.party",
             "defaultValue": "undefined",
@@ -491,9 +499,17 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
+            "field": "data.centre",
+            "defaultValue": "undefined",
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Feature",
+            "optional": true,
             "field": "data.location",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
@@ -505,7 +521,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "data.members",
             "defaultValue": "undefined",
@@ -678,7 +694,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "party",
             "defaultValue": "undefined",
@@ -820,13 +836,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
-            "field": "location",
+            "field": "centre",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
-            "type": "Object",
+            "type": "Feature",
+            "optional": true,
+            "field": "location",
+            "defaultValue": "undefined",
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
             "optional": true,
             "field": "role",
             "defaultValue": "undefined",
@@ -834,7 +858,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "members",
             "defaultValue": "undefined",
@@ -1004,7 +1028,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "data.party",
             "defaultValue": "undefined",
@@ -1146,9 +1170,17 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
+            "field": "data.centre",
+            "defaultValue": "undefined",
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Feature",
+            "optional": true,
             "field": "data.location",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
@@ -1160,7 +1192,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "data.members",
             "defaultValue": "undefined",
@@ -1333,7 +1365,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "party",
             "defaultValue": "undefined",
@@ -1475,13 +1507,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
-            "field": "location",
+            "field": "centre",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
-            "type": "Object",
+            "type": "Feature",
+            "optional": true,
+            "field": "location",
+            "defaultValue": "undefined",
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
             "optional": true,
             "field": "role",
             "defaultValue": "undefined",
@@ -1489,7 +1529,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "members",
             "defaultValue": "undefined",
@@ -1695,7 +1735,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "party",
             "defaultValue": "undefined",
@@ -1837,13 +1877,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
-            "field": "location",
+            "field": "centre",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
-            "type": "Object",
+            "type": "Feature",
+            "optional": true,
+            "field": "location",
+            "defaultValue": "undefined",
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
             "optional": true,
             "field": "role",
             "defaultValue": "undefined",
@@ -1851,7 +1899,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "members",
             "defaultValue": "undefined",
@@ -1975,7 +2023,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Party",
             "optional": true,
             "field": "party",
             "defaultValue": "undefined",
@@ -2117,13 +2165,21 @@ define({ "api": [
             "group": "Success 200",
             "type": "Point",
             "optional": true,
-            "field": "location",
+            "field": "centre",
             "defaultValue": "undefined",
-            "description": "<p>A geo-location cetroid of a party operational boundaries.</p>"
+            "description": "<p>A geo-location coordinates of a party main office or area of operation.</p>"
           },
           {
             "group": "Success 200",
-            "type": "Object",
+            "type": "Feature",
+            "optional": true,
+            "field": "location",
+            "defaultValue": "undefined",
+            "description": "<p>Geographical location of a party main office or area of operation.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
             "optional": true,
             "field": "role",
             "defaultValue": "undefined",
@@ -2131,7 +2187,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Object[]",
+            "type": "Party[]",
             "optional": true,
             "field": "members",
             "defaultValue": "undefined",

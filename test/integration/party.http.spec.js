@@ -2,11 +2,10 @@
 
 
 /* dependencies */
-const path = require('path');
 const request = require('supertest');
 const { expect } = require('chai');
-const { Party, apiVersion, app } = require(path.join(__dirname, '..', '..'));
-
+const { include } = require('@lykmapipo/include');
+const { Party, apiVersion, app } = include(__dirname, '..', '..');
 
 describe('Party Rest API', function () {
 

@@ -2,11 +2,12 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
+const { include } = require('@lykmapipo/include');
 const { Schema } = require('mongoose');
 const { Role } = require('@codetanzania/emis-role');
-const Party = require(path.join(__dirname, '..', '..', 'lib', 'party.model'));
+const { Feature } = require('@codetanzania/emis-feature');
+const Party = include(__dirname, '..', '..', 'lib', 'party.model');
 
 
 describe('Party Schema', () => {
@@ -271,14 +272,31 @@ describe('Party Schema', () => {
     expect(postalAddress.options.fake).to.exist;
   });
 
-  it('should have location field', () => {
-    const location = Party.path('location');
-    const type = Party.path('location.type');
-    const coordinates = Party.path('location.coordinates');
+  it('should have centre field', () => {
+    const centre = Party.path('centre');
+    const type = Party.path('centre.type');
+    const coordinates = Party.path('centre.coordinates');
 
-    expect(location).to.exist;
+    expect(centre).to.exist;
     expect(type).to.be.instanceof(Schema.Types.String);
     expect(coordinates).to.be.instanceof(Schema.Types.Array);
+  });
+
+  it('should have location field', () => {
+    const location = Party.path('location');
+
+    expect(location).to.exist;
+    expect(location).to.be.an.instanceof(Schema.Types.ObjectId);
+    expect(location.options).to.exist;
+    expect(location.options).to.be.an('object');
+    expect(location.options.type).to.exist;
+    expect(location.options.ref).to.exist;
+    expect(location.options.ref).to.be.eql(Feature.MODEL_NAME);
+    // expect(location.options.required).to.be.true;
+    expect(location.options.index).to.be.true;
+    expect(location.options.exists).to.be.true;
+    expect(location.options.autopopulate).to.exist;
+    expect(location.options.autopopulate).to.be.an('object');
   });
 
   it('should have role field', () => {
