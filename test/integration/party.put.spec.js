@@ -2,9 +2,9 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
-const { Party } = require(path.join(__dirname, '..', '..'));
+const { include } = require('@lykmapipo/include');
+const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Static Put', () => {

@@ -2,9 +2,10 @@
 
 
 /* dependencies */
-const path = require('path');
 const { expect } = require('chai');
-const Party = require(path.join(__dirname, '..', '..', 'lib', 'party.model'));
+const { include } = require('@lykmapipo/include');
+const { Feature } = require('@codetanzania/emis-feature');
+const Party = include(__dirname, '..', '..', 'lib', 'party.model');
 
 
 describe('Party Instance', () => {
@@ -15,6 +16,18 @@ describe('Party Instance', () => {
     expect(party.preValidate).to.be.a('function');
     expect(party.preValidate.length).to.be.equal(1);
     expect(party.preValidate.name).to.be.equal('preValidate');
+  });
+
+  it('should set centre from feature', (done) => {
+    const location = Feature.fake();
+    const party = Party.fake();
+    party.centre = undefined;
+    party.location = location;
+    party.preValidate(() => {
+      expect(party.centre).to.exist;
+      expect(party.centre).to.eql(location.centroid);
+      done();
+    });
   });
 
 });
@@ -36,13 +49,12 @@ describe('Party Statics', () => {
     expect(Party.OPTION_AUTOPOPULATE).to.exist;
     expect(Party.OPTION_AUTOPOPULATE).to.be.eql({
       select: {
-        type: 1,
         name: 1,
         title: 1,
         email: 1,
         mobile: 1,
-        locale: 1,
-        timezone: 1
+        landline: 1,
+        role: 1
       },
       maxDepth: 1
     });

@@ -8,45 +8,55 @@ process.env.MONGODB_URI =
 
 /* dependencies */
 const path = require('path');
-const async = require('async');
-const mongoose = require('mongoose');
-const {
-  Permission,
-  Role,
-  Party,
-  apiVersion,
-  info,
-  app
-} = require(path.join(__dirname, '..'));
+const _ = require('lodash');
+const { waterfall } = require('async');
+const { include } = require('@lykmapipo/include');
+const { connect } = require('@lykmapipo/mongoose-common');
+const { Permission } = require('@lykmapipo/permission');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature, featureRouter } = require('@codetanzania/emis-feature');
+const { Party, apiVersion, info, app } = include(__dirname, '..');
 
 
-/* connect to mongoose */
-mongoose.connect(process.env.MONGODB_URI);
-
-// boot
-async.waterfall([
-  function seedPermissions(next) {
-    Permission.seed(next);
-  },
-  function seedRole(permissions, next) {
-    Role.seed(next);
-  },
-  function seedParties(roles, next) {
-    Party.seed(next);
-  }
-], (error, results) => {
-
-  /* expose module info */
-  app.get('/', (request, response) => {
-    response.status(200);
-    response.json(info);
+// seeds
+const seedPermissions = (next) => Permission.seed(next);
+const seedRoles = (permissions, next) => Role.seed(next);
+const seedFeatures = (roles, next) => {
+  Feature.seed((error, features) => next(error, features, roles));
+};
+const seedParties = (features, roles, next) => {
+  let parties = include(__dirname, 'seeds', 'parties');
+  parties = _.map(parties, (party, index) => {
+    party.location = features[index];
+    party.role = roles[index];
+    return party;
   });
+  Party.seed(parties, next);
+}
 
-  /* fire the app */
-  app.start((error, env) => {
-    console.log(
-      `visit http://0.0.0.0:${env.PORT}/v${apiVersion}/parties`
-    );
+
+// establish mongodb connection
+connect((error) => {
+
+  // seed
+  waterfall([
+    seedPermissions, seedRoles,
+    seedFeatures, seedParties
+  ], (error, results) => {
+
+    // expose module info
+    app.get('/', (request, response) => {
+      response.status(200);
+      response.json(info);
+    });
+
+    app.mount(featureRouter);
+
+    // fire the app
+    app.start((error, env) => {
+      console.log(`visit http://0.0.0.0:${env.PORT}`);
+    });
+
   });
 
 });
