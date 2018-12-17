@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
@@ -95,7 +95,7 @@
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
     "@codetanzania/majifix-common": "^0.11.1",
-    "@lykmapipo/mongoose-test-helpers": "^0.2.3",
+    "@lykmapipo/mongoose-test-helpers": ">=0.2.3",
     "chai": "^4.2.0",
     "grunt": "^1.0.3",
     "grunt-apidoc": "^0.11.0",
@@ -115,7 +115,7 @@
   },
   "dependencies": {
     "@codetanzania/emis-feature": ">=1.1.0",
-    "@codetanzania/emis-role": ">=1.1.0",
+    "@codetanzania/emis-role": ">=1.1.1",
     "@lykmapipo/env": ">=0.3.2",
     "@lykmapipo/express-common": ">=0.9.4",
     "@lykmapipo/permission": ">=0.6.0",
