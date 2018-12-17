@@ -1,3 +1,7 @@
+# 1.2.0 / 17-12-2018
+- Force latest emis-role dependency
+- Build latest apidoc
+
 # 1.2.0 / 16-12-2018
 - Build latest apidoc
 - Add taggable plugin   
