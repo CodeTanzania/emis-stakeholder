@@ -4,13 +4,12 @@
 /* dependencies */
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
+const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Party } = include(__dirname, '..', '..');
 
 describe('Party Static Delete', () => {
 
-  before((done) => {
-    Party.deleteMany(done);
-  });
+  before((done) => clear(done));
 
   let party = Party.fake();
 
@@ -40,17 +39,13 @@ describe('Party Static Delete', () => {
     });
   });
 
-  after((done) => {
-    Party.deleteMany(done);
-  });
+  after((done) => clear(done));
 
 });
 
 describe('Party Instance Delete', () => {
 
-  before((done) => {
-    Party.deleteMany(done);
-  });
+  before((done) => clear(done));
 
   let party = Party.fake();
 
@@ -79,8 +74,6 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  after((done) => {
-    Party.deleteMany(done);
-  });
+  after((done) => clear(done));
 
 });

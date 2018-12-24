@@ -5,13 +5,12 @@
 const request = require('supertest');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
+const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Party, apiVersion, app } = include(__dirname, '..', '..');
 
 describe('Party Rest API', function () {
 
-  before((done) => {
-    Party.deleteMany(done);
-  });
+  before((done) => clear(done));
 
   let party = Party.fake();
 
@@ -149,8 +148,6 @@ describe('Party Rest API', function () {
       });
   });
 
-  after((done) => {
-    Party.deleteMany(done);
-  });
+  after((done) => clear(done));
 
 });
