@@ -6,15 +6,14 @@ const path = require('path');
 const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
+const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Party } = include(__dirname, '..', '..');
 
 describe('Party Seed', () => {
 
   const SEEDS_PATH = process.env.SEEDS_PATH;
 
-  before((done) => {
-    Party.deleteMany(done);
-  });
+  before((done) => clear(done));
 
   before(() => {
     process.env.SEEDS_PATH = path.join(__dirname, '..', 'fixtures');
@@ -40,9 +39,7 @@ describe('Party Seed', () => {
     });
   });
 
-  after((done) => {
-    Party.deleteMany(done);
-  });
+  after((done) => clear(done));
 
   after(() => {
     process.env.SEEDS_PATH = SEEDS_PATH;
