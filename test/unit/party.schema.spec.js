@@ -7,7 +7,7 @@ const { include } = require('@lykmapipo/include');
 const { Schema } = require('mongoose');
 const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
-const Party = include(__dirname, '..', '..', 'lib', 'party.model');
+const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Schema', () => {
