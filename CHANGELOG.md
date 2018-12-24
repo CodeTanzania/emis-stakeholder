@@ -1,3 +1,8 @@
+# 1.2.2 / 24-12-2018
+- Build latest apidoc
+- Force latest dependencies & audit fix
+- Refactor and improve specs readability
+
 # 1.2.0 / 17-12-2018
 - Force latest emis-role dependency
 - Build latest apidoc
