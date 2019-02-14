@@ -9,17 +9,17 @@ const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Party } = include(__dirname, '..', '..');
 
-describe('Party Seed', () => {
+describe.skip('Party Seed', () => {
 
   const SEEDS_PATH = process.env.SEEDS_PATH;
 
-  before((done) => clear(done));
+  before(done => clear(done));
 
   before(() => {
     process.env.SEEDS_PATH = path.join(__dirname, '..', 'fixtures');
   });
 
-  it('should be able to seed from environment', (done) => {
+  it('should be able to seed from environment', done => {
     Party.seed((error, seeded) => {
       expect(error).to.not.exist;
       expect(seeded).to.exist;
@@ -29,7 +29,7 @@ describe('Party Seed', () => {
     });
   });
 
-  it('should not throw if seed from environment exist', (done) => {
+  it('should not throw if seed from environment exist', done => {
     Party.seed((error, seeded) => {
       expect(error).to.not.exist;
       expect(seeded).to.exist;
@@ -39,7 +39,7 @@ describe('Party Seed', () => {
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
   after(() => {
     process.env.SEEDS_PATH = SEEDS_PATH;

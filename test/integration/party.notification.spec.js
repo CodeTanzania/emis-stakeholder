@@ -6,23 +6,49 @@ const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Notification', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let parties = Party.fake(10);
 
-  before((done) => {
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      parties = _.map(parties, party => {
+        party.role = created;
+        return party;
+      });
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      parties = _.map(parties, party => {
+        party.location = created;
+        return party;
+      });
+      done(error, created);
+    });
+  });
+
+  before(done => {
     Party.seed(parties, (error, created) => {
       parties = created;
       done(error, created);
     });
   });
 
-  it('should be able get distinct phones', (done) => {
+  it('should be able get distinct phones', done => {
     Party.getPhones((error, phones) => {
       expect(error).to.not.exist;
       expect(phones).to.exist;
@@ -31,7 +57,7 @@ describe('Party Notification', () => {
     });
   });
 
-  it('should be able get distinct phones by criteria', (done) => {
+  it('should be able get distinct phones by criteria', done => {
     const ids = _.map(_.take(parties, 2), '_id');
     const criteria = { _id: { $in: ids } };
     Party.getPhones(criteria, (error, phones) => {
@@ -42,7 +68,7 @@ describe('Party Notification', () => {
     });
   });
 
-  it('should be able get distinct emails', (done) => {
+  it('should be able get distinct emails', done => {
     Party.getPhones((error, emails) => {
       expect(error).to.not.exist;
       expect(emails).to.exist;
@@ -51,7 +77,7 @@ describe('Party Notification', () => {
     });
   });
 
-  it('should be able get distinct emails by criteria', (done) => {
+  it('should be able get distinct emails by criteria', done => {
     const ids = _.map(_.take(parties, 2), '_id');
     const criteria = { _id: { $in: ids } };
     Party.getPhones(criteria, (error, emails) => {
@@ -62,6 +88,6 @@ describe('Party Notification', () => {
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });

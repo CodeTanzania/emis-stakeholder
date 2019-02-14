@@ -29,7 +29,7 @@ const cleanup = (callback) => {
     });
 };
 
-describe('Email Notification', () => {
+describe.skip('Email Notification', () => {
 
   let party = Party.fake();
 

@@ -25,10 +25,10 @@
 
 
 /* dependencies */
-const _ = require('lodash');
-const app = require('@lykmapipo/express-common');
+const { pkg } = require('@lykmapipo/common');
 const { include } = require('@lykmapipo/include');
-const pkg = include(__dirname, 'package.json');
+const { apiVersion } = require('@lykmapipo/env');
+const app = require('@lykmapipo/express-common');
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Role, roleRouter } = require('@codetanzania/emis-role');
 const Party = include(__dirname, 'lib', 'party.model');
@@ -41,13 +41,13 @@ const partyRouter = include(__dirname, 'lib', 'party.http.router');
  * @type {Object}
  *
  * @author lally elias <lallyelias87@gmail.com>
- * @since 0.1.0
+ * @since 1.0.0
  * @version 0.1.0
  */
-exports.info = _.merge({}, _.pick(pkg, [
+exports.info = pkg(
   'name', 'description', 'version', 'license',
   'homepage', 'repository', 'bugs', 'sandbox', 'contributors'
-]));
+);
 
 
 /**
@@ -131,7 +131,7 @@ exports.partyRouter = partyRouter;
  * @since 0.1.0
  * @version 0.1.0
  */
-exports.apiVersion = partyRouter.apiVersion;
+exports.apiVersion = apiVersion();
 
 
 /**

@@ -50,11 +50,9 @@ describe('Party Statics', () => {
     expect(Party.OPTION_AUTOPOPULATE).to.be.eql({
       select: {
         name: 1,
-        title: 1,
         email: 1,
         mobile: 1,
-        landline: 1,
-        role: 1
+        abbreviation: 1
       },
       maxDepth: 1
     });
@@ -83,23 +81,4 @@ describe('Party Statics', () => {
     expect(Party.PARTY_TYPES).to.be.an('array');
     expect(Party.PARTY_TYPES).to.have.length.at.least(1);
   });
-
-  it('should expose default timezone as constant', () => {
-    expect(Party.DEFAULT_TIMEZONE).to.exist;
-    expect(Party.DEFAULT_TIMEZONE).to.be.a('string');
-    expect(Party.DEFAULT_TIMEZONE).to.not.be.empty;
-  });
-
-  it('should expose default party disaster phases as constant', () => {
-    expect(Party.DEFAULT_DISASTER_PHASE).to.exist;
-    expect(Party.DEFAULT_DISASTER_PHASE).to.be.a('string');
-    expect(Party.DEFAULT_DISASTER_PHASE).to.not.be.empty;
-  });
-
-  it('should expose acceptable party disaster phases as constant', () => {
-    expect(Party.DISASTER_PHASES).to.exist;
-    expect(Party.DISASTER_PHASES).to.be.an('array');
-    expect(Party.DISASTER_PHASES).to.have.length.at.least(1);
-  });
-
 });

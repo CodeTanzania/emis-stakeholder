@@ -2,8 +2,8 @@
 
 
 /* dependencies */
-const zones = require('./zones');
 const regions = require('./regions');
+const districts = require('./districts');
+const wards = require('./wards');
 
-let features = [].concat(zones).concat(regions);
-module.exports = exports = features;
+module.exports = exports = [...regions, ...districts, ...wards];

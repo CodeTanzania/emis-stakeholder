@@ -41,19 +41,6 @@ describe('Party Schema', () => {
     expect(type.options.fake).to.be.true;
   });
 
-  it('should have phases field', () => {
-    const phases = Party.path('phases');
-
-    expect(phases).to.exist;
-    expect(phases).to.be.an.instanceof(Schema.Types.Array);
-    expect(phases.options).to.exist;
-    expect(phases.options).to.be.an('object');
-    expect(phases.options.type).to.exist;
-    expect(phases.options.index).to.be.true;
-    expect(phases.options.searchable).to.be.true;
-    expect(phases.options.fake).to.exist;
-  });
-
   it('should have name field', () => {
     const name = Party.path('name');
 
@@ -67,20 +54,6 @@ describe('Party Schema', () => {
     expect(name.options.index).to.be.true;
     expect(name.options.searchable).to.be.true;
     expect(name.options.fake).to.exist;
-  });
-
-  it('should have nickname field', () => {
-    const nickname = Party.path('nickname');
-
-    expect(nickname).to.exist;
-    expect(nickname).to.be.an.instanceof(Schema.Types.String);
-    expect(nickname.options).to.exist;
-    expect(nickname.options).to.be.an('object');
-    expect(nickname.options.type).to.exist;
-    expect(nickname.options.trim).to.be.true;
-    expect(nickname.options.index).to.be.true;
-    expect(nickname.options.searchable).to.be.true;
-    expect(nickname.options.fake).to.exist;
   });
 
   it('should have abbreviation field', () => {
@@ -98,34 +71,6 @@ describe('Party Schema', () => {
     expect(abbreviation.options.fake).to.exist;
   });
 
-  it('should have title field', () => {
-    const title = Party.path('title');
-
-    expect(title).to.exist;
-    expect(title).to.be.an.instanceof(Schema.Types.String);
-    expect(title.options).to.exist;
-    expect(title.options).to.be.an('object');
-    expect(title.options.type).to.exist;
-    expect(title.options.trim).to.be.true;
-    expect(title.options.index).to.be.true;
-    expect(title.options.searchable).to.be.true;
-    expect(title.options.fake).to.exist;
-  });
-
-  it('should have about field', () => {
-    const about = Party.path('about');
-
-    expect(about).to.exist;
-    expect(about).to.be.an.instanceof(Schema.Types.String);
-    expect(about.options).to.exist;
-    expect(about.options).to.be.an('object');
-    expect(about.options.type).to.exist;
-    expect(about.options.trim).to.be.true;
-    expect(about.options.index).to.be.true;
-    expect(about.options.searchable).to.be.true;
-    expect(about.options.fake).to.exist;
-  });
-
   it('should have locale field', () => {
     const locale = Party.path('locale');
 
@@ -139,21 +84,6 @@ describe('Party Schema', () => {
     expect(locale.options.index).to.be.true;
     expect(locale.options.searchable).to.be.true;
     expect(locale.options.fake).to.exist;
-  });
-
-  it('should have timezone field', () => {
-    const timezone = Party.path('timezone');
-
-    expect(timezone).to.exist;
-    expect(timezone).to.be.an.instanceof(Schema.Types.String);
-    expect(timezone.options).to.exist;
-    expect(timezone.options).to.be.an('object');
-    expect(timezone.options.type).to.exist;
-    expect(timezone.options.trim).to.be.true;
-    expect(timezone.options.enum).to.exist;
-    expect(timezone.options.index).to.be.true;
-    expect(timezone.options.searchable).to.be.true;
-    expect(timezone.options.fake).to.exist;
   });
 
   it('should have email field', () => {
@@ -232,18 +162,6 @@ describe('Party Schema', () => {
     expect(website.options.index).to.be.true;
   });
 
-  it('should have avatar field', () => {
-    const avatar = Party.path('avatar');
-
-    expect(avatar).to.exist;
-    expect(avatar).to.be.an.instanceof(Schema.Types.String);
-    expect(avatar.options).to.exist;
-    expect(avatar.options).to.be.an('object');
-    expect(avatar.options.type).to.exist;
-    expect(avatar.options.trim).to.be.true;
-    expect(avatar.options.fake).to.exist;
-  });
-
   it('should have physicalAddress field', function () {
     const physicalAddress = Party.path('physicalAddress');
 
@@ -292,7 +210,7 @@ describe('Party Schema', () => {
     expect(location.options.type).to.exist;
     expect(location.options.ref).to.exist;
     expect(location.options.ref).to.be.eql(Feature.MODEL_NAME);
-    // expect(location.options.required).to.be.true;
+    expect(location.options.required).to.be.true;
     expect(location.options.index).to.be.true;
     expect(location.options.exists).to.be.true;
     expect(location.options.autopopulate).to.exist;
@@ -309,26 +227,11 @@ describe('Party Schema', () => {
     expect(role.options.type).to.exist;
     expect(role.options.ref).to.exist;
     expect(role.options.ref).to.be.equal(Role.MODEL_NAME);
+    expect(role.options.required).to.be.true;
     expect(role.options.default).to.be.undefined;
     expect(role.options.index).to.be.true;
     expect(role.options.exists).to.be.true;
     expect(role.options.autopopulate).to.exist;
-  });
-
-  it('should have members field', () => {
-
-    const members = Party.path('members');
-
-    expect(members).to.exist;
-    expect(members).to.be.instanceof(Schema.Types.Array);
-    expect(members.options).to.exist;
-    expect(members.options).to.be.an('object');
-    expect(members.options.type).to.exist;
-    expect(members.options.ref).to.exist;
-    expect(members.options.ref).to.be.equal(Party.MODEL_NAME);
-    expect(members.options.default).to.be.undefined;
-    expect(members.options.index).to.be.true;
-    expect(members.options.autopopulate).to.be.exist;
   });
 
 });

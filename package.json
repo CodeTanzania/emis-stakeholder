@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "dev": "BASE_PATH=./examples node ./examples/app.js",
-    "worker": "BASE_PATH=./examples node ./examples/worker.js"
+    "integration:test": "grunt integration",
+    "http:test": "grunt http",
+    "unit:test": "grunt unit",
+    "doc": "grunt doc",
+    "dev": "npm run seed && npm run start",
+    "start": "BASE_PATH=./examples node ./examples/app.js",
+    "seed": "BASE_PATH=./examples node ./examples/seed.js"
   },
   "repository": {
     "type": "git",
@@ -30,13 +35,11 @@
     "person",
     "people"
   ],
-  "contributors": [
-    {
-      "name": "lykmapipo",
-      "email": "lallyelias87@gmail.com",
-      "url": "https://github.com/lykmapipo"
-    }
-  ],
+  "contributors": [{
+    "name": "lykmapipo",
+    "email": "lallyelias87@gmail.com",
+    "url": "https://github.com/lykmapipo"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CodeTanzania/emis-stakeholder/issues",
@@ -48,8 +51,7 @@
     "apidoc": "https://codetanzania.github.io/emis-stakeholder/",
     "client_id": "",
     "client_secret": "",
-    "urls": [
-      {
+    "urls": [{
         "resource": "Party",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
@@ -95,7 +97,7 @@
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
     "@codetanzania/majifix-common": "^0.11.1",
-    "@lykmapipo/mongoose-test-helpers": ">=0.2.4",
+    "@lykmapipo/mongoose-test-helpers": ">=0.3.0",
     "chai": "^4.2.0",
     "grunt": "^1.0.3",
     "grunt-apidoc": "^0.11.0",
@@ -104,30 +106,30 @@
     "grunt-mocha-test": "^0.13.3",
     "jshint-stylish": "^2.2.1",
     "mocha": "^5.2.0",
-    "mongoose": ">=5.4.0",
-    "sinon": "^7.2.2",
+    "mongoose": ">=5.4.12",
+    "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "sinon-mongoose": "^2.2.1",
-    "supertest": "^3.3.0"
+    "supertest": "^3.4.2"
   },
   "peerDependencies": {
-    "mongoose": ">=5.4.0"
+    "mongoose": ">=5.4.12"
   },
   "dependencies": {
-    "@codetanzania/emis-feature": ">=1.1.1",
-    "@codetanzania/emis-role": ">=1.1.2",
-    "@lykmapipo/env": ">=0.3.3",
-    "@lykmapipo/express-common": ">=0.10.0",
-    "@lykmapipo/permission": ">=0.6.0",
+    "@codetanzania/emis-feature": ">=1.2.0",
+    "@codetanzania/emis-role": ">=1.2.0",
+    "@lykmapipo/env": ">=0.5.0",
+    "@lykmapipo/express-common": ">=0.10.2",
+    "@lykmapipo/permission": ">=0.7.0",
     "@lykmapipo/postman": ">=0.5.1",
-    "async": ">=2.6.1",
+    "async": ">=2.6.2",
     "kue": ">=0.11.6",
     "lodash": ">=4.17.11",
-    "moment": ">=2.23.0",
+    "moment": ">=2.24.0",
     "moment-timezone": ">=0.5.23",
-    "mongoose-geojson-schemas": ">=0.8.2",
+    "mongoose-geojson-schemas": ">=0.10.1",
     "mongoose-kue": ">=0.7.1",
-    "mongoose-rest-actions": ">=0.22.3",
+    "mongoose-rest-actions": ">=0.23.1",
     "redis": ">=2.8.0"
   },
   "engines": {
