@@ -227,7 +227,7 @@ describe('Party Schema', () => {
     expect(role.options.type).to.exist;
     expect(role.options.ref).to.exist;
     expect(role.options.ref).to.be.equal(Role.MODEL_NAME);
-    expect(role.options.required).to.be.true;
+    // expect(role.options.required).to.be.true;
     expect(role.options.default).to.be.undefined;
     expect(role.options.index).to.be.true;
     expect(role.options.exists).to.be.true;
