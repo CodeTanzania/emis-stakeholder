@@ -6,17 +6,37 @@ const request = require('supertest');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party, apiVersion, app } = include(__dirname, '..', '..');
 
 describe('Party Rest API', function () {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
 
-  it('should handle HTTP POST on /parties', (done) => {
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
+
+  it('should handle HTTP POST on /parties', done => {
     request(app)
-      .post(`/v${apiVersion}/parties`)
+      .post(`/${apiVersion}/parties`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
       .send(party)
@@ -38,9 +58,9 @@ describe('Party Rest API', function () {
       });
   });
 
-  it('should handle HTTP GET on /parties', (done) => {
+  it('should handle HTTP GET on /parties', done => {
     request(app)
-      .get(`/v${apiVersion}/parties`)
+      .get(`/${apiVersion}/parties`)
       .set('Accept', 'application/json')
       .expect(200)
       .expect('Content-Type', /json/)
@@ -61,9 +81,9 @@ describe('Party Rest API', function () {
       });
   });
 
-  it('should handle HTTP GET on /parties/id:', (done) => {
+  it('should handle HTTP GET on /parties/id:', done => {
     request(app)
-      .get(`/v${apiVersion}/parties/${party._id}`)
+      .get(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
       .expect(200)
       .end((error, response) => {
@@ -80,10 +100,10 @@ describe('Party Rest API', function () {
       });
   });
 
-  it('should handle HTTP PATCH on /parties/id:', (done) => {
+  it('should handle HTTP PATCH on /parties/id:', done => {
     const { name } = party.fakeOnly('name');
     request(app)
-      .patch(`/v${apiVersion}/parties/${party._id}`)
+      .patch(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
       .send({ name })
@@ -105,10 +125,10 @@ describe('Party Rest API', function () {
       });
   });
 
-  it('should handle HTTP PUT on /parties/id:', (done) => {
+  it('should handle HTTP PUT on /parties/id:', done => {
     const { name } = party.fakeOnly('name');
     request(app)
-      .put(`/v${apiVersion}/parties/${party._id}`)
+      .put(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
       .send({ name })
@@ -130,9 +150,9 @@ describe('Party Rest API', function () {
       });
   });
 
-  it('should handle HTTP DELETE on /parties/:id', (done) => {
+  it('should handle HTTP DELETE on /parties/:id', done => {
     request(app)
-      .delete(`/v${apiVersion}/parties/${party._id}`)
+      .delete(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
       .expect(200)
       .end((error, response) => {
@@ -148,6 +168,6 @@ describe('Party Rest API', function () {
       });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });

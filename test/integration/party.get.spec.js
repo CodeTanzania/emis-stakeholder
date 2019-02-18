@@ -6,23 +6,50 @@ const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Get', () => {
 
-  before((done) => clear(done));
 
+  let role = Role.fake();
+  let location = Feature.fake();
   let parties = Party.fake(32);
 
-  before((done) => {
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      parties = _.map(parties, party => {
+        party.role = created;
+        return party;
+      });
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      parties = _.map(parties, party => {
+        party.location = created;
+        return party;
+      });
+      done(error, created);
+    });
+  });
+
+  before(done => {
     Party.insertMany(parties, (error, created) => {
       parties = created;
       done(error, created);
     });
   });
 
-  it('should be able to get without options', (done) => {
+  it('should be able to get without options', done => {
     Party.get((error, results) => {
       expect(error).to.not.exist;
       expect(results).to.exist;
@@ -45,7 +72,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should be able to get with options', (done) => {
+  it('should be able to get with options', done => {
     const options = { page: 1, limit: 20 };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -69,7 +96,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should be able to search with options', (done) => {
+  it('should be able to search with options', done => {
     const options = { filter: { q: parties[0].name } };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -93,7 +120,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should parse filter options', (done) => {
+  it('should parse filter options', done => {
     const options = { filter: { name: parties[0].name } };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -117,6 +144,6 @@ describe('Party Get', () => {
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });

@@ -2249,6 +2249,150 @@ define({ "api": [
     }
   },
   {
+    "type": "delete",
+    "url": "/permissions/:id",
+    "title": "Delete Existing Permission",
+    "version": "1.0.0",
+    "name": "DeletePermission",
+    "group": "Permission",
+    "description": "<p>Delete existing permission</p>",
+    "filename": "node_modules/@lykmapipo/permission/lib/permission.http.router.js",
+    "groupTitle": "",
+    "sampleRequest": [
+      {
+        "url": "https://emis-stakeholders.herokuapp.com/v1/permissions/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>Accepted content type</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept-Encoding",
+            "defaultValue": "gzip, deflate",
+            "description": "<p>Accepted encoding type</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n  \"Accept\": \"application/json\"\n  \"Authorization\": \"Bearer ey6utFreRdy5\"\n  \"Accept-Encoding\": \"gzip, deflate\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique permission identifier</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "resource",
+            "description": "<p>Resource constrained by a permission</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "action",
+            "description": "<p>Action(or permit) constrained(or granted) by a permission</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>A brief summary about a permission if available i.e additional details that clarify what a permission for</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "wildcard",
+            "description": "<p>System generated unique identifier of a permission</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Date when permission was created</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Date when permission was last updated</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n  \"_id\": \"5b622350480e576243f10d8b\",\n  \"resource\": \"Task\",\n  \"action\": \"create\",\n  \"description\": \"In quos quae sed consectetur voluptas praesentium.\",\n  \"wildcard\": \"task:create\",\n  \"updatedAt\": \"2018-08-01T21:17:04.729Z\",\n  \"createdAt\": \"2018-08-01T21:17:04.729Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
     "type": "get",
     "url": "/permissions/:id",
     "title": "Get Existing Permission",
@@ -3003,13 +3147,6 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Object[]",
             "optional": true,
             "field": "permissions",
@@ -3151,13 +3288,6 @@ define({ "api": [
             "optional": true,
             "field": "description",
             "description": "<p>A brief summary about a role if available i.e additional details that clarify what a role for</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
           },
           {
             "group": "Success 200",
@@ -3358,13 +3488,6 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "data.responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Date",
             "optional": false,
             "field": "data.createdAt",
@@ -3551,13 +3674,6 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Object[]",
             "optional": true,
             "field": "permissions",
@@ -3702,13 +3818,6 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "Object[]",
             "optional": true,
             "field": "permissions",
@@ -3850,13 +3959,6 @@ define({ "api": [
             "optional": true,
             "field": "description",
             "description": "<p>A brief summary about a role if available i.e additional details that clarify what a role for</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String[]",
-            "optional": true,
-            "field": "responsibilities",
-            "description": "<p>A duties, obligation or functions performed(or assigned) to a role.</p>"
           },
           {
             "group": "Success 200",

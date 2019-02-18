@@ -5,16 +5,36 @@
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Static Post', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
 
-  it('should be able to post', (done) => {
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
+
+  it('should be able to post', done => {
     Party.post(party, (error, created) => {
       expect(error).to.not.exist;
       expect(created).to.exist;
@@ -24,17 +44,35 @@ describe('Party Static Post', () => {
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });
 
 describe('Party Instance Post', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
 
-  it('should be able to post', (done) => {
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
+
+  it('should be able to post', done => {
     party.post((error, created) => {
       expect(error).to.not.exist;
       expect(created).to.exist;
@@ -44,6 +82,6 @@ describe('Party Instance Post', () => {
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });

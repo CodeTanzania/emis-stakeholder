@@ -5,13 +5,33 @@
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 describe('Party Static Delete', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
+
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
 
   before((done) => {
     party.post((error, created) => {
@@ -45,9 +65,27 @@ describe('Party Static Delete', () => {
 
 describe('Party Instance Delete', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
+
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
 
   before((done) => {
     party.post((error, created) => {

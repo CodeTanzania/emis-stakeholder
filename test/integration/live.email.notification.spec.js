@@ -28,7 +28,7 @@ const cleanup = (callback) => {
     });
 };
 
-describe('Live Email Notification', () => {
+describe.skip('Live Email Notification', () => {
 
   let party = Party.fake();
 

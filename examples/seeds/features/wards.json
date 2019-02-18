@@ -1,0 +1,339 @@
+[
+{
+  "name": "Ukonga",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Pugu",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Msongola",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Tabata",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kinyerezi",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Ilala",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Mchikichini",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Vingunguti",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kipawa",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Buguruni",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kariakoo",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Jangwani",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Gerezani",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kisutu",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Mchafukoge",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Upanga Mashariki",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Upanga Magharibi",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kivukoni",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kiwalani",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Segerea",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kitunda",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Chanika",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kivule",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Gongolamboto",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Majohe",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+},
+{
+  "name": "Kimanga",
+  "nature": "Boundary",
+  "family": "Administrative",
+  "type": "Ward",
+  "place":
+  {
+    "continent": "Africa",
+    "country": "Tanzania",
+    "region": "Dar-es-salaam",
+    "district": "Ilala"
+  }
+}]

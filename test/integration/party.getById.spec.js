@@ -6,14 +6,34 @@ const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party getById', () => {
 
-  before((done) => clear(done));
-
+  let role = Role.fake();
+  let location = Feature.fake();
   let party = Party.fake();
+
+  before(done => clear(done));
+
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
 
   before((done) => {
     party.post((error, created) => {
@@ -45,9 +65,8 @@ describe('Party getById', () => {
 
       //...assert selection
       const fields = _.keys(found.toObject());
-      expect(fields).to.have.length(2);
+      expect(fields).to.have.length(4);
       _.map([
-        'location',
         'phone',
         'email',
         'createdAt',

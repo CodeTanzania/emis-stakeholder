@@ -6,24 +6,43 @@ const faker = require('@benmaruchu/faker');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { Role } = require('@codetanzania/emis-role');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 
 describe('Party Upsert', () => {
 
-  before((done) => clear(done));
+  let role = Role.fake();
+  let location = Feature.fake();
+  let party = Party.fake();
 
-  let party;
+  before(done => clear(done));
 
-  beforeEach((done) => {
-    party = Party.fakeExcept('title');
+  before(done => {
+    role.post((error, created) => {
+      role = created;
+      party.role = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
+    location.post((error, created) => {
+      location = created;
+      party.location = created;
+      done(error, created);
+    });
+  });
+
+  before(done => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able upsert non existing', (done) => {
+  it('should be able upsert non existing', done => {
     Party.upsert(party, (error, upserted) => {
       expect(error).to.not.exist;
       expect(upserted).to.exist;
@@ -33,40 +52,36 @@ describe('Party Upsert', () => {
     });
   });
 
-  it('should be able upsert existing by _id', (done) => {
+  it('should be able upsert existing by _id', done => {
     const updates = {
       _id: party._id,
-      title: faker.name.jobTitle()
+      name: faker.name.findName()
     };
     Party.upsert(updates, (error, upserted) => {
       expect(error).to.not.exist;
       expect(upserted).to.exist;
       expect(upserted._id).to.be.eql(party._id);
       expect(upserted.name).to.be.eql(party.name);
-      expect(upserted.title).to.not.be.eql(party.title);
-      expect(upserted.title).to.be.eql(updates.title);
       expect(upserted.createdAt).to.be.eql(party.createdAt);
       done(error, upserted);
     });
   });
 
-  it('should be able upsert existing by fields', (done) => {
+  it('should be able upsert existing by fields', done => {
     const updates = {
       email: party.email,
-      title: faker.name.jobTitle()
+      website: faker.internet.url()
     };
     Party.upsert(updates, (error, upserted) => {
       expect(error).to.not.exist;
       expect(upserted).to.exist;
       expect(upserted._id).to.be.eql(party._id);
-      expect(upserted.name).to.be.eql(party.name);
-      expect(upserted.title).to.not.be.eql(party.title);
-      expect(upserted.title).to.be.eql(updates.title);
+      expect(upserted.website).to.be.eql(party.website);
       expect(upserted.createdAt).to.be.eql(party.createdAt);
       done(error, upserted);
     });
   });
 
-  after((done) => clear(done));
+  after(done => clear(done));
 
 });
