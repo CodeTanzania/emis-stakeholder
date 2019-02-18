@@ -1,3 +1,10 @@
+#### 1.3.0 (2019-02-18)
+
+##### Refactors
+
+*  extract seed to self script ([54fcb6ac](https://github.com/CodeTanzania/emis-stakeholder/commit/54fcb6acb54034fa405c7f0396cf191de7f3e597))
+*  remove unused fields ([c5c84232](https://github.com/CodeTanzania/emis-stakeholder/commit/c5c842327c59d379e63980cc4fa8e60b62cb95b8))
+
 # 1.2.2 / 24-12-2018
 - Build latest apidoc
 - Force latest dependencies & audit fix
