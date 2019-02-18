@@ -1,3 +1,9 @@
+#### 1.3.1 (2019-02-18)
+
+##### Bug Fixes
+
+*  make role not required ([8b046856](https://github.com/CodeTanzania/emis-stakeholder/commit/8b0468567b2ce820a4c951f62fc556faa4397544))
+
 #### 1.3.0 (2019-02-18)
 
 ##### Refactors
