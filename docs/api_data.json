@@ -289,6 +289,51 @@
   },
   {
     "type": "get",
+    "url": "/parties/export",
+    "title": "Export Parties",
+    "version": "1.0.0",
+    "name": "ExportParties",
+    "group": "Party",
+    "description": "<p>Export parties as csv</p>",
+    "filename": "lib/party.http.router.js",
+    "groupTitle": "",
+    "sampleRequest": [
+      {
+        "url": "https://emis-stakeholders.herokuapp.com/v1/parties/export"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>Accepted content type</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept-Encoding",
+            "defaultValue": "gzip, deflate",
+            "description": "<p>Accepted encoding type</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
     "url": "/parties",
     "title": "List Parties",
     "version": "1.0.0",
@@ -3205,6 +3250,51 @@
           "type": "json"
         }
       ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/roles/export",
+    "title": "Export Roles",
+    "version": "1.0.0",
+    "name": "ExportRole",
+    "group": "Role",
+    "description": "<p>Export roles as csv</p>",
+    "filename": "node_modules/@codetanzania/emis-role/lib/role.http.router.js",
+    "groupTitle": "",
+    "sampleRequest": [
+      {
+        "url": "https://emis-stakeholders.herokuapp.com/v1/roles/export"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>Accepted content type</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": true,
+            "field": "Accept-Encoding",
+            "defaultValue": "gzip, deflate",
+            "description": "<p>Accepted encoding type</p>"
+          }
+        ]
+      }
     }
   },
   {
