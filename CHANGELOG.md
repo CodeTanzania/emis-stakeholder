@@ -1,3 +1,9 @@
+#### 1.4.0 (2019-02-21)
+
+##### New Features
+
+*  allow party export ([25001229](https://github.com/CodeTanzania/emis-stakeholder/commit/25001229342e31b4afa6a5580338b737d096675f))
+
 #### 1.3.1 (2019-02-18)
 
 ##### Bug Fixes
