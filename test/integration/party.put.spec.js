@@ -2,6 +2,7 @@
 
 
 /* dependencies */
+const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
@@ -53,11 +54,11 @@ describe('Party Static Put', () => {
   });
 
   it('should throw if not exists', done => {
-    const fake = Party.fake();
-    Party.put(fake._id, fake, (error, updated) => {
+    const fake = Party.fake().toObject();
+    Party.put(fake._id, _.omit(fake, '_id'), (error, updated) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(updated).to.not.exist;
       done();
     });

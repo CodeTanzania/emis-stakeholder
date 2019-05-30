@@ -52,8 +52,8 @@ describe('Party Static Delete', () => {
   it('should throw if not exists', (done) => {
     Party.del(party._id, (error, deleted) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(deleted).to.not.exist;
       done();
     });
