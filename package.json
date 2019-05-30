@@ -11,7 +11,8 @@
     "doc": "grunt doc",
     "dev": "npm run seed && npm run start",
     "start": "BASE_PATH=./examples node ./examples/app.js",
-    "seed": "BASE_PATH=./examples node ./examples/seed.js"
+    "seed": "BASE_PATH=./examples node ./examples/seed.js",
+    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent"
   },
   "repository": {
     "type": "git",
@@ -102,14 +103,15 @@
     "@codetanzania/majifix-common": "^0.11.1",
     "@lykmapipo/mongoose-test-helpers": ">=0.3.0",
     "chai": "^4.2.0",
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-apidoc": "^0.11.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-mocha-test": "^0.13.3",
     "jshint-stylish": "^2.2.1",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.4",
     "mongoose": ">=5.4.19",
+    "prettier": "^1.17.1",
     "sinon": "^7.2.7",
     "sinon-chai": "^3.3.0",
     "sinon-mongoose": "^2.2.1",
