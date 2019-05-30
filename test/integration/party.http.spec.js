@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const request = require('supertest');
 const { expect } = require('chai');
@@ -10,8 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party, apiVersion, app } = include(__dirname, '..', '..');
 
-describe('Party Rest API', function () {
-
+describe('Party Rest API', function() {
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -169,5 +167,4 @@ describe('Party Rest API', function () {
   });
 
   after(done => clear(done));
-
 });

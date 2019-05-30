@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
@@ -9,9 +8,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Schema', () => {
-
   it('should have party field', () => {
     const party = Party.path('party');
 
@@ -162,7 +159,7 @@ describe('Party Schema', () => {
     expect(website.options.index).to.be.true;
   });
 
-  it('should have physicalAddress field', function () {
+  it('should have physicalAddress field', function() {
     const physicalAddress = Party.path('physicalAddress');
 
     expect(physicalAddress).to.exist;
@@ -176,7 +173,7 @@ describe('Party Schema', () => {
     expect(physicalAddress.options.fake).to.exist;
   });
 
-  it('should have postalAddress field', function () {
+  it('should have postalAddress field', function() {
     const postalAddress = Party.path('postalAddress');
 
     expect(postalAddress).to.exist;
@@ -233,5 +230,4 @@ describe('Party Schema', () => {
     expect(role.options.exists).to.be.true;
     expect(role.options.autopopulate).to.exist;
   });
-
 });

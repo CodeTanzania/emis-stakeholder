@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
@@ -10,10 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Get', () => {
-
-
   let role = Role.fake();
   let location = Feature.fake();
   let parties = Party.fake(32);
@@ -66,8 +62,9 @@ describe('Party Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(4);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -90,8 +87,9 @@ describe('Party Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(2);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -114,8 +112,9 @@ describe('Party Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
@@ -138,12 +137,12 @@ describe('Party Get', () => {
       expect(results.pages).to.exist;
       expect(results.pages).to.be.equal(1);
       expect(results.lastModified).to.exist;
-      expect(_.maxBy(results.data, 'updatedAt').updatedAt)
-        .to.be.at.most(results.lastModified);
+      expect(_.maxBy(results.data, 'updatedAt').updatedAt).to.be.at.most(
+        results.lastModified
+      );
       done(error, results);
     });
   });
 
   after(done => clear(done));
-
 });

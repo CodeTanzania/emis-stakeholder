@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const regions = require('./regions');
 const districts = require('./districts');

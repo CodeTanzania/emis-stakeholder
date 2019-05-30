@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
@@ -10,9 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Notification', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let parties = Party.fake(10);
@@ -89,5 +86,4 @@ describe('Party Notification', () => {
   });
 
   after(done => clear(done));
-
 });

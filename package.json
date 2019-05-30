@@ -11,7 +11,8 @@
     "doc": "grunt doc",
     "dev": "npm run seed && npm run start",
     "start": "BASE_PATH=./examples node ./examples/app.js",
-    "seed": "BASE_PATH=./examples node ./examples/seed.js"
+    "seed": "BASE_PATH=./examples node ./examples/seed.js",
+    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent"
   },
   "repository": {
     "type": "git",
@@ -110,6 +111,7 @@
     "jshint-stylish": "^2.2.1",
     "mocha": "^6.1.4",
     "mongoose": ">=5.5.11",
+    "prettier": "^1.17.1",
     "supertest": "^4.0.2"
   },
   "peerDependencies": {

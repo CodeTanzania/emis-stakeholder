@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const async = require('async');
 const { expect } = require('chai');
@@ -11,26 +10,27 @@ const { Message } = require('@lykmapipo/postman');
 const { include } = require('@lykmapipo/include');
 const { Party } = include(__dirname, '..', '..');
 
-
 //TODO refactor
 const redis = kue.redis.createClientFactory({
-  redis: {}
+  redis: {},
 });
-const cleanup = (callback) => {
-  redis
-    .keys('q*', function (error, rows) {
-      if (error) {
-        callback(error);
-      } else {
-        async.each(rows, function (row, next) {
+const cleanup = callback => {
+  redis.keys('q*', function(error, rows) {
+    if (error) {
+      callback(error);
+    } else {
+      async.each(
+        rows,
+        function(row, next) {
           redis.del(row, next);
-        }, callback);
-      }
-    });
+        },
+        callback
+      );
+    }
+  });
 };
 
 describe.skip('Email Notification', () => {
-
   let party = Party.fake();
 
   before(() => {
@@ -38,26 +38,26 @@ describe.skip('Email Notification', () => {
     process.env.DEBUG = true;
   });
 
-  before((done) => {
+  before(done => {
     cleanup(done);
   });
 
-  before((done) => {
+  before(done => {
     Message.deleteMany(done);
   });
 
-  before((done) => {
+  before(done => {
     Party.deleteMany(done);
   });
 
-  before((done) => {
+  before(done => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  before((done) => {
+  before(done => {
     worker.reset(done);
   });
 
@@ -65,17 +65,16 @@ describe.skip('Email Notification', () => {
     worker.start({ types: 'EMAIL' });
   });
 
-
-  it('should be able to queue message', (done) => {
-
+  it('should be able to queue message', done => {
     const notification = {
       to: {},
       subject: faker.lorem.sentence(),
-      body: faker.lorem.paragraph()
+      body: faker.lorem.paragraph(),
     };
 
     //listen queue events
-    worker.queue.on('job complete', (id, result) => {
+    worker.queue
+      .on('job complete', (id, result) => {
         expect(id).to.exist;
         expect(result).to.exist;
         expect(result.to).to.exist;
@@ -90,7 +89,7 @@ describe.skip('Email Notification', () => {
         expect(result.result.success).to.be.true;
         done();
       })
-      .on('job queued', (queued) => {
+      .on('job queued', queued => {
         expect(queued).to.exist;
         expect(queued.type).to.be.eql('EMAIL');
         expect(queued.to).to.exist;
@@ -100,32 +99,30 @@ describe.skip('Email Notification', () => {
         expect(queued.deliveredAt).to.not.exist;
         expect(queued.result).to.not.exist;
       })
-      .on('job error', (error) => {
+      .on('job error', error => {
         done(error);
       });
 
     Party.notify(notification);
-
   });
 
-  after((done) => {
+  after(done => {
     worker.stop(done);
   });
 
-  after((done) => {
+  after(done => {
     Message.deleteMany(done);
   });
 
-  after((done) => {
+  after(done => {
     Party.deleteMany(done);
   });
 
-  before((done) => {
+  before(done => {
     cleanup(done);
   });
 
   after(() => {
     delete process.env.DEBUG;
   });
-
 });
