@@ -1,3 +1,24 @@
+#### 1.5.0 (2019-05-30)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([30a0b860](https://github.com/CodeTanzania/emis-stakeholder/commit/30a0b8605e3b4181157855481f023d1470204a69))
+  *  force latest version & audit fix ([b41f7357](https://github.com/CodeTanzania/emis-stakeholder/commit/b41f73574f9a1ce46d4493403414f40c5d6c0228))
+*  ignore docs files from being formatted by prettier ([9ec349f4](https://github.com/CodeTanzania/emis-stakeholder/commit/9ec349f42a5c280a0bd4162c6f9eaea8241c43fc))
+*  remove unused jsbeautify file ([35ee8af7](https://github.com/CodeTanzania/emis-stakeholder/commit/35ee8af713538f521a54c68b225ffee1626cde3d))
+*  ignore neovim config file ([8b239959](https://github.com/CodeTanzania/emis-stakeholder/commit/8b23995940bcaaf630b1c77325ffa812bf35b21d))
+*  install and configure prettier ([55f8fe0a](https://github.com/CodeTanzania/emis-stakeholder/commit/55f8fe0a1e8fb1172e3fd6c0b759846340f96024))
+*  force latest dependencies ([bf4cf46d](https://github.com/CodeTanzania/emis-stakeholder/commit/bf4cf46d8657369c636844b1ba864146032e6a32))
+
+##### Refactors
+
+* **deps:**  migrate to use latest api ([f1b4a4fa](https://github.com/CodeTanzania/emis-stakeholder/commit/f1b4a4fa806a5e125216e4379c20d5b3f7b670bb))
+
+##### Code Style Changes
+
+*  format files with prettier ([dd239db8](https://github.com/CodeTanzania/emis-stakeholder/commit/dd239db886a90816b8dd441403baa62da1ff0aa2))
+
 #### 1.4.0 (2019-02-21)
 
 ##### New Features

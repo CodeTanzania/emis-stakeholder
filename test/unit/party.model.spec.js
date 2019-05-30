@@ -1,15 +1,12 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Instance', () => {
-
   it('`preValidate` should be a function', () => {
     const party = Party.fake();
     expect(party.preValidate).to.exist;
@@ -18,7 +15,7 @@ describe('Party Instance', () => {
     expect(party.preValidate.name).to.be.equal('preValidate');
   });
 
-  it('should set centre from feature', (done) => {
+  it('should set centre from feature', done => {
     const location = Feature.fake();
     const party = Party.fake();
     party.centre = undefined;
@@ -29,12 +26,9 @@ describe('Party Instance', () => {
       done();
     });
   });
-
 });
 
-
 describe('Party Statics', () => {
-
   it('should expose model name as constant', () => {
     expect(Party.MODEL_NAME).to.exist;
     expect(Party.MODEL_NAME).to.be.equal('Party');
@@ -52,9 +46,9 @@ describe('Party Statics', () => {
         name: 1,
         email: 1,
         mobile: 1,
-        abbreviation: 1
+        abbreviation: 1,
       },
-      maxDepth: 1
+      maxDepth: 1,
     });
   });
 

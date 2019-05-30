@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
@@ -9,9 +8,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Static Post', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -45,11 +42,9 @@ describe('Party Static Post', () => {
   });
 
   after(done => clear(done));
-
 });
 
 describe('Party Instance Post', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -83,5 +78,4 @@ describe('Party Instance Post', () => {
   });
 
   after(done => clear(done));
-
 });

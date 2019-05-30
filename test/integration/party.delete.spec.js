@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
@@ -10,7 +9,6 @@ const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
 describe('Party Static Delete', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -33,14 +31,14 @@ describe('Party Static Delete', () => {
     });
   });
 
-  before((done) => {
+  before(done => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to delete', (done) => {
+  it('should be able to delete', done => {
     Party.del(party._id, (error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -49,22 +47,20 @@ describe('Party Static Delete', () => {
     });
   });
 
-  it('should throw if not exists', (done) => {
+  it('should throw if not exists', done => {
     Party.del(party._id, (error, deleted) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(deleted).to.not.exist;
       done();
     });
   });
 
-  after((done) => clear(done));
-
+  after(done => clear(done));
 });
 
 describe('Party Instance Delete', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -87,14 +83,14 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  before((done) => {
+  before(done => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to delete', (done) => {
+  it('should be able to delete', done => {
     party.del((error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -103,7 +99,7 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  it('should throw if not exists', (done) => {
+  it('should throw if not exists', done => {
     party.del((error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -112,6 +108,5 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  after((done) => clear(done));
-
+  after(done => clear(done));
 });

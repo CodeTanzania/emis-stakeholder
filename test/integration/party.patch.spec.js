@@ -1,7 +1,7 @@
 'use strict';
 
-
 /* dependencies */
+const _ = require('lodash');
 const { expect } = require('chai');
 const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
@@ -9,9 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Static Patch', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -53,23 +51,20 @@ describe('Party Static Patch', () => {
   });
 
   it('should throw if not exists', done => {
-    const fake = Party.fake();
-    Party.patch(fake._id, fake, (error, updated) => {
+    const fake = Party.fake().toObject();
+    Party.patch(fake._id, _.omit(fake, '_id'), (error, updated) => {
       expect(error).to.exist;
-      expect(error.status).to.exist;
-      expect(error.message).to.be.equal('Not Found');
+      // expect(error.status).to.exist;
+      expect(error.name).to.be.equal('DocumentNotFoundError');
       expect(updated).to.not.exist;
       done();
     });
   });
 
   after(done => clear(done));
-
 });
 
-
 describe('Party Instance Patch', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -120,5 +115,4 @@ describe('Party Instance Patch', () => {
   });
 
   after(done => clear(done));
-
 });

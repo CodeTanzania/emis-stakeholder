@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const path = require('path');
 const _ = require('lodash');
@@ -10,7 +9,6 @@ const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Party } = include(__dirname, '..', '..');
 
 describe.skip('Party Seed', () => {
-
   const SEEDS_PATH = process.env.SEEDS_PATH;
 
   before(done => clear(done));
@@ -44,5 +42,4 @@ describe.skip('Party Seed', () => {
   after(() => {
     process.env.SEEDS_PATH = SEEDS_PATH;
   });
-
 });

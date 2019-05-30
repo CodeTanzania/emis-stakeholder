@@ -1,6 +1,5 @@
 'use strict';
 
-
 /**
  * @module Party
  * @name Party
@@ -23,17 +22,15 @@
  *
  */
 
-
 /* dependencies */
 const { pkg } = require('@lykmapipo/common');
 const { include } = require('@lykmapipo/include');
 const { apiVersion } = require('@lykmapipo/env');
-const app = require('@lykmapipo/express-common');
+const { app, mount } = require('@lykmapipo/express-common');
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Role, roleRouter } = require('@codetanzania/emis-role');
 const Party = include(__dirname, 'lib', 'party.model');
 const partyRouter = include(__dirname, 'lib', 'party.http.router');
-
 
 /**
  * @name info
@@ -45,10 +42,16 @@ const partyRouter = include(__dirname, 'lib', 'party.http.router');
  * @version 0.1.0
  */
 exports.info = pkg(
-  'name', 'description', 'version', 'license',
-  'homepage', 'repository', 'bugs', 'sandbox', 'contributors'
+  'name',
+  'description',
+  'version',
+  'license',
+  'homepage',
+  'repository',
+  'bugs',
+  'sandbox',
+  'contributors'
 );
-
 
 /**
  * @name Permission
@@ -61,7 +64,6 @@ exports.info = pkg(
  */
 exports.Permission = Permission;
 
-
 /**
  * @name Role
  * @description Role model
@@ -72,7 +74,6 @@ exports.Permission = Permission;
  * @version 0.1.0
  */
 exports.Role = Role;
-
 
 /**
  * @name Party
@@ -85,7 +86,6 @@ exports.Role = Role;
  */
 exports.Party = Party;
 
-
 /**
  * @name permissionRouter
  * @description permission http router
@@ -96,7 +96,6 @@ exports.Party = Party;
  * @version 0.1.0
  */
 exports.permissionRouter = permissionRouter;
-
 
 /**
  * @name roleRouter
@@ -109,7 +108,6 @@ exports.permissionRouter = permissionRouter;
  */
 exports.roleRouter = roleRouter;
 
-
 /**
  * @name partyRouter
  * @description party http router
@@ -121,7 +119,6 @@ exports.roleRouter = roleRouter;
  */
 exports.partyRouter = partyRouter;
 
-
 /**
  * @name apiVersion
  * @description http router api version
@@ -132,7 +129,6 @@ exports.partyRouter = partyRouter;
  * @version 0.1.0
  */
 exports.apiVersion = apiVersion();
-
 
 /**
  * @name app
@@ -146,9 +142,9 @@ exports.apiVersion = apiVersion();
 Object.defineProperty(exports, 'app', {
   get() {
     /* @todo bind oauth middlewares authenticate, token, authorize */
-    app.mount(permissionRouter);
-    app.mount(roleRouter);
-    app.mount(partyRouter);
+    mount(permissionRouter);
+    mount(roleRouter);
+    mount(partyRouter);
     return app;
-  }
+  },
 });
