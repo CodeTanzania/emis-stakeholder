@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const faker = require('@benmaruchu/faker');
 const { expect } = require('chai');
@@ -10,9 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party Upsert', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -55,7 +52,7 @@ describe('Party Upsert', () => {
   it('should be able upsert existing by _id', done => {
     const updates = {
       _id: party._id,
-      name: faker.name.findName()
+      name: faker.name.findName(),
     };
     Party.upsert(updates, (error, upserted) => {
       expect(error).to.not.exist;
@@ -70,7 +67,7 @@ describe('Party Upsert', () => {
   it('should be able upsert existing by fields', done => {
     const updates = {
       email: party.email,
-      website: faker.internet.url()
+      website: faker.internet.url(),
     };
     Party.upsert(updates, (error, upserted) => {
       expect(error).to.not.exist;
@@ -83,5 +80,4 @@ describe('Party Upsert', () => {
   });
 
   after(done => clear(done));
-
 });

@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const path = require('path');
 const _ = require('lodash');
@@ -11,7 +10,6 @@ const { Feature } = require('@codetanzania/emis-feature');
 const { Permission } = require('@lykmapipo/permission');
 const { Role } = require('@codetanzania/emis-role');
 const { Party } = include(__dirname, '..');
-
 
 // naive logger
 const log = (stage, error, result) => {
@@ -24,7 +22,6 @@ const log = (stage, error, result) => {
   }
 };
 
-
 /* refs */
 let seedStart;
 let seedEnd;
@@ -33,7 +30,6 @@ let wards;
 let permissions;
 let roles;
 let parties;
-
 
 // seed permissions
 const seedPermissions = next => {
@@ -82,11 +78,10 @@ const seedParties = next => {
 const seed = done => {
   seedStart = Date.now();
   connect(error => {
-    if (error) { return done(error); }
-    waterfall([
-      seedPermissions, seedFeatures,
-      seedRoles, seedParties
-    ], done);
+    if (error) {
+      return done(error);
+    }
+    waterfall([seedPermissions, seedFeatures, seedRoles, seedParties], done);
   });
 };
 

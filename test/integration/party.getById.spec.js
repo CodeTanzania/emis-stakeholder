@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
@@ -10,9 +9,7 @@ const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
 const { Party } = include(__dirname, '..', '..');
 
-
 describe('Party getById', () => {
-
   let role = Role.fake();
   let location = Feature.fake();
   let party = Party.fake();
@@ -35,14 +32,14 @@ describe('Party getById', () => {
     });
   });
 
-  before((done) => {
+  before(done => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to get an instance', (done) => {
+  it('should be able to get an instance', done => {
     Party.getById(party._id, (error, found) => {
       expect(error).to.not.exist;
       expect(found).to.exist;
@@ -51,10 +48,10 @@ describe('Party getById', () => {
     });
   });
 
-  it('should be able to get with options', (done) => {
+  it('should be able to get with options', done => {
     const options = {
       _id: party._id,
-      select: 'name'
+      select: 'name',
     };
 
     Party.getById(options, (error, found) => {
@@ -66,20 +63,14 @@ describe('Party getById', () => {
       //...assert selection
       const fields = _.keys(found.toObject());
       expect(fields).to.have.length(4);
-      _.map([
-        'phone',
-        'email',
-        'createdAt',
-        'updatedAt'
-      ], function (field) {
+      _.map(['phone', 'email', 'createdAt', 'updatedAt'], function(field) {
         expect(fields).to.not.include(field);
       });
       done(error, found);
     });
-
   });
 
-  it('should throw if not exists', (done) => {
+  it('should throw if not exists', done => {
     const party = Party.fake();
     Party.getById(party._id, (error, found) => {
       expect(error).to.exist;
@@ -90,6 +81,5 @@ describe('Party getById', () => {
     });
   });
 
-  after((done) => clear(done));
-
+  after(done => clear(done));
 });
