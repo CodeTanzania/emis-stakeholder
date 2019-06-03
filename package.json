@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "dev": "npm run seed && npm run start",
     "start": "BASE_PATH=./examples node ./examples/app.js",
     "seed": "BASE_PATH=./examples node ./examples/seed.js",
-    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent"
+    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent",
+    "changelog": "changelog"
   },
   "repository": {
     "type": "git",
@@ -59,42 +60,22 @@
         "resource": "Party",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
-        "scopes": [
-          "party:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
+        "scopes": ["party:*"],
+        "methods": ["get", "post", "put", "patch"]
       },
       {
         "resource": "Role",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
-        "scopes": [
-          "role:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
+        "scopes": ["role:*"],
+        "methods": ["get", "post", "put", "patch"]
       },
       {
         "resource": "Permission",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
-        "scopes": [
-          "permission:*"
-        ],
-        "methods": [
-          "get",
-          "put",
-          "patch"
-        ]
+        "scopes": ["permission:*"],
+        "methods": ["get", "put", "patch"]
       }
     ]
   },
@@ -103,6 +84,7 @@
     "@codetanzania/majifix-common": "^0.12.4",
     "@lykmapipo/mongoose-test-helpers": ">=0.7.4",
     "chai": "^4.2.0",
+    "generate-changelog": "^1.7.1",
     "grunt": "^1.0.4",
     "grunt-apidoc": "^0.11.0",
     "grunt-contrib-jshint": "^2.1.0",
@@ -122,10 +104,12 @@
     "@codetanzania/emis-role": ">=1.5.0",
     "@lykmapipo/env": ">=0.7.8",
     "@lykmapipo/express-common": ">=0.17.3",
+    "@lykmapipo/jwt-common": "^0.3.5",
     "@lykmapipo/mongoose-exportable": ">=0.3.3",
     "@lykmapipo/permission": ">=0.8.1",
     "@lykmapipo/postman": ">=0.8.0",
     "async": ">=3.0.1",
+    "irina": "^0.5.2",
     "kue": ">=0.11.6",
     "lodash": ">=4.17.11",
     "moment": ">=2.24.0",
