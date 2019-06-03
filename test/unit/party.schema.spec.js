@@ -92,13 +92,31 @@ describe('Party Schema', () => {
     expect(email.options).to.be.an('object');
     expect(email.options.type).to.exist;
     expect(email.options.trim).to.be.true;
-    expect(email.options.required).to.be.true;
+    // expect(email.options.required).to.be.true;
     expect(email.options.lowercase).to.be.true;
-    expect(email.options.email).to.be.true;
+    // expect(email.options.email).to.be.true;
     expect(email.options.searchable).to.be.true;
     expect(email.options.fake).to.exist;
-    expect(email.options.index).to.be.true;
+    // expect(email.options.index).to.be.true;
     expect(email.options.unique).to.be.true;
+  });
+
+  it('should have password field', () => {
+    const password = Party.path('password');
+
+    expect(password).to.exist;
+    expect(password).to.be.an.instanceof(Schema.Types.String);
+    expect(password.options).to.exist;
+    expect(password.options).to.be.an('object');
+    expect(password.options.type).to.exist;
+    // expect(password.options.trim).to.be.true;
+    // expect(password.options.required).to.be.true;
+    // expect(password.options.lowercase).to.be.true;
+    // expect(email.options.email).to.be.true;
+    // expect(password.options.searchable).to.be.true;
+    expect(password.options.fake).to.exist;
+    // expect(email.options.index).to.be.true;
+    // expect(password.options.unique).to.be.true;
   });
 
   it('should have mobile field', () => {

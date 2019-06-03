@@ -31,6 +31,7 @@ const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Role, roleRouter } = require('@codetanzania/emis-role');
 const Party = include(__dirname, 'lib', 'party.model');
 const partyRouter = include(__dirname, 'lib', 'party.http.router');
+const authRouter = include(__dirname, 'lib', 'auth.http.router');
 
 /**
  * @name info
@@ -142,6 +143,7 @@ exports.apiVersion = apiVersion();
 Object.defineProperty(exports, 'app', {
   get() {
     /* @todo bind oauth middlewares authenticate, token, authorize */
+    mount(authRouter);
     mount(permissionRouter);
     mount(roleRouter);
     mount(partyRouter);
