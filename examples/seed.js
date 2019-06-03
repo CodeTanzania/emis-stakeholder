@@ -33,7 +33,7 @@ let parties;
 
 // seed permissions
 const seedPermissions = next => {
-  Permission.seed((error, seeded) => {
+  Permission.seed(permissions,(error, seeded) => {
     log('permissions', error, seeded);
     permissions = seeded;
     next(error);
@@ -42,7 +42,8 @@ const seedPermissions = next => {
 
 // seed features
 const seedFeatures = next => {
-  Feature.seed((error, seeded) => {
+  features = include(__dirname, 'seeds', 'features');
+  Feature.seed(features,(error, seeded) => {
     log('features', error, seeded);
     features = seeded;
     wards = _.filter(features, feature => feature.type === 'Ward');
