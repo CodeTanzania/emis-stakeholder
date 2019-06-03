@@ -12,7 +12,8 @@
     "dev": "npm run seed && npm run start",
     "start": "BASE_PATH=./examples node ./examples/app.js",
     "seed": "BASE_PATH=./examples node ./examples/seed.js",
-    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent"
+    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent",
+    "changelog": "changelog"
   },
   "repository": {
     "type": "git",
@@ -83,6 +84,7 @@
     "@codetanzania/majifix-common": "^0.12.4",
     "@lykmapipo/mongoose-test-helpers": ">=0.7.4",
     "chai": "^4.2.0",
+    "generate-changelog": "^1.7.1",
     "grunt": "^1.0.4",
     "grunt-apidoc": "^0.11.0",
     "grunt-contrib-jshint": "^2.1.0",
