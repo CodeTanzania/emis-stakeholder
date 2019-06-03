@@ -1,8 +1,6 @@
 'use strict';
 
 /* dependencies */
-const path = require('path');
-const async = require('async');
 const { include } = require('@lykmapipo/include');
 const { get, start, mount } = require('@lykmapipo/express-common');
 const { connect } = require('@lykmapipo/mongoose-common');
