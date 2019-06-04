@@ -60,22 +60,42 @@
         "resource": "Party",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
-        "scopes": ["party:*"],
-        "methods": ["get", "post", "put", "patch"]
+        "scopes": [
+          "party:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
       },
       {
         "resource": "Role",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
-        "scopes": ["role:*"],
-        "methods": ["get", "post", "put", "patch"]
+        "scopes": [
+          "role:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
       },
       {
         "resource": "Permission",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
-        "scopes": ["permission:*"],
-        "methods": ["get", "put", "patch"]
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
       }
     ]
   },
