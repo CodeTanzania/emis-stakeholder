@@ -121,6 +121,17 @@ exports.roleRouter = roleRouter;
 exports.partyRouter = partyRouter;
 
 /**
+ * @name authenticationRouter
+ * @description Authentication http router
+ * @type {express.router}
+ *
+ * @author Benson Maruchu <benmaruchu@gmail.com>
+ * @since 1.6.0
+ * @version 0.1.0
+ */
+exports.authenticationRouter = authRouter;
+
+/**
  * @name apiVersion
  * @description http router api version
  * @type {String}
