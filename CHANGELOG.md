@@ -1,3 +1,24 @@
+#### 1.6.1 (2019-06-04)
+
+##### Chores
+
+* **package.json:**
+  *  update package version to 1.6.1 ([eacfc0ce](https://github.com/CodeTanzania/emis-stakeholder/commit/eacfc0ceace63d6f243f3aeb37f7bddbd3fa00ba))
+  *  format file ([978c0925](https://github.com/CodeTanzania/emis-stakeholder/commit/978c09254d3e30a9863292db6dea8a29244a495a))
+
+##### New Features
+
+* **example:**  mount authentication router on example app ([e0b4360b](https://github.com/CodeTanzania/emis-stakeholder/commit/e0b4360b7c87b36db113686a4c5da4f20ed92f0a))
+
+##### Bug Fixes
+
+* **seed:**  resolve duplication error and add default password to party ([d594a6f0](https://github.com/CodeTanzania/emis-stakeholder/commit/d594a6f0ef974d7e6d9e5eab3816de5793865be1))
+* **auth:**  expose authentication router ([78d57525](https://github.com/CodeTanzania/emis-stakeholder/commit/78d57525b821d736580475472c52069cbf04d139))
+
+##### Code Style Changes
+
+*  fix a typo ([f6815240](https://github.com/CodeTanzania/emis-stakeholder/commit/f6815240f2d4ff20a293d15d0d4dc61cd18008f7))
+
 #### 1.6.0 (2019-06-03)
 
 ##### Chores

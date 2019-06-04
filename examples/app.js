@@ -4,10 +4,13 @@
 const { include } = require('@lykmapipo/include');
 const { get, start, mount } = require('@lykmapipo/express-common');
 const { connect } = require('@lykmapipo/mongoose-common');
-const { info, permissionRouter, roleRouter, partyRouter } = include(
-  __dirname,
-  '..'
-);
+const {
+  info,
+  permissionRouter,
+  roleRouter,
+  partyRouter,
+  authenticationRouter,
+} = include(__dirname, '..');
 
 // establish mongodb connection
 connect(error => {
@@ -23,7 +26,7 @@ connect(error => {
   });
 
   // mount routers
-  mount(permissionRouter, roleRouter, partyRouter);
+  mount(authenticationRouter, permissionRouter, roleRouter, partyRouter);
 
   // fire the app
   start((error, env) => {
