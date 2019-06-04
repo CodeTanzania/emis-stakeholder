@@ -31,9 +31,14 @@ let permissions;
 let roles;
 let parties;
 
+/* clear database before seeding data */
+const clearAll = next => {
+  clear(next);
+};
+
 // seed permissions
 const seedPermissions = next => {
-  Permission.seed(permissions,(error, seeded) => {
+  Permission.seed(permissions, (error, seeded) => {
     log('permissions', error, seeded);
     permissions = seeded;
     next(error);
@@ -43,7 +48,7 @@ const seedPermissions = next => {
 // seed features
 const seedFeatures = next => {
   features = include(__dirname, 'seeds', 'features');
-  Feature.seed(features,(error, seeded) => {
+  Feature.seed(features, (error, seeded) => {
     log('features', error, seeded);
     features = seeded;
     wards = _.filter(features, feature => feature.type === 'Ward');
@@ -63,12 +68,16 @@ const seedRoles = next => {
 // seed parties
 const seedParties = next => {
   parties = include(__dirname, 'seeds', 'parties');
-  parties = _.map(parties, party => {
-    party.location = _.sample(wards);
-    party.role = _.sample(roles);
+  _.map(parties, party => {
+    party.location = _.sample(wards).toObject();
+    party.role = _.sample(roles).toObject();
+    party.password =
+      '$2a$10$rwpL/BhU8xY4fkf8SG7fHugF4PCioTJqy8BLU7BZ8N0YV.8Y1dXem';
+    party.confirmedAt = new Date();
     return party;
   });
-  Party.seed(parties, (error, seeded) => {
+
+  Party.seed((error, seeded) => {
     log('parties', error, seeded);
     parties = seeded;
     next(error);
@@ -82,7 +91,10 @@ const seed = done => {
     if (error) {
       return done(error);
     }
-    waterfall([seedPermissions, seedFeatures, seedRoles, seedParties], done);
+    waterfall(
+      [clearAll, seedPermissions, seedFeatures, seedRoles, seedParties],
+      done
+    );
   });
 };
 
