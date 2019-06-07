@@ -1,0 +1,82 @@
+[
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Ambulance Services"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Community Members"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Community Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Government Agencies"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Hospitals"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Utilities"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Humanitarian Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "International Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Non-governmental Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Private Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Scouts"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Religious Institutions"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Defense & Security"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Fire & Rescue"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Voluntary Organizations"
+  },
+  {
+    "namespace": "PartyGroup",
+    "bucket": "partygroups",
+    "name": "Unknown"
+  }
+]
