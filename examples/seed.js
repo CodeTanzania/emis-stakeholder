@@ -82,6 +82,7 @@ const seedParties = next => {
   _.map(parties, party => {
     party.location = _.sample(wards).toObject();
     party.role = _.sample(roles).toObject();
+    party.group = _.sample(groups).toObject();
     party.password =
       '$2a$10$rwpL/BhU8xY4fkf8SG7fHugF4PCioTJqy8BLU7BZ8N0YV.8Y1dXem';
     party.confirmedAt = new Date();
