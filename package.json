@@ -128,6 +128,7 @@
     "@lykmapipo/mongoose-exportable": ">=0.3.3",
     "@lykmapipo/permission": ">=0.8.1",
     "@lykmapipo/postman": ">=0.8.0",
+    "@lykmapipo/predefine": ">=0.2.0",
     "async": ">=3.0.1",
     "irina": "^0.5.2",
     "kue": ">=0.11.6",
