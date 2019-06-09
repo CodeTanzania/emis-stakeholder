@@ -40,6 +40,7 @@ const clearAll = next => {
 
 // seed permissions
 const seedPermissions = next => {
+  let permissions = Permission.prepareResourcesPermissions();
   Permission.seed(permissions, (error, seeded) => {
     log('permissions', error, seeded);
     permissions = seeded;
@@ -89,7 +90,7 @@ const seedParties = next => {
     return party;
   });
 
-  Party.seed((error, seeded) => {
+  Party.seed(parties, (error, seeded) => {
     log('parties', error, seeded);
     parties = seeded;
     next(error);
