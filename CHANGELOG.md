@@ -1,3 +1,28 @@
+#### 1.7.0 (2019-06-11)
+
+##### Chores
+
+* **package.json:**  update package version to 1.7.0 ([1b93f2e5](https://github.com/CodeTanzania/emis-stakeholder/commit/1b93f2e5aa6f7e492436f3595fc8b721c72de05e))
+* **deps:**
+  *  install dependency locally ([371d5527](https://github.com/CodeTanzania/emis-stakeholder/commit/371d55272441a80fac9f2aa089cd445ece8758ae))
+  *  force latest version & audit fix ([5ac0b010](https://github.com/CodeTanzania/emis-stakeholder/commit/5ac0b010960cfb867873d2e44830d9902024c391))
+  *  force latest version & audit fix ([5c107a89](https://github.com/CodeTanzania/emis-stakeholder/commit/5c107a89c70056f97c07e405c6ec9c087b605307))
+  *  add predefine ([a4e01541](https://github.com/CodeTanzania/emis-stakeholder/commit/a4e01541a1b5b243dae974af1cf028e4663903cf))
+  *  force latest dependencies ([d4631cf8](https://github.com/CodeTanzania/emis-stakeholder/commit/d4631cf87f21b93839669e06ffef82875bde840c))
+* **example:**  ensure .env follows standards ([1f70587d](https://github.com/CodeTanzania/emis-stakeholder/commit/1f70587d1c272a77ed75f751160ee29d924857ed))
+* **examples:**
+  *  fix partygroups seeding ([dbc5e440](https://github.com/CodeTanzania/emis-stakeholder/commit/dbc5e44010bae3d2ecb9d65eec86c6503c270030))
+  *  add predefine namespaces ([dae04ce1](https://github.com/CodeTanzania/emis-stakeholder/commit/dae04ce189ec1cb8763cb9ec80ca22da43c0ccd4))
+  *  add party groups predefine seed ([aa9f2aab](https://github.com/CodeTanzania/emis-stakeholder/commit/aa9f2aabe6340fa21a3a5a25f109f46697fb7561))
+
+##### Bug Fixes
+
+*  prevent auth libs to override email field ([8e086442](https://github.com/CodeTanzania/emis-stakeholder/commit/8e086442dfa572138b53f050a45eeb508a02fba9))
+
+##### Refactors
+
+* **model:**  migrate to use predefine on party group ([ed2f7ada](https://github.com/CodeTanzania/emis-stakeholder/commit/ed2f7adad2d29cada0601094957cbeccdf920515))
+
 #### 1.6.1 (2019-06-04)
 
 ##### Chores
