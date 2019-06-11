@@ -105,6 +105,7 @@
     "@lykmapipo/env": ">=0.8.0",
     "@lykmapipo/express-common": ">=0.17.5",
     "@lykmapipo/jwt-common": ">=0.3.6",
+    "@lykmapipo/mongoose-common": ">=0.25.0",
     "@lykmapipo/mongoose-exportable": ">=0.3.3",
     "@lykmapipo/permission": ">=0.8.2",
     "@lykmapipo/postman": ">=0.8.0",
@@ -117,7 +118,7 @@
     "moment-timezone": ">=0.5.25",
     "mongoose-geojson-schemas": ">=0.10.5",
     "mongoose-kue": ">=0.8.1",
-    "mongoose-rest-actions": ">=0.28.2",
+    "mongoose-rest-actions": ">=0.28.3",
     "redis": ">=2.8.0"
   },
   "engines": {
