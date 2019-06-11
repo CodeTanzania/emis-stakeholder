@@ -4,6 +4,7 @@
 const { include } = require('@lykmapipo/include');
 const { get, start, mount } = require('@lykmapipo/express-common');
 const { connect } = require('@lykmapipo/mongoose-common');
+const { predefineRouter } = require('@lykmapipo/predefine');
 const {
   info,
   permissionRouter,
@@ -26,7 +27,13 @@ connect(error => {
   });
 
   // mount routers
-  mount(authenticationRouter, permissionRouter, roleRouter, partyRouter);
+  mount(
+    authenticationRouter,
+    permissionRouter,
+    roleRouter,
+    partyRouter,
+    predefineRouter
+  );
 
   // fire the app
   start((error, env) => {

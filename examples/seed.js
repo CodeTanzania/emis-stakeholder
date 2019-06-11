@@ -6,8 +6,9 @@ const _ = require('lodash');
 const { waterfall, parallel } = require('async');
 const { include } = require('@lykmapipo/include');
 const { connect, clear } = require('@lykmapipo/mongoose-common');
-const { Feature } = require('@codetanzania/emis-feature');
+const { Predefine } = require('@lykmapipo/predefine');
 const { Permission } = require('@lykmapipo/permission');
+const { Feature } = require('@codetanzania/emis-feature');
 const { Role } = require('@codetanzania/emis-role');
 const { Party } = include(__dirname, '..');
 
@@ -29,6 +30,7 @@ let features;
 let wards;
 let permissions;
 let roles;
+let groups;
 let parties;
 
 /* clear database before seeding data */
@@ -65,12 +67,22 @@ const seedRoles = next => {
   });
 };
 
+// seed party groups
+const seedPartyGroups = next => {
+  Predefine.seed((error, seeded) => {
+    log('groups', error, seeded);
+    groups = seeded;
+    next(error);
+  });
+};
+
 // seed parties
 const seedParties = next => {
   parties = include(__dirname, 'seeds', 'parties');
   _.map(parties, party => {
     party.location = _.sample(wards).toObject();
     party.role = _.sample(roles).toObject();
+    party.group = _.sample(groups).toObject();
     party.password =
       '$2a$10$rwpL/BhU8xY4fkf8SG7fHugF4PCioTJqy8BLU7BZ8N0YV.8Y1dXem';
     party.confirmedAt = new Date();
@@ -91,10 +103,15 @@ const seed = done => {
     if (error) {
       return done(error);
     }
-    waterfall(
-      [clearAll, seedPermissions, seedFeatures, seedRoles, seedParties],
-      done
-    );
+    const seeds = [
+      clearAll,
+      seedPermissions,
+      seedFeatures,
+      seedPartyGroups,
+      seedRoles,
+      seedParties,
+    ];
+    waterfall(seeds, done);
   });
 };
 
