@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
@@ -60,42 +60,22 @@
         "resource": "Party",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
-        "scopes": [
-          "party:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
+        "scopes": ["party:*"],
+        "methods": ["get", "post", "put", "patch"]
       },
       {
         "resource": "Role",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
-        "scopes": [
-          "role:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
+        "scopes": ["role:*"],
+        "methods": ["get", "post", "put", "patch"]
       },
       {
         "resource": "Permission",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
-        "scopes": [
-          "permission:*"
-        ],
-        "methods": [
-          "get",
-          "put",
-          "patch"
-        ]
+        "scopes": ["permission:*"],
+        "methods": ["get", "put", "patch"]
       }
     ]
   },
