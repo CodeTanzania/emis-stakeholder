@@ -1,3 +1,25 @@
+#### 1.8.0 (2019-06-15)
+
+##### Chores
+
+* **package:**  update package version to 1.8.0 ([6bed0b64](https://github.com/CodeTanzania/emis-stakeholder/commit/6bed0b64a394b50ab760ec5bd0ca4b647b57967b))
+* **deps:**
+  *  update dependencies to latest versions ([43fb1568](https://github.com/CodeTanzania/emis-stakeholder/commit/43fb15685a1f9cd21b921b71426ed7df8c5677d4))
+  *  install dependency locally ([c3d15316](https://github.com/CodeTanzania/emis-stakeholder/commit/c3d15316f7997804e4eb7e3d7589aee44eec086e))
+* **examples:**  refactor seeds to fix duplicates seeds ([c75c3ad0](https://github.com/CodeTanzania/emis-stakeholder/commit/c75c3ad0cac925c65ad933f76b709aec3894d69d))
+
+##### New Features
+
+* **auth:**  allow signin username to be email or phone number ([fa8180ed](https://github.com/CodeTanzania/emis-stakeholder/commit/fa8180edd130a497fb0a01c3a7366f658cb5f1fd))
+
+##### Bug Fixes
+
+* **party:**  ensure party mobile is formatted ([689f0df9](https://github.com/CodeTanzania/emis-stakeholder/commit/689f0df9d945bfbb75ba1e7d6c9514d8d515c22a))
+
+##### Tests
+
+* **party:**  check if mobile number is formatted on post ([4b56ddc7](https://github.com/CodeTanzania/emis-stakeholder/commit/4b56ddc78bf9d43eb32216af04706c288656c909))
+
 #### 1.7.0 (2019-06-11)
 
 ##### Chores
