@@ -24,12 +24,29 @@ describe('Authentication API', () => {
       Party.register(party, done);
     });
 
-    it('should handle HTTP POST on /signin', done => {
+    it('should handle HTTP POST on /signin use email as username', done => {
       request(app)
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .send({ email: party.email, password: party.password })
+        .send({ username: party.email, password: party.password })
+        .expect(200)
+        .end((error, response) => {
+          expect(error).to.not.exist;
+          expect(response).to.exist;
+          expect(response.body).to.exist;
+          expect(response.body.party).to.exist;
+          expect(response.body.token).to.exist;
+          done(error, response);
+        });
+    });
+
+    it('should handle HTTP POST on /signin use phone number as username', done => {
+      request(app)
+        .post(`/${apiVersion}/signin`)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .send({ username: party.mobile, password: party.password })
         .expect(200)
         .end((error, response) => {
           expect(error).to.not.exist;
@@ -69,7 +86,7 @@ describe('Authentication API', () => {
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .send({ email: party.email, password: '987654321' })
+        .send({ username: party.email, password: '987654321' })
         .expect(200)
         .end((error, response) => {
           expect(error).to.not.exist;
@@ -100,7 +117,7 @@ describe('Authentication API', () => {
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
-        .send({ email: party.email, password: '123456789' })
+        .send({ username: party.email, password: '123456789' })
         .expect(200)
         .end((error, response) => {
           expect(error).to.not.exist;
