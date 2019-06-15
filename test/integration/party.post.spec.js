@@ -41,6 +41,19 @@ describe('Party Static Post', () => {
     });
   });
 
+  it('should format mobile number on post', done => {
+    party.mobile = '0714555555';
+
+    Party.post(party, (error, created) => {
+      expect(error).to.not.exist;
+      expect(created).to.exist;
+      expect(created._id).to.eql(party._id);
+      expect(created.name).to.eql(party.name);
+      expect(created.mobile).to.equal('255714555555');
+      done(error, created);
+    });
+  });
+
   after(done => clear(done));
 });
 
@@ -73,6 +86,19 @@ describe('Party Instance Post', () => {
       expect(created).to.exist;
       expect(created._id).to.eql(party._id);
       expect(created.name).to.eql(party.name);
+      done(error, created);
+    });
+  });
+
+  it('should format phone number on post', done => {
+    party.mobile = '0714555555';
+
+    party.post((error, created) => {
+      expect(error).to.not.exist;
+      expect(created).to.exist;
+      expect(created._id).to.eql(party._id);
+      expect(created.name).to.eql(party.name);
+      expect(created.mobile).to.equal('255714555555');
       done(error, created);
     });
   });
