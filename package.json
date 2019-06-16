@@ -60,29 +60,49 @@
         "resource": "Party",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
-        "scopes": ["party:*"],
-        "methods": ["get", "post", "put", "patch"]
+        "scopes": [
+          "party:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
       },
       {
         "resource": "Role",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
-        "scopes": ["role:*"],
-        "methods": ["get", "post", "put", "patch"]
+        "scopes": [
+          "role:*"
+        ],
+        "methods": [
+          "get",
+          "post",
+          "put",
+          "patch"
+        ]
       },
       {
         "resource": "Permission",
         "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
         "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
-        "scopes": ["permission:*"],
-        "methods": ["get", "put", "patch"]
+        "scopes": [
+          "permission:*"
+        ],
+        "methods": [
+          "get",
+          "put",
+          "patch"
+        ]
       }
     ]
   },
   "devDependencies": {
     "@benmaruchu/faker": "^4.2.1",
     "@codetanzania/majifix-common": "^0.12.4",
-    "@lykmapipo/mongoose-test-helpers": ">=0.7.10",
+    "@lykmapipo/mongoose-test-helpers": ">=0.7.11",
     "chai": "^4.2.0",
     "generate-changelog": "^1.7.1",
     "grunt": "^1.0.4",
@@ -92,25 +112,25 @@
     "grunt-mocha-test": "^0.13.3",
     "jshint-stylish": "^2.2.1",
     "mocha": "^6.1.4",
-    "mongoose": ">=5.5.15",
+    "mongoose": ">=5.6.0",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2"
   },
   "peerDependencies": {
-    "mongoose": ">=5.5.15"
+    "mongoose": ">=5.6.0"
   },
   "dependencies": {
     "@codetanzania/emis-feature": ">=1.4.1",
     "@codetanzania/emis-role": ">=1.5.1",
-    "@lykmapipo/env": ">=0.9.0",
-    "@lykmapipo/express-common": ">=0.17.6",
+    "@lykmapipo/env": ">=0.9.1",
+    "@lykmapipo/express-common": ">=0.17.7",
     "@lykmapipo/jwt-common": ">=0.3.7",
-    "@lykmapipo/mongoose-common": ">=0.25.2",
+    "@lykmapipo/mongoose-common": ">=0.25.3",
     "@lykmapipo/mongoose-exportable": ">=0.3.4",
     "@lykmapipo/permission": ">=0.8.3",
-    "@lykmapipo/phone": "^0.4.1",
-    "@lykmapipo/postman": ">=0.8.1",
-    "@lykmapipo/predefine": ">=0.2.3",
+    "@lykmapipo/phone": "^0.5.0",
+    "@lykmapipo/postman": ">=0.9.0",
+    "@lykmapipo/predefine": ">=0.3.0",
     "async": ">=3.0.1",
     "irina": ">=0.7.0",
     "kue": ">=0.11.6",

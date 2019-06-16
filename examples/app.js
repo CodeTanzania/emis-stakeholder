@@ -5,6 +5,7 @@ const { include } = require('@lykmapipo/include');
 const { get, start, mount } = require('@lykmapipo/express-common');
 const { connect } = require('@lykmapipo/mongoose-common');
 const { predefineRouter } = require('@lykmapipo/predefine');
+const { campaignRouter, messageRouter } = require('@lykmapipo/postman');
 const {
   info,
   permissionRouter,
@@ -32,7 +33,9 @@ connect(error => {
     permissionRouter,
     roleRouter,
     partyRouter,
-    predefineRouter
+    predefineRouter,
+    campaignRouter,
+    messageRouter
   );
 
   // fire the app
