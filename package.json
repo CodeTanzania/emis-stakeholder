@@ -133,6 +133,7 @@
     "@lykmapipo/postman": ">=0.9.3",
     "@lykmapipo/predefine": ">=0.3.1",
     "async": ">=3.0.1",
+    "extend": "^3.0.2",
     "irina": ">=0.7.1",
     "kue": ">=0.11.6",
     "lodash": ">=4.17.11",
