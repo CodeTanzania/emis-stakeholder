@@ -43,6 +43,7 @@ const authRouter = include(__dirname, 'lib', 'auth.http.router');
  * @version 0.1.0
  */
 exports.info = pkg(
+  `${__dirname}/package.json`,
   'name',
   'description',
   'version',
@@ -86,6 +87,17 @@ exports.Role = Role;
  * @version 0.1.0
  */
 exports.Party = Party;
+
+/**
+ * @name fetchContacts
+ * @description export party fetch contacts
+ * @type {Function}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.fetchContacts = (criteria, done) => Party.fetchContacts(criteria, done);
 
 /**
  * @name permissionRouter
