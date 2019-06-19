@@ -88,6 +88,17 @@ exports.Role = Role;
 exports.Party = Party;
 
 /**
+ * @name fetchContacts
+ * @description export party fetch contacts
+ * @type {Function}
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 0.1.0
+ * @version 0.1.0
+ */
+exports.fetchContacts = (criteria, done) => Party.fetchContacts(criteria, done);
+
+/**
  * @name permissionRouter
  * @description permission http router
  * @type {express.Router}

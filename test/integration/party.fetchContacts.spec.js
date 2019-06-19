@@ -28,17 +28,17 @@ describe.only('Fetch Contacts', () => {
   before(done => create(...parties, done));
 
   it('should fetch contacts without criteria', done => {
-    expect(Party.fetchContacts).to.not.exist;
+    expect(Party.fetchContacts).to.exist;
     done();
   });
 
   it('should fetch contacts with criteria', done => {
-    expect(Party.fetchContacts).to.not.exist;
+    expect(Party.fetchContacts).to.exist;
     done();
   });
 
   it('should expose fetch contacts', done => {
-    expect(fetchContacts).to.not.exist;
+    expect(fetchContacts).to.exist;
     done();
   });
 
