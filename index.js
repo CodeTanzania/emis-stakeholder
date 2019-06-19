@@ -43,6 +43,7 @@ const authRouter = include(__dirname, 'lib', 'auth.http.router');
  * @version 0.1.0
  */
 exports.info = pkg(
+  `${__dirname}/package.json`,
   'name',
   'description',
   'version',
