@@ -6,7 +6,7 @@ const { expect } = require('chai');
 const { clear, create } = require('@lykmapipo/mongoose-test-helpers');
 const { Role } = require('@codetanzania/emis-role');
 const { Feature } = require('@codetanzania/emis-feature');
-const { Party } = require('../..');
+const { Party, fetchContacts } = require('../..');
 
 describe.only('Fetch Contacts', () => {
   let role = Role.fake();
@@ -27,8 +27,18 @@ describe.only('Fetch Contacts', () => {
 
   before(done => create(...parties, done));
 
-  it('should fetch contacts without options', done => {
+  it('should fetch contacts without criteria', done => {
     expect(Party.fetchContacts).to.not.exist;
+    done();
+  });
+
+  it('should fetch contacts with criteria', done => {
+    expect(Party.fetchContacts).to.not.exist;
+    done();
+  });
+
+  it('should expose fetch contacts', done => {
+    expect(fetchContacts).to.not.exist;
     done();
   });
 
