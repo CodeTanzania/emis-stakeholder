@@ -1,3 +1,10 @@
+#### 1.9.0 (2019-06-20)
+
+##### Chores
+
+* **examples:**  configure postman to use fetchAccounts ([1d562068](https://github.com/CodeTanzania/emis-stakeholder/commit/1d562068402b5da0fadd9fb06f0326b7e262a7de))
+* **deps:**  force latest version & audit fix ([50bee646](https://github.com/CodeTanzania/emis-stakeholder/commit/50bee646cb6395a87771be80d518690706876bf4))
+
 #### 1.8.1 (2019-06-19)
 
 ##### Chores
