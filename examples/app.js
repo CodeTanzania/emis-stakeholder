@@ -5,14 +5,17 @@ const { include } = require('@lykmapipo/include');
 const { get, start, mount } = require('@lykmapipo/express-common');
 const { connect } = require('@lykmapipo/mongoose-common');
 const { predefineRouter } = require('@lykmapipo/predefine');
-const { campaignRouter, messageRouter } = require('@lykmapipo/postman');
 const {
   info,
   permissionRouter,
   roleRouter,
   partyRouter,
   authenticationRouter,
+  fetchContacts,
 } = include(__dirname, '..');
+const { campaignRouter, messageRouter } = require('@lykmapipo/postman')({
+  fetchContacts,
+});
 
 // establish mongodb connection
 connect(error => {

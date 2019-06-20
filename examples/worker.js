@@ -3,9 +3,10 @@
 /* dependencies */
 const path = require('path');
 const mongoose = require('mongoose');
-const { Message } = require('@lykmapipo/postman');
-require(path.join(__dirname, '..'));
-const { worker, httpServer } = require('@lykmapipo/postman');
+const { fetchContacts } = require('../');
+const { worker, httpServer } = require('@lykmapipo/postman')({
+  fetchContacts,
+});
 
 /* connect to mongoose */
 process.env.MONGODB_URI =
