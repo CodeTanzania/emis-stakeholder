@@ -11,7 +11,11 @@ const {
   roleRouter,
   partyRouter,
   authenticationRouter,
+  fetchContacts,
 } = include(__dirname, '..');
+const { campaignRouter, messageRouter } = require('@lykmapipo/postman')({
+  fetchContacts,
+});
 
 // establish mongodb connection
 connect(error => {
@@ -32,7 +36,9 @@ connect(error => {
     permissionRouter,
     roleRouter,
     partyRouter,
-    predefineRouter
+    predefineRouter,
+    campaignRouter,
+    messageRouter
   );
 
   // fire the app

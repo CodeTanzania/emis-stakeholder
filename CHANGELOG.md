@@ -1,3 +1,30 @@
+#### 1.9.0 (2019-06-20)
+
+##### Chores
+
+* **examples:**  configure postman to use fetchAccounts ([1d562068](https://github.com/CodeTanzania/emis-stakeholder/commit/1d562068402b5da0fadd9fb06f0326b7e262a7de))
+* **deps:**  force latest version & audit fix ([50bee646](https://github.com/CodeTanzania/emis-stakeholder/commit/50bee646cb6395a87771be80d518690706876bf4))
+
+#### 1.8.1 (2019-06-19)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([2a6e6870](https://github.com/CodeTanzania/emis-stakeholder/commit/2a6e6870ebf06f4a377489c6688df7f2629f9d1a))
+  *  fix security alerts ([8d86af2e](https://github.com/CodeTanzania/emis-stakeholder/commit/8d86af2ed8e9ddceaa105366ac281cfdace21d85))
+  *  force latest version & audit fix ([deb02829](https://github.com/CodeTanzania/emis-stakeholder/commit/deb028298310f17b0b05a3fb6b40416c3c3c7c8a))
+* **examples:**  expose campaign and messages http router ([2b395621](https://github.com/CodeTanzania/emis-stakeholder/commit/2b3956219898b6b7ef3b457b24174f8b64cbb29d))
+
+##### New Features
+
+*  implement initial party fetchContacts ([56e0adc4](https://github.com/CodeTanzania/emis-stakeholder/commit/56e0adc417eae8440453b35cb9475b589b611eee))
+
+##### Tests
+
+*  imporve fetch contacts specs ([8fcc8975](https://github.com/CodeTanzania/emis-stakeholder/commit/8fcc8975adf6e9fcd375fc90b89ebcd3f55576e7))
+*  add fetch contacts specs holder ([4f970dbc](https://github.com/CodeTanzania/emis-stakeholder/commit/4f970dbc79c5fef041f01eb3905a0b83fc59419f))
+*  add party fetch contacts specs ([78e917f1](https://github.com/CodeTanzania/emis-stakeholder/commit/78e917f1b49517f1aa6c65242c9dc5701c2a586d))
+
 #### 1.8.0 (2019-06-15)
 
 ##### Chores

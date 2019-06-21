@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
@@ -110,6 +110,7 @@
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-mocha-test": "^0.13.3",
+    "handlebars": "^4.1.2",
     "jshint-stylish": "^2.2.1",
     "mocha": "^6.1.4",
     "mongoose": ">=5.6.0",
@@ -132,6 +133,7 @@
     "@lykmapipo/postman": ">=0.10.0",
     "@lykmapipo/predefine": ">=0.3.1",
     "async": ">=3.0.1",
+    "extend": "^3.0.2",
     "irina": ">=0.7.1",
     "kue": ">=0.11.6",
     "lodash": ">=4.17.11",
