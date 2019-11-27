@@ -4,9 +4,8 @@
 const path = require('path');
 const _ = require('lodash');
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Party } = include(__dirname, '..', '..');
+const { Party } = require('../..');
 
 describe.skip('Party Seed', () => {
   const SEEDS_PATH = process.env.SEEDS_PATH;

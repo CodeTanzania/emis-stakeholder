@@ -4,22 +4,21 @@
 const _ = require('lodash');
 const { expect } = require('chai');
 const { clear, create } = require('@lykmapipo/mongoose-test-helpers');
-const { Role } = require('@codetanzania/emis-role');
-const { Feature } = require('@codetanzania/emis-feature');
+const { Predefine } = require('@lykmapipo/predefine');
 const { Party, fetchContacts } = require('../..');
 
 describe('Fetch Contacts', () => {
-  let role = Role.fake();
-  let location = Feature.fake();
+  let role = Predefine.fake();
+  let area = Predefine.fake();
   let parties = Party.fake(5);
 
   before(done => clear(done));
 
   before(done =>
-    create(role, location, (error, created) => {
+    create(role, area, (error, created) => {
       _.forEach(parties, party => {
         party.role = created[0];
-        party.location = created[1];
+        party.area = created[1];
       });
       done(error, created);
     })

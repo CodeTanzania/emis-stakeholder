@@ -3,15 +3,13 @@
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Role } = require('@codetanzania/emis-role');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Party } = include(__dirname, '..', '..');
+const { Predefine } = require('@lykmapipo/predefine');
+const { Party } = require('../..');
 
 describe('Party Static Put', () => {
-  let role = Role.fake();
-  let location = Feature.fake();
+  let role = Predefine.fake();
+  let area = Predefine.fake();
   let party = Party.fake();
 
   before(done => clear(done));
@@ -25,9 +23,9 @@ describe('Party Static Put', () => {
   });
 
   before(done => {
-    location.post((error, created) => {
-      location = created;
-      party.location = created;
+    area.post((error, created) => {
+      area = created;
+      party.area = created;
       done(error, created);
     });
   });
@@ -65,8 +63,8 @@ describe('Party Static Put', () => {
 });
 
 describe('Party Instance Put', () => {
-  let role = Role.fake();
-  let location = Feature.fake();
+  let role = Predefine.fake();
+  let area = Predefine.fake();
   let party = Party.fake();
 
   before(done => clear(done));
@@ -80,9 +78,9 @@ describe('Party Instance Put', () => {
   });
 
   before(done => {
-    location.post((error, created) => {
-      location = created;
-      party.location = created;
+    area.post((error, created) => {
+      area = created;
+      party.area = created;
       done(error, created);
     });
   });

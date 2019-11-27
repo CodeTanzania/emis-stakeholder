@@ -2,11 +2,9 @@
 
 /* dependencies */
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
 const { Schema } = require('mongoose');
-const { Role } = require('@codetanzania/emis-role');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Party } = include(__dirname, '..', '..');
+const { Predefine } = require('@lykmapipo/predefine');
+const { Party } = require('../..');
 
 describe('Party Schema', () => {
   it('should have party field', () => {
@@ -36,6 +34,23 @@ describe('Party Schema', () => {
     expect(type.options.index).to.be.true;
     expect(type.options.searchable).to.be.true;
     expect(type.options.fake).to.be.true;
+  });
+
+  it('should have group field', () => {
+    const group = Party.path('group');
+
+    expect(group).to.exist;
+    expect(group).to.be.instanceof(Schema.Types.ObjectId);
+    expect(group.options).to.exist;
+    expect(group.options).to.be.an('object');
+    expect(group.options.type).to.exist;
+    expect(group.options.ref).to.exist;
+    expect(group.options.ref).to.be.equal(Predefine.MODEL_NAME);
+    // expect(group.options.required).to.be.true;
+    expect(group.options.default).to.be.undefined;
+    expect(group.options.index).to.be.true;
+    expect(group.options.exists).to.be.true;
+    expect(group.options.autopopulate).to.exist;
   });
 
   it('should have name field', () => {
@@ -210,21 +225,21 @@ describe('Party Schema', () => {
     expect(coordinates).to.be.instanceof(Schema.Types.Array);
   });
 
-  it('should have location field', () => {
-    const location = Party.path('location');
+  it('should have area field', () => {
+    const area = Party.path('area');
 
-    expect(location).to.exist;
-    expect(location).to.be.an.instanceof(Schema.Types.ObjectId);
-    expect(location.options).to.exist;
-    expect(location.options).to.be.an('object');
-    expect(location.options.type).to.exist;
-    expect(location.options.ref).to.exist;
-    expect(location.options.ref).to.be.eql(Feature.MODEL_NAME);
-    expect(location.options.required).to.be.true;
-    expect(location.options.index).to.be.true;
-    expect(location.options.exists).to.be.true;
-    expect(location.options.autopopulate).to.exist;
-    expect(location.options.autopopulate).to.be.an('object');
+    expect(area).to.exist;
+    expect(area).to.be.an.instanceof(Schema.Types.ObjectId);
+    expect(area.options).to.exist;
+    expect(area.options).to.be.an('object');
+    expect(area.options.type).to.exist;
+    expect(area.options.ref).to.exist;
+    expect(area.options.ref).to.be.eql(Predefine.MODEL_NAME);
+    // expect(area.options.required).to.be.true;
+    expect(area.options.index).to.be.true;
+    expect(area.options.exists).to.be.true;
+    expect(area.options.autopopulate).to.exist;
+    expect(area.options.autopopulate).to.be.an('object');
   });
 
   it('should have role field', () => {
@@ -236,7 +251,7 @@ describe('Party Schema', () => {
     expect(role.options).to.be.an('object');
     expect(role.options.type).to.exist;
     expect(role.options.ref).to.exist;
-    expect(role.options.ref).to.be.equal(Role.MODEL_NAME);
+    expect(role.options.ref).to.be.equal(Predefine.MODEL_NAME);
     // expect(role.options.required).to.be.true;
     expect(role.options.default).to.be.undefined;
     expect(role.options.index).to.be.true;

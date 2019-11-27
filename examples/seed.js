@@ -4,13 +4,10 @@
 const path = require('path');
 const _ = require('lodash');
 const { waterfall, parallel } = require('async');
-const { include } = require('@lykmapipo/include');
 const { connect, clear } = require('@lykmapipo/mongoose-common');
 const { Predefine } = require('@lykmapipo/predefine');
 const { Permission } = require('@lykmapipo/permission');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Role } = require('@codetanzania/emis-role');
-const { Party } = include(__dirname, '..');
+const { Party } = require('../');
 
 // naive logger
 const log = (stage, error, result) => {
@@ -26,11 +23,8 @@ const log = (stage, error, result) => {
 /* refs */
 let seedStart;
 let seedEnd;
-let features;
-let wards;
 let permissions;
-let roles;
-let groups;
+let predefines;
 let parties;
 
 /* clear database before seeding data */
@@ -48,44 +42,19 @@ const seedPermissions = next => {
   });
 };
 
-// seed features
-const seedFeatures = next => {
-  features = include(__dirname, 'seeds', 'features');
-  Feature.seed(features, (error, seeded) => {
-    log('features', error, seeded);
-    features = seeded;
-    wards = _.filter(features, feature => feature.type === 'Ward');
-    next(error);
-  });
-};
-
-// seed roles
-const seedRoles = next => {
-  Role.seed((error, seeded) => {
-    log('roles', error, seeded);
-    roles = seeded;
-    next(error);
-  });
-};
-
-// seed party groups
-const seedPartyGroups = next => {
+// seed party areas, roles & groups
+const seedPredefines = next => {
   Predefine.seed((error, seeded) => {
-    log('groups', error, seeded);
-    groups = seeded;
+    log('predefines', error, seeded);
+    predefines = seeded;
     next(error);
   });
 };
 
 // seed parties
 const seedParties = next => {
-  parties = include(__dirname, 'seeds', 'parties');
+  parties = require('./seeds/parties');
   _.map(parties, party => {
-    party.location = _.sample(wards).toObject();
-    party.role = _.sample(roles).toObject();
-    party.group = _.sample(groups).toObject();
-    party.password =
-      '$2a$10$rwpL/BhU8xY4fkf8SG7fHugF4PCioTJqy8BLU7BZ8N0YV.8Y1dXem';
     party.confirmedAt = new Date();
     return party;
   });
@@ -104,14 +73,7 @@ const seed = done => {
     if (error) {
       return done(error);
     }
-    const seeds = [
-      clearAll,
-      seedPermissions,
-      seedFeatures,
-      seedPartyGroups,
-      seedRoles,
-      seedParties,
-    ];
+    const seeds = [clearAll, seedPermissions, seedPredefines, seedParties];
     waterfall(seeds, done);
   });
 };
