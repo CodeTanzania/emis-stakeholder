@@ -1,3 +1,13 @@
+#### 2.1.0 (2020-01-23)
+
+##### Chores
+
+* **deps:**  force latest versions ([221c362d](https://github.com/CodeTanzania/emis-stakeholder/commit/221c362dcefe8653310ea07a6aaad09a03da05b4))
+
+##### Refactors
+
+*  rename Focal Person to Focal ([017f8fdb](https://github.com/CodeTanzania/emis-stakeholder/commit/017f8fdbf319aa5987e810dbb52d7a0693c4962b))
+
 #### 2.0.0 (2019-11-27)
 
 ##### Chores
