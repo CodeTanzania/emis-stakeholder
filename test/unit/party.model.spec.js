@@ -14,7 +14,7 @@ describe('Party Instance', () => {
     expect(party.preValidate.name).to.be.equal('preValidate');
   });
 
-  it('should set centre from feature', done => {
+  it.skip('should set centre from feature', done => {
     const area = Predefine.fake();
     const party = Party.fake();
     party.centre = undefined;
