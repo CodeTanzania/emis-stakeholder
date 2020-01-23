@@ -3,24 +3,22 @@
 /* dependencies */
 const request = require('supertest');
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
 const { clear, create } = require('@lykmapipo/mongoose-test-helpers');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Role } = require('@codetanzania/emis-role');
-const { Party, apiVersion, app } = include(__dirname, '..', '..');
+const { Predefine } = require('@lykmapipo/predefine');
+const { Party, apiVersion, app } = require('../..');
 
 describe('Authentication API', () => {
   let party = Party.fake();
-  const role = Role.fake();
-  const location = Feature.fake();
+  const role = Predefine.fake();
+  const area = Predefine.fake();
 
   before(done => clear(done));
 
-  before(done => create([role, location], done));
+  before(done => create([role, area], done));
 
   describe('Existing User', () => {
     before(done => {
-      party.location = location;
+      party.area = area;
       Party.register(party, done);
     });
 
@@ -107,7 +105,7 @@ describe('Authentication API', () => {
     });
 
     before(done => {
-      party.location = location;
+      party.area = area;
       party.password = '';
       Party.register(party, done);
     });

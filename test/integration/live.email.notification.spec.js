@@ -6,8 +6,7 @@ const { expect } = require('chai');
 const kue = require('kue');
 const { worker } = require('mongoose-kue');
 const { Message } = require('@lykmapipo/postman');
-const { include } = require('@lykmapipo/include');
-const { Party } = include(__dirname, '..', '..');
+const { Party } = require('../..');
 
 //TODO refactor
 const redis = kue.redis.createClientFactory({

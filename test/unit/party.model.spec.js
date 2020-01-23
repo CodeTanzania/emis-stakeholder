@@ -2,9 +2,8 @@
 
 /* dependencies */
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Party } = include(__dirname, '..', '..');
+const { Predefine } = require('@lykmapipo/predefine');
+const { Party } = require('../..');
 
 describe('Party Instance', () => {
   it('`preValidate` should be a function', () => {
@@ -15,14 +14,14 @@ describe('Party Instance', () => {
     expect(party.preValidate.name).to.be.equal('preValidate');
   });
 
-  it('should set centre from feature', done => {
-    const location = Feature.fake();
+  it.skip('should set centre from feature', done => {
+    const area = Predefine.fake();
     const party = Party.fake();
     party.centre = undefined;
-    party.location = location;
+    party.area = area;
     party.preValidate(() => {
       expect(party.centre).to.exist;
-      expect(party.centre).to.eql(location.centroid);
+      expect(party.centre).to.eql(area.geos.point);
       done();
     });
   });

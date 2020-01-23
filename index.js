@@ -24,14 +24,13 @@
 
 /* dependencies */
 const { pkg } = require('@lykmapipo/common');
-const { include } = require('@lykmapipo/include');
 const { apiVersion } = require('@lykmapipo/env');
 const { app, mount } = require('@lykmapipo/express-common');
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
-const { Role, roleRouter } = require('@codetanzania/emis-role');
-const Party = include(__dirname, 'lib', 'party.model');
-const partyRouter = include(__dirname, 'lib', 'party.http.router');
-const authRouter = include(__dirname, 'lib', 'auth.http.router');
+const { Predefine, predefineRouter } = require('@lykmapipo/predefine');
+const Party = require('./lib/party.model');
+const partyRouter = require('./lib/party.http.router');
+const authRouter = require('./lib/auth.http.router');
 
 /**
  * @name info
@@ -67,15 +66,15 @@ exports.info = pkg(
 exports.Permission = Permission;
 
 /**
- * @name Role
- * @description Role model
+ * @name Predefine
+ * @description Predefine model
  * @type {mongoose.Model}
  *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
  */
-exports.Role = Role;
+exports.Predefine = Predefine;
 
 /**
  * @name Party
@@ -111,15 +110,15 @@ exports.fetchContacts = (criteria, done) => Party.fetchContacts(criteria, done);
 exports.permissionRouter = permissionRouter;
 
 /**
- * @name roleRouter
- * @description role http router
+ * @name predefineRouter
+ * @description Predefine http router
  * @type {express.Router}
  *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
  */
-exports.roleRouter = roleRouter;
+exports.predefineRouter = predefineRouter;
 
 /**
  * @name partyRouter
@@ -168,7 +167,7 @@ Object.defineProperty(exports, 'app', {
     /* @todo bind oauth middlewares authenticate, token, authorize */
     mount(authRouter);
     mount(permissionRouter);
-    mount(roleRouter);
+    mount(predefineRouter);
     mount(partyRouter);
     return app;
   },

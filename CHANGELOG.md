@@ -1,3 +1,30 @@
+#### 2.1.0 (2020-01-23)
+
+##### Chores
+
+* **deps:**  force latest versions ([221c362d](https://github.com/CodeTanzania/emis-stakeholder/commit/221c362dcefe8653310ea07a6aaad09a03da05b4))
+
+##### Refactors
+
+*  rename Focal Person to Focal ([017f8fdb](https://github.com/CodeTanzania/emis-stakeholder/commit/017f8fdbf319aa5987e810dbb52d7a0693c4962b))
+
+#### 2.0.0 (2019-11-27)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([d6390ac4](https://github.com/CodeTanzania/emis-stakeholder/commit/d6390ac41d6c09aafe6832a0edbb26914dd9d748))
+  *  force latest version & audit fix ([a9e3ba78](https://github.com/CodeTanzania/emis-stakeholder/commit/a9e3ba78704534ca0102cb21892adb9ed0ad4a22))
+  *  update dependencies to latest versions ([918bc1d7](https://github.com/CodeTanzania/emis-stakeholder/commit/918bc1d7f529044def8afe88cd7bf521e98a1bbc))
+
+##### Other Changes
+
+* CodeTanzania/emis-stakeholder into develop ([2e4f27c5](https://github.com/CodeTanzania/emis-stakeholder/commit/2e4f27c5f2e3ce96554bade4c04c4a627c00f178))
+
+##### Refactors
+
+*  use predefine for area, role & group ([8949f8c6](https://github.com/CodeTanzania/emis-stakeholder/commit/8949f8c606fb9f7ea2d9baa6cdf0334979cf0e56))
+
 #### 1.9.0 (2019-06-20)
 
 ##### Chores

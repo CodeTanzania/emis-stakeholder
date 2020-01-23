@@ -3,15 +3,13 @@
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
-const { include } = require('@lykmapipo/include');
 const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Role } = require('@codetanzania/emis-role');
-const { Feature } = require('@codetanzania/emis-feature');
-const { Party } = include(__dirname, '..', '..');
+const { Predefine } = require('@lykmapipo/predefine');
+const { Party } = require('../..');
 
 describe('Party Get', () => {
-  let role = Role.fake();
-  let location = Feature.fake();
+  let role = Predefine.fake();
+  let area = Predefine.fake();
   let parties = Party.fake(32);
 
   before(done => clear(done));
@@ -28,10 +26,10 @@ describe('Party Get', () => {
   });
 
   before(done => {
-    location.post((error, created) => {
-      location = created;
+    area.post((error, created) => {
+      area = created;
       parties = _.map(parties, party => {
-        party.location = created;
+        party.area = created;
         return party;
       });
       done(error, created);
