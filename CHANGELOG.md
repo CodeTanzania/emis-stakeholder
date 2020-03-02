@@ -1,3 +1,21 @@
+#### 2.2.0 (2020-03-02)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([9900e531](https://github.com/CodeTanzania/emis-stakeholder/commit/9900e531c14862c49c62772614222d371a896cb9))
+
+##### New Features
+
+* **party:**
+  *  ensure api token before save ([d6825585](https://github.com/CodeTanzania/emis-stakeholder/commit/d68255851c2bb251e7af51f7e6f79b41d2f1c90c))
+  *  add api token schema field ([020af02b](https://github.com/CodeTanzania/emis-stakeholder/commit/020af02b7623ce40c6dacd49a3ff7c261e013ea2))
+  *  add convert to contact helper ([f917c22b](https://github.com/CodeTanzania/emis-stakeholder/commit/f917c22bc8360715f79e9529e55cff9ca9bd9e4e))
+  *  add jwt auth helpers ([a56cb3c1](https://github.com/CodeTanzania/emis-stakeholder/commit/a56cb3c194ef058f8141a6731a32ab2a2541e7e3))
+
+##### Tests
+
+*  add jwt configs ([effa827f](https://github.com/CodeTanzania/emis-stakeholder/commit/effa827f65f99ae7f5ef28f82d4590d91b657a85))
+
 #### 2.1.0 (2020-01-23)
 
 ##### Chores
