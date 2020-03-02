@@ -1,3 +1,9 @@
+#### 2.2.1 (2020-03-02)
+
+##### Bug Fixes
+
+* **auth:**  encode id as payload ([e0680028](https://github.com/CodeTanzania/emis-stakeholder/commit/e06800286d3099c81a7988897191dfdb0d435c42))
+
 #### 2.2.0 (2020-03-02)
 
 ##### Chores
