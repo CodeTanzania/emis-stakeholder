@@ -23,6 +23,14 @@ describe('Party Instance', () => {
     expect(contact.email).to.exist.and.be.equal(party.email);
   });
 
+  it('should generate api token', done => {
+    const party = Party.fake();
+    party.preValidate(() => {
+      expect(party.token).to.exist;
+      done();
+    });
+  });
+
   it.skip('should set centre from feature', done => {
     const area = Predefine.fake();
     const party = Party.fake();

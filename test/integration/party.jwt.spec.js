@@ -21,6 +21,16 @@ describe('Party JWT', () => {
     });
   });
 
+  it('should be able to generate party api token', done => {
+    party.generateToken((error, found) => {
+      expect(error).to.not.exist;
+      expect(found).to.exist;
+      expect(found._id).to.eql(party._id);
+      expect(found.token).to.exist;
+      done(error, found);
+    });
+  });
+
   it('should be able to get by decoded jwt', done => {
     Party.findByJwt({ id: party._id }, (error, found) => {
       expect(error).to.not.exist;
