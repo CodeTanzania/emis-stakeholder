@@ -258,4 +258,15 @@ describe('Party Schema', () => {
     expect(role.options.exists).to.be.true;
     expect(role.options.autopopulate).to.exist;
   });
+
+  it('should have token field', () => {
+    const token = Party.path('token');
+
+    expect(token).to.exist;
+    expect(token).to.be.an.instanceof(Schema.Types.String);
+    expect(token.options).to.exist;
+    expect(token.options).to.be.an('object');
+    expect(token.options.type).to.exist;
+    expect(token.options.trim).to.be.true;
+  });
 });

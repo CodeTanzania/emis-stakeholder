@@ -14,6 +14,23 @@ describe('Party Instance', () => {
     expect(party.preValidate.name).to.be.equal('preValidate');
   });
 
+  it('should convert party to contact', () => {
+    const party = Party.fake();
+    const contact = party.asContact();
+    expect(contact).to.exist;
+    expect(contact.name).to.exist.and.be.equal(party.name);
+    expect(contact.mobile).to.exist.and.be.equal(party.mobile);
+    expect(contact.email).to.exist.and.be.equal(party.email);
+  });
+
+  it('should generate api token', done => {
+    const party = Party.fake();
+    party.preValidate(() => {
+      expect(party.token).to.exist;
+      done();
+    });
+  });
+
   it.skip('should set centre from feature', done => {
     const area = Predefine.fake();
     const party = Party.fake();
