@@ -26,6 +26,7 @@
 const { pkg } = require('@lykmapipo/common');
 const { apiVersion } = require('@lykmapipo/env');
 const { app, mount } = require('@lykmapipo/express-common');
+const { jwtAuth } = require('@lykmapipo/jwt-common');
 const { Permission, permissionRouter } = require('@lykmapipo/permission');
 const { Predefine, predefineRouter } = require('@lykmapipo/predefine');
 const Party = require('./lib/party.model');
@@ -97,6 +98,25 @@ exports.Party = Party;
  * @version 0.1.0
  */
 exports.fetchContacts = (criteria, done) => Party.fetchContacts(criteria, done);
+
+/**
+ * @name jwtAuth
+ * @description middleware stack to check authenticity using jwt tokens
+ * @param {Function} next next http middleware to be
+ *
+ * @author lally elias <lallyelias87@gmail.com>
+ * @since 2.2.0
+ * @version 0.1.0
+ */
+exports.jwtAuth = [
+  jwtAuth({ user: (jwt, done) => Party.findByJwt(jwt, done) }),
+  (request, response, next) => {
+    if (request.user) {
+      request.party = request.user;
+    }
+    return next();
+  },
+];
 
 /**
  * @name permissionRouter
