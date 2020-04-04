@@ -12,17 +12,17 @@ describe('Authentication API', () => {
   const role = Predefine.fake();
   const area = Predefine.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => create([role, area], done));
+  before((done) => create([role, area], done));
 
   describe('Existing User', () => {
-    before(done => {
+    before((done) => {
       party.area = area;
       Party.register(party, done);
     });
 
-    it('should handle HTTP POST on /signin use email as username', done => {
+    it('should handle HTTP POST on /signin use email as username', (done) => {
       request(app)
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
@@ -39,7 +39,7 @@ describe('Authentication API', () => {
         });
     });
 
-    it('should handle HTTP POST on /signin use phone number as username', done => {
+    it('should handle HTTP POST on /signin use phone number as username', (done) => {
       request(app)
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
@@ -56,7 +56,7 @@ describe('Authentication API', () => {
         });
     });
 
-    it('should allow user to change password', done => {
+    it('should allow user to change password', (done) => {
       request(app)
         .patch(`/${apiVersion}/parties/${party._id}`)
         .set('Accept', 'appplication/json')
@@ -79,7 +79,7 @@ describe('Authentication API', () => {
         });
     });
 
-    it('should allow user to signin after changing password', done => {
+    it('should allow user to signin after changing password', (done) => {
       request(app)
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')
@@ -96,7 +96,7 @@ describe('Authentication API', () => {
         });
     });
 
-    after(done => clear('Party', done));
+    after((done) => clear('Party', done));
   });
 
   describe('Default Password', () => {
@@ -104,13 +104,13 @@ describe('Authentication API', () => {
       process.env.DEFAULT_PASSWORD = 'test';
     });
 
-    before(done => {
+    before((done) => {
       party.area = area;
       party.password = '';
       Party.register(party, done);
     });
 
-    it('should handle HTTP POST on /signin', done => {
+    it('should handle HTTP POST on /signin', (done) => {
       request(app)
         .post(`/${apiVersion}/signin`)
         .set('Accept', 'application/json')

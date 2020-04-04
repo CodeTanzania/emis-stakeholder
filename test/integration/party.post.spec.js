@@ -11,9 +11,9 @@ describe('Party Static Post', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -21,7 +21,7 @@ describe('Party Static Post', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -29,7 +29,7 @@ describe('Party Static Post', () => {
     });
   });
 
-  it('should be able to post', done => {
+  it('should be able to post', (done) => {
     Party.post(party, (error, created) => {
       expect(error).to.not.exist;
       expect(created).to.exist;
@@ -39,7 +39,7 @@ describe('Party Static Post', () => {
     });
   });
 
-  it('should format mobile number on post', done => {
+  it('should format mobile number on post', (done) => {
     party.mobile = '0714555555';
 
     Party.post(party, (error, created) => {
@@ -52,7 +52,7 @@ describe('Party Static Post', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });
 
 describe('Party Instance Post', () => {
@@ -60,9 +60,9 @@ describe('Party Instance Post', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -70,7 +70,7 @@ describe('Party Instance Post', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -78,7 +78,7 @@ describe('Party Instance Post', () => {
     });
   });
 
-  it('should be able to post', done => {
+  it('should be able to post', (done) => {
     party.post((error, created) => {
       expect(error).to.not.exist;
       expect(created).to.exist;
@@ -88,7 +88,7 @@ describe('Party Instance Post', () => {
     });
   });
 
-  it('should format phone number on post', done => {
+  it('should format phone number on post', (done) => {
     party.mobile = '0714555555';
 
     party.post((error, created) => {
@@ -101,5 +101,5 @@ describe('Party Instance Post', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });

@@ -12,9 +12,9 @@ describe('Party getById', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -22,7 +22,7 @@ describe('Party getById', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -30,14 +30,14 @@ describe('Party getById', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to get an instance', done => {
+  it('should be able to get an instance', (done) => {
     Party.getById(party._id, (error, found) => {
       expect(error).to.not.exist;
       expect(found).to.exist;
@@ -46,7 +46,7 @@ describe('Party getById', () => {
     });
   });
 
-  it('should be able to get with options', done => {
+  it('should be able to get with options', (done) => {
     const options = {
       _id: party._id,
       select: 'name',
@@ -61,14 +61,14 @@ describe('Party getById', () => {
       //...assert selection
       const fields = _.keys(found.toObject());
       expect(fields).to.have.length(4);
-      _.map(['phone', 'email', 'createdAt', 'updatedAt'], function(field) {
+      _.map(['phone', 'email', 'createdAt', 'updatedAt'], function (field) {
         expect(fields).to.not.include(field);
       });
       done(error, found);
     });
   });
 
-  it('should throw if not exists', done => {
+  it('should throw if not exists', (done) => {
     const party = Party.fake();
     Party.getById(party._id, (error, found) => {
       expect(error).to.exist;
@@ -79,5 +79,5 @@ describe('Party getById', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });

@@ -187,7 +187,7 @@ describe('Party Schema', () => {
     expect(website.options.index).to.be.true;
   });
 
-  it('should have physicalAddress field', function() {
+  it('should have physicalAddress field', function () {
     const physicalAddress = Party.path('physicalAddress');
 
     expect(physicalAddress).to.exist;
@@ -201,7 +201,7 @@ describe('Party Schema', () => {
     expect(physicalAddress.options.fake).to.exist;
   });
 
-  it('should have postalAddress field', function() {
+  it('should have postalAddress field', function () {
     const postalAddress = Party.path('postalAddress');
 
     expect(postalAddress).to.exist;

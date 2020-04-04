@@ -12,12 +12,12 @@ describe('Party Get', () => {
   let area = Predefine.fake();
   let parties = Party.fake(32);
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
-      parties = _.map(parties, party => {
+      parties = _.map(parties, (party) => {
         party.role = created;
         return party;
       });
@@ -25,10 +25,10 @@ describe('Party Get', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
-      parties = _.map(parties, party => {
+      parties = _.map(parties, (party) => {
         party.area = created;
         return party;
       });
@@ -36,14 +36,14 @@ describe('Party Get', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     Party.insertMany(parties, (error, created) => {
       parties = created;
       done(error, created);
     });
   });
 
-  it('should be able to get without options', done => {
+  it('should be able to get without options', (done) => {
     Party.get((error, results) => {
       expect(error).to.not.exist;
       expect(results).to.exist;
@@ -67,7 +67,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should be able to get with options', done => {
+  it('should be able to get with options', (done) => {
     const options = { page: 1, limit: 20 };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -92,7 +92,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should be able to search with options', done => {
+  it('should be able to search with options', (done) => {
     const options = { filter: { q: parties[0].name } };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -117,7 +117,7 @@ describe('Party Get', () => {
     });
   });
 
-  it('should parse filter options', done => {
+  it('should parse filter options', (done) => {
     const options = { filter: { name: parties[0].name } };
     Party.get(options, (error, results) => {
       expect(error).to.not.exist;
@@ -142,5 +142,5 @@ describe('Party Get', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });

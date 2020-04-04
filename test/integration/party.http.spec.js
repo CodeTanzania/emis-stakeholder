@@ -7,14 +7,14 @@ const { clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Predefine } = require('@lykmapipo/predefine');
 const { Party, apiVersion, app } = require('../..');
 
-describe('Party Rest API', function() {
+describe('Party Rest API', function () {
   let role = Predefine.fake();
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -22,7 +22,7 @@ describe('Party Rest API', function() {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -30,7 +30,7 @@ describe('Party Rest API', function() {
     });
   });
 
-  it('should handle HTTP POST on /parties', done => {
+  it('should handle HTTP POST on /parties', (done) => {
     request(app)
       .post(`/${apiVersion}/parties`)
       .set('Accept', 'application/json')
@@ -54,7 +54,7 @@ describe('Party Rest API', function() {
       });
   });
 
-  it('should handle HTTP GET on /parties', done => {
+  it('should handle HTTP GET on /parties', (done) => {
     request(app)
       .get(`/${apiVersion}/parties`)
       .set('Accept', 'application/json')
@@ -77,7 +77,7 @@ describe('Party Rest API', function() {
       });
   });
 
-  it('should handle HTTP GET on /parties/id:', done => {
+  it('should handle HTTP GET on /parties/id:', (done) => {
     request(app)
       .get(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
@@ -96,7 +96,7 @@ describe('Party Rest API', function() {
       });
   });
 
-  it('should handle HTTP PATCH on /parties/id:', done => {
+  it('should handle HTTP PATCH on /parties/id:', (done) => {
     const { name } = party.fakeOnly('name');
     request(app)
       .patch(`/${apiVersion}/parties/${party._id}`)
@@ -121,7 +121,7 @@ describe('Party Rest API', function() {
       });
   });
 
-  it('should handle HTTP PUT on /parties/id:', done => {
+  it('should handle HTTP PUT on /parties/id:', (done) => {
     const { name } = party.fakeOnly('name');
     request(app)
       .put(`/${apiVersion}/parties/${party._id}`)
@@ -146,7 +146,7 @@ describe('Party Rest API', function() {
       });
   });
 
-  it('should handle HTTP DELETE on /parties/:id', done => {
+  it('should handle HTTP DELETE on /parties/:id', (done) => {
     request(app)
       .delete(`/${apiVersion}/parties/${party._id}`)
       .set('Accept', 'application/json')
@@ -164,5 +164,5 @@ describe('Party Rest API', function() {
       });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });
