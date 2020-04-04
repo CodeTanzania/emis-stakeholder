@@ -11,9 +11,9 @@ describe('Party Static Delete', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -21,7 +21,7 @@ describe('Party Static Delete', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -29,14 +29,14 @@ describe('Party Static Delete', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to delete', done => {
+  it('should be able to delete', (done) => {
     Party.del(party._id, (error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -45,7 +45,7 @@ describe('Party Static Delete', () => {
     });
   });
 
-  it('should throw if not exists', done => {
+  it('should throw if not exists', (done) => {
     Party.del(party._id, (error, deleted) => {
       expect(error).to.exist;
       // expect(error.status).to.exist;
@@ -55,7 +55,7 @@ describe('Party Static Delete', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });
 
 describe('Party Instance Delete', () => {
@@ -63,9 +63,9 @@ describe('Party Instance Delete', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
+  before((done) => clear(done));
 
-  before(done => {
+  before((done) => {
     role.post((error, created) => {
       role = created;
       party.role = created;
@@ -73,7 +73,7 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     area.post((error, created) => {
       area = created;
       party.area = created;
@@ -81,14 +81,14 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  before(done => {
+  before((done) => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to delete', done => {
+  it('should be able to delete', (done) => {
     party.del((error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -97,7 +97,7 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  it('should throw if not exists', done => {
+  it('should throw if not exists', (done) => {
     party.del((error, deleted) => {
       expect(error).to.not.exist;
       expect(deleted).to.exist;
@@ -106,5 +106,5 @@ describe('Party Instance Delete', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });

@@ -11,17 +11,17 @@ describe('Party JWT', () => {
   let area = Predefine.fake();
   let party = Party.fake();
 
-  before(done => clear(done));
-  before(done => create([role, area], done));
+  before((done) => clear(done));
+  before((done) => create([role, area], done));
 
-  before(done => {
+  before((done) => {
     party.post((error, created) => {
       party = created;
       done(error, created);
     });
   });
 
-  it('should be able to generate party api token', done => {
+  it('should be able to generate party api token', (done) => {
     party.generateToken((error, found) => {
       expect(error).to.not.exist;
       expect(found).to.exist;
@@ -31,7 +31,7 @@ describe('Party JWT', () => {
     });
   });
 
-  it('should be able to get by decoded jwt', done => {
+  it('should be able to get by decoded jwt', (done) => {
     Party.findByJwt({ id: party._id }, (error, found) => {
       expect(error).to.not.exist;
       expect(found).to.exist;
@@ -40,7 +40,7 @@ describe('Party JWT', () => {
     });
   });
 
-  it('should throw if no jwt options', done => {
+  it('should throw if no jwt options', (done) => {
     Party.findByJwt({}, (error, found) => {
       expect(error).to.exist;
       expect(error.status).to.exist.and.be.equal(403);
@@ -51,7 +51,7 @@ describe('Party JWT', () => {
     });
   });
 
-  it('should throw if party not exists', done => {
+  it('should throw if party not exists', (done) => {
     const party = Party.fake();
     Party.findByJwt({ id: party._id }, (error, found) => {
       expect(error).to.exist;
@@ -63,5 +63,5 @@ describe('Party JWT', () => {
     });
   });
 
-  after(done => clear(done));
+  after((done) => clear(done));
 });
