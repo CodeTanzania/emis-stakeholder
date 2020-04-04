@@ -1,3 +1,16 @@
+#### 2.3.0 (2020-04-04)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([d90d7fa8](https://github.com/CodeTanzania/emis-stakeholder/commit/d90d7fa88b98ece49c79b73aa51b5a26323195c7))
+
+##### New Features
+
+*  allow find distinct areas, roles & groups in parallel ([63d1186b](https://github.com/CodeTanzania/emis-stakeholder/commit/63d1186b3969e0f83c4159ba2d0de91013020015))
+*  allow find distinct groups & roles ([0cbf67d5](https://github.com/CodeTanzania/emis-stakeholder/commit/0cbf67d5c95d169fceac2c39f603b68ff77ae673))
+*  allow find distict areas ([ef148c8e](https://github.com/CodeTanzania/emis-stakeholder/commit/ef148c8ef304524fe49630127c4cd518d3bf78d8))
+*  force fresh api token & apply latest code format ([f081e12c](https://github.com/CodeTanzania/emis-stakeholder/commit/f081e12c8c999ae5247e1c79754768b8edeb85a7))
+
 #### 2.2.1 (2020-03-02)
 
 ##### Bug Fixes
