@@ -61,5 +61,27 @@ describe('Party Distincts', () => {
     });
   });
 
+  it('should find distincts', (done) => {
+    Party.findDistincts((error, distincts) => {
+      expect(error).to.not.exist;
+      expect(distincts).to.exist;
+
+      expect(toStrings(_.map(areas, '_id'))).to.include.members(
+        toStrings(distincts.areas)
+      );
+
+      expect(toStrings(_.map(roles, '_id'))).to.include.members(
+        toStrings(distincts.roles)
+      );
+
+      expect(toStrings(_.map(groups, '_id'))).to.include.members(
+        toStrings(distincts.groups)
+      );
+
+      done(error, distincts);
+    });
+  });
+
+
   after((done) => clear(done));
 });
