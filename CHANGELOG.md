@@ -1,3 +1,17 @@
+#### 2.4.0 (2020-04-19)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([c0d3743e](https://github.com/CodeTanzania/emis-stakeholder/commit/c0d3743e52657649913706bcb68d807e0f110134))
+
+##### New Features
+
+* **modela:**  add admnistrative level ([f2db0ab5](https://github.com/CodeTanzania/emis-stakeholder/commit/f2db0ab57584b058894ec79f7cef0974d8c717c2))
+
+##### Bug Fixes
+
+* **model:**  ensure level from area ([fa8c36fb](https://github.com/CodeTanzania/emis-stakeholder/commit/fa8c36fb1045c9319e0abb2d012be88407e9dc57))
+
 #### 2.3.0 (2020-04-04)
 
 ##### Chores
