@@ -242,6 +242,23 @@ describe('Party Schema', () => {
     expect(area.options.autopopulate).to.be.an('object');
   });
 
+  it('should have level field', () => {
+    const level = Party.path('level');
+
+    expect(level).to.exist;
+    expect(level).to.be.an.instanceof(Schema.Types.ObjectId);
+    expect(level.options).to.exist;
+    expect(level.options).to.be.an('object');
+    expect(level.options.type).to.exist;
+    expect(level.options.ref).to.exist;
+    expect(level.options.ref).to.be.eql(Predefine.MODEL_NAME);
+    // expect(level.options.required).to.be.true;
+    expect(level.options.index).to.be.true;
+    expect(level.options.exists).to.be.true;
+    expect(level.options.autopopulate).to.exist;
+    expect(level.options.autopopulate).to.be.an('object');
+  });
+
   it('should have role field', () => {
     const role = Party.path('role');
 
