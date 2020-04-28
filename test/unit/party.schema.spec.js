@@ -17,6 +17,7 @@ describe('Party Schema', () => {
     expect(party.options.type).to.exist;
     expect(party.options.ref).to.exist;
     expect(party.options.exists).to.be.true;
+    expect(party.options.aggregatable).to.exist.and.be.an('object');
     expect(party.options.autopopulate).to.exist;
     expect(party.options.index).to.be.true;
   });
@@ -50,6 +51,7 @@ describe('Party Schema', () => {
     expect(group.options.default).to.be.undefined;
     expect(group.options.index).to.be.true;
     expect(group.options.exists).to.be.true;
+    expect(group.options.aggregatable).to.exist.and.be.an('object');
     expect(group.options.autopopulate).to.exist;
   });
 
@@ -239,6 +241,7 @@ describe('Party Schema', () => {
     expect(area.options.index).to.be.true;
     expect(area.options.exists).to.be.true;
     expect(area.options.autopopulate).to.exist;
+    expect(area.options.aggregatable).to.exist.and.be.an('object');
     expect(area.options.autopopulate).to.be.an('object');
   });
 
@@ -256,6 +259,7 @@ describe('Party Schema', () => {
     expect(level.options.index).to.be.true;
     expect(level.options.exists).to.be.true;
     expect(level.options.autopopulate).to.exist;
+    expect(level.options.aggregatable).to.exist.and.be.an('object');
     expect(level.options.autopopulate).to.be.an('object');
   });
 
@@ -273,6 +277,7 @@ describe('Party Schema', () => {
     expect(role.options.default).to.be.undefined;
     expect(role.options.index).to.be.true;
     expect(role.options.exists).to.be.true;
+    expect(role.options.aggregatable).to.exist.and.be.an('object');
     expect(role.options.autopopulate).to.exist;
   });
 
