@@ -1,3 +1,15 @@
+#### 2.5.0 (2020-04-28)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([6df8986b](https://github.com/CodeTanzania/emis-stakeholder/commit/6df8986bec7c61076d6d9e98bbbb50ecbf36ad0a))
+  *  force latest version & audit fix ([cd77b041](https://github.com/CodeTanzania/emis-stakeholder/commit/cd77b041d8ecd46b9c0c379e5f9b0450aacd2d5f))
+
+##### New Features
+
+*  allow find parent & children recursive ([9015b78c](https://github.com/CodeTanzania/emis-stakeholder/commit/9015b78ca4f8cdb29e43820915f36d9d4f532154))
+
 #### 2.4.0 (2020-04-19)
 
 ##### Chores
