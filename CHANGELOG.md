@@ -1,3 +1,13 @@
+#### 2.6.0 (2020-04-28)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([e26e9952](https://github.com/CodeTanzania/emis-stakeholder/commit/e26e9952774f9d2e0762f7c436dcd08c89c70445))
+
+##### New Features
+
+* **aggregation:**  make fields party, group, area, level, role aggregatable ([04e042ad](https://github.com/CodeTanzania/emis-stakeholder/commit/04e042adbe8a7a3a0f12af8fafa3bedb3849d68d))
+
 #### 2.5.0 (2020-04-28)
 
 ##### Chores
