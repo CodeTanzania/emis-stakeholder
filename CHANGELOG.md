@@ -1,3 +1,13 @@
+#### 2.7.0 (2020-05-05)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([eba5fc34](https://github.com/CodeTanzania/emis-stakeholder/commit/eba5fc34b736591750d271dcc6b86db0c9bbf83e))
+
+##### New Features
+
+* **model:**  add ownership & gender fields ([6e563d51](https://github.com/CodeTanzania/emis-stakeholder/commit/6e563d51939779c8381e96c4d29abe2c951e3eec))
+
 #### 2.6.0 (2020-04-28)
 
 ##### Chores
