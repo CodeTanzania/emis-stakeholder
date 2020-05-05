@@ -39,6 +39,21 @@ describe('Party Instance', () => {
     });
   });
 
+  it('should ensure ownership from parent', (done) => {
+    const ownership = Predefine.fake();
+    const parent = Party.fake();
+    const child = Party.fake();
+
+    parent.set({ ownership });
+    child.set({ party: parent });
+
+    child.preValidate(() => {
+      expect(child.ownership).to.exist;
+      console.log(child);
+      done();
+    });
+  });
+
   it.skip('should set centre from feature', (done) => {
     const area = Predefine.fake();
     const party = Party.fake();
