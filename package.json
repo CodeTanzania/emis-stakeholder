@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "index.js",
   "scripts": {
@@ -102,7 +102,7 @@
   "devDependencies": {
     "@benmaruchu/faker": "^4.3.0",
     "@codetanzania/majifix-common": "^0.19.1",
-    "@lykmapipo/mongoose-test-helpers": ">=0.7.44",
+    "@lykmapipo/mongoose-test-helpers": ">=0.7.45",
     "acorn": "^7.1.1",
     "chai": "^4.2.0",
     "generate-changelog": "^1.8.0",
@@ -116,34 +116,34 @@
     "kind-of": "^6.0.3",
     "minimist": "^1.2.5",
     "mocha": "^7.1.2",
-    "mongoose": ">=5.9.10",
+    "mongoose": ">=5.9.12",
     "prettier": "^2.0.5",
     "supertest": "^4.0.2"
   },
   "peerDependencies": {
-    "mongoose": ">=5.9.10"
+    "mongoose": ">=5.9.12"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.33.0",
-    "@lykmapipo/env": ">=0.17.3",
+    "@lykmapipo/common": ">=0.33.1",
+    "@lykmapipo/env": ">=0.17.4",
     "@lykmapipo/express-common": ">=0.18.2",
-    "@lykmapipo/jwt-common": ">=0.4.3",
-    "@lykmapipo/mongoose-common": ">=0.32.1",
-    "@lykmapipo/mongoose-exportable": ">=0.3.27",
-    "@lykmapipo/permission": ">=0.8.24",
-    "@lykmapipo/phone": ">=0.5.22",
-    "@lykmapipo/postman": ">=0.18.7",
-    "@lykmapipo/predefine": ">=1.14.1",
+    "@lykmapipo/jwt-common": ">=0.4.4",
+    "@lykmapipo/mongoose-common": ">=0.33.1",
+    "@lykmapipo/mongoose-exportable": ">=0.3.28",
+    "@lykmapipo/permission": ">=0.8.26",
+    "@lykmapipo/phone": ">=0.6.1",
+    "@lykmapipo/postman": ">=0.18.10",
+    "@lykmapipo/predefine": ">=1.15.1",
     "async": ">=3.2.0",
     "extend": ">=3.0.2",
-    "irina": ">=0.7.16",
+    "irina": ">=0.7.17",
     "kue": ">=0.11.6",
     "lodash": ">=4.17.15",
-    "moment": ">=2.24.0",
+    "moment": ">=2.25.3",
     "moment-timezone": ">=0.5.28",
-    "mongoose-geojson-schemas": ">=0.11.13",
-    "mongoose-kue": ">=0.9.17",
-    "mongoose-rest-actions": ">=0.29.21",
+    "mongoose-geojson-schemas": ">=0.12.1",
+    "mongoose-kue": ">=0.9.18",
+    "mongoose-rest-actions": ">=0.29.22",
     "redis": ">=3.0.2"
   },
   "engines": {
