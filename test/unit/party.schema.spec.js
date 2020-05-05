@@ -263,6 +263,24 @@ describe('Party Schema', () => {
     expect(level.options.autopopulate).to.be.an('object');
   });
 
+  it('should have ownership field', () => {
+    const ownership = Party.path('ownership');
+
+    expect(ownership).to.exist;
+    expect(ownership).to.be.an.instanceof(Schema.Types.ObjectId);
+    expect(ownership.options).to.exist;
+    expect(ownership.options).to.be.an('object');
+    expect(ownership.options.type).to.exist;
+    expect(ownership.options.ref).to.exist;
+    expect(ownership.options.ref).to.be.eql(Predefine.MODEL_NAME);
+    // expect(ownership.options.required).to.be.true;
+    expect(ownership.options.index).to.be.true;
+    expect(ownership.options.exists).to.be.true;
+    expect(ownership.options.autopopulate).to.exist;
+    expect(ownership.options.aggregatable).to.exist.and.be.an('object');
+    expect(ownership.options.autopopulate).to.be.an('object');
+  });
+
   it('should have role field', () => {
     const role = Party.path('role');
 
@@ -279,6 +297,24 @@ describe('Party Schema', () => {
     expect(role.options.exists).to.be.true;
     expect(role.options.aggregatable).to.exist.and.be.an('object');
     expect(role.options.autopopulate).to.exist;
+  });
+
+  it('should have gender field', () => {
+    const gender = Party.path('gender');
+
+    expect(gender).to.exist;
+    expect(gender).to.be.an.instanceof(Schema.Types.ObjectId);
+    expect(gender.options).to.exist;
+    expect(gender.options).to.be.an('object');
+    expect(gender.options.type).to.exist;
+    expect(gender.options.ref).to.exist;
+    expect(gender.options.ref).to.be.eql(Predefine.MODEL_NAME);
+    // expect(gender.options.required).to.be.true;
+    expect(gender.options.index).to.be.true;
+    expect(gender.options.exists).to.be.true;
+    expect(gender.options.autopopulate).to.exist;
+    expect(gender.options.aggregatable).to.exist.and.be.an('object');
+    expect(gender.options.autopopulate).to.be.an('object');
   });
 
   it('should have token field', () => {
