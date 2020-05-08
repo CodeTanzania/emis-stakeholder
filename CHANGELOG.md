@@ -1,3 +1,13 @@
+#### 2.8.0 (2020-05-08)
+
+##### Chores
+
+* **deps:**  force latest version & audit fix ([b2e7b931](https://github.com/CodeTanzania/emis-stakeholder/commit/b2e7b9319847615e93544ea624694554dcb32e03))
+
+##### Refactors
+
+* **model:**  ensure area level populated ([a6d0ea1d](https://github.com/CodeTanzania/emis-stakeholder/commit/a6d0ea1d5ebdd8d3e43dfaf245df690ca334f119))
+
 #### 2.7.0 (2020-05-05)
 
 ##### Chores

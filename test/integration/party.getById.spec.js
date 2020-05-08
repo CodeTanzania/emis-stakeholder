@@ -3,16 +3,23 @@
 /* dependencies */
 const _ = require('lodash');
 const { expect } = require('chai');
-const { clear } = require('@lykmapipo/mongoose-test-helpers');
+const { create, clear } = require('@lykmapipo/mongoose-test-helpers');
 const { Predefine } = require('@lykmapipo/predefine');
 const { Party } = require('../..');
 
 describe('Party getById', () => {
+  // TODO: load ewea-internals
   let role = Predefine.fake();
+  let level = Predefine.fake();
+
   let area = Predefine.fake();
+  area.set({ relations: { level } });
+
   let party = Party.fake();
+  party.set({ area });
 
   before((done) => clear(done));
+  before((done) => create(level, done));
 
   before((done) => {
     role.post((error, created) => {
@@ -25,7 +32,7 @@ describe('Party getById', () => {
   before((done) => {
     area.post((error, created) => {
       area = created;
-      party.area = created;
+      // party.area = created;
       done(error, created);
     });
   });
