@@ -2,6 +2,7 @@
 
 /* dependencies */
 const { expect } = require('chai');
+const { areSameObjectId } = require('@lykmapipo/mongoose-common');
 const { Predefine } = require('@lykmapipo/predefine');
 const { Party } = require('../..');
 
@@ -49,7 +50,7 @@ describe('Party Instance', () => {
 
     child.preValidate(() => {
       expect(child.ownership).to.exist;
-      console.log(child);
+      expect(areSameObjectId(parent.ownership, child.ownership)).to.be.true;
       done();
     });
   });
