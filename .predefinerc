@@ -1,0 +1,6 @@
+{
+  "namespaces": ["Currency", "Unit", "Item", "Area"],
+  "relations": {
+    "unit": { "ref": "Predefine" }
+  }
+}
