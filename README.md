@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/codetanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/codetanzania/emis-stakeholder)
 [![Dependencies Status](https://david-dm.org/codetanzania/emis-stakeholder.svg)](https://david-dm.org/codetanzania/emis-stakeholder)
-[![Coverage Status](https://coveralls.io/repos/github/CodeTanzania/codetanzania/emis-stakeholder/badge.svg?branch=develop)](https://coveralls.io/github/CodeTanzania/codetanzania/emis-stakeholder?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/CodeTanzania/emis-stakeholder/badge.svg?branch=develop)](https://coveralls.io/github/CodeTanzania/emis-stakeholder?branch=develop)
 [![GitHub License](https://img.shields.io/github/license/codetanzania/emis-stakeholder)](https://github.com/codetanzania/emis-stakeholder/blob/develop/LICENSE)
 
 [![Commitizen Friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
