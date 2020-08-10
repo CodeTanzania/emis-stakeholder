@@ -1,10 +1,7 @@
-'use strict';
-
-/* dependencies */
-const { expect } = require('chai');
-const { Schema } = require('mongoose');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import { expect } from '@lykmapipo/test-helpers';
+import { Schema } from 'mongoose';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 describe('Party Schema', () => {
   it('should have party field', () => {
@@ -189,7 +186,7 @@ describe('Party Schema', () => {
     expect(website.options.index).to.be.true;
   });
 
-  it('should have physicalAddress field', function () {
+  it('should have physicalAddress field', () => {
     const physicalAddress = Party.path('physicalAddress');
 
     expect(physicalAddress).to.exist;
@@ -203,7 +200,7 @@ describe('Party Schema', () => {
     expect(physicalAddress.options.fake).to.exist;
   });
 
-  it('should have postalAddress field', function () {
+  it('should have postalAddress field', () => {
     const postalAddress = Party.path('postalAddress');
 
     expect(postalAddress).to.exist;

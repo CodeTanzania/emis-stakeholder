@@ -1,26 +1,23 @@
-'use strict';
-
-/* dependencies */
-const _ = require('lodash');
-const { expect } = require('chai');
-const { clear, create } = require('@lykmapipo/mongoose-test-helpers');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party, fetchContacts } = require('../..');
+import _ from 'lodash';
+import { assign } from '@lykmapipo/common';
+import { expect } from '@lykmapipo/test-helpers';
+import { clear, create } from '@lykmapipo/mongoose-test-helpers';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party, fetchContacts } from '../../src';
 
 describe('Fetch Contacts', () => {
-  let role = Predefine.fake();
-  let area = Predefine.fake();
-  let parties = Party.fake(5);
+  const role = Predefine.fakePartyRole();
+  const area = Predefine.fakeAdministrativeArea();
+  const parties = Party.fake(5);
 
   before((done) => clear(done));
 
   before((done) =>
-    create(role, area, (error, created) => {
-      _.forEach(parties, (party) => {
-        party.role = created[0];
-        party.area = created[1];
-      });
-      done(error, created);
+    create(role, area, (error, [createdRole, createdArea]) => {
+      _.forEach(parties, (party) =>
+        assign(party, { role: createdRole, area: createdArea })
+      );
+      done(error, [role, area]);
     })
   );
 

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @module Party
  * @name Party
@@ -19,13 +17,19 @@
  */
 
 /* dependencies */
-const _ = require('lodash');
-const { parallel, waterfall } = require('async');
-const irina = require('irina');
-const { abbreviate, compact, mergeObjects } = require('@lykmapipo/common');
-const { getString, getStrings } = require('@lykmapipo/env');
-const { refresh: jwtRefresh } = require('@lykmapipo/jwt-common');
-const {
+import _ from 'lodash';
+import { parallel, waterfall } from 'async';
+import irina from 'irina';
+import {
+  abbreviate,
+  compact,
+  idOf,
+  mergeObjects,
+  normalizeError,
+} from '@lykmapipo/common';
+import { getString, getStrings } from '@lykmapipo/env';
+import { refresh as jwtRefresh } from '@lykmapipo/jwt-common';
+import {
   Schema,
   ObjectId,
   model,
@@ -33,13 +37,13 @@ const {
   copyInstance,
   areSameInstance,
   toObjectIds,
-} = require('@lykmapipo/mongoose-common');
-const actions = require('mongoose-rest-actions');
-const exportable = require('@lykmapipo/mongoose-exportable');
-const { plugin: runInBackground } = require('mongoose-kue');
-const { Email } = require('@lykmapipo/postman');
-const { Point } = require('mongoose-geojson-schemas');
-const { Predefine } = require('@lykmapipo/predefine');
+} from '@lykmapipo/mongoose-common';
+import actions from 'mongoose-rest-actions';
+import exportable from '@lykmapipo/mongoose-exportable';
+import { plugin as runInBackground } from 'mongoose-kue';
+import { Email } from '@lykmapipo/postman';
+import { Point } from 'mongoose-geojson-schemas';
+import { Predefine } from '@lykmapipo/predefine';
 
 /* constants */
 const POPULATION_MAX_DEPTH = 1;
@@ -840,14 +844,18 @@ const PartySchema = new Schema(
 
 /**
  * @name validate
- * @description party schema pre validation hook
- * @param {function} done callback to invoke on success or error
+ * @function validate
+ * @description Party schema pre validation hook
+ * @param {Function} done callback to invoke on success or error
+ * @returns {object|Error} valid instance or error
+ *
+ * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
  * @private
  */
-PartySchema.pre('validate', function (done) {
-  this.preValidate(done);
+PartySchema.pre('validate', function onPreValidate(done) {
+  return this.preValidate(done);
 });
 
 /*
@@ -859,14 +867,17 @@ PartySchema.pre('validate', function (done) {
 /**
  * @name preValidate
  * @function preValidate
- * @description party schema pre validation hook logic
- * @param {function} done callback to invoke on success or error
+ * @description Party schema pre validation hook logic
+ * @param {Function} done callback to invoke on success or error
+ * @returns {object|Error} valid instance or error
+ *
+ * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
  * @instance
  */
 PartySchema.methods.preValidate = function preValidate(done) {
-  //ensure party abbreviation
+  // ensure party abbreviation
   this.abbreviation = _.trim(this.abbreviation) || abbreviate(this.name);
 
   // extend party with default password
@@ -893,14 +904,17 @@ PartySchema.methods.preValidate = function preValidate(done) {
   }
 
   // generate api token
-  this.generateToken(done);
+  return this.generateToken(done);
 };
 
 /**
  * @name generateToken
  * @function generateToken
  * @description Generate party api token
- * @param {function} done callback to invoke on success or error
+ * @param {Function} done callback to invoke on success or error
+ * @returns {object|Error} valid instance or error
+ *
+ * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
  * @instance
@@ -910,25 +924,29 @@ PartySchema.methods.generateToken = function generateToken(done) {
   const party = this;
 
   const expiresIn = getString('JWT_API_TOKEN_EXPIRES_IN', '1000y');
-  const payload = { id: party._id };
-  const token = party.token;
+  const payload = { id: idOf(party) };
+  const { token } = party;
 
   return jwtRefresh(token, payload, { expiresIn }, (error, jwtToken) => {
     if (error || !jwtToken) {
-      error = error ? error : new Error('Fail To Generate API Token');
-      error.status = 500;
-      return done(error);
-    } else {
-      party.token = jwtToken;
-      return done(null, party);
+      const failed = normalizeError(
+        error || new Error('Fail To Generate API Token'),
+        { status: 500 }
+      );
+      return done(failed);
     }
+    party.token = jwtToken;
+    return done(null, party);
   });
 };
 
 /**
  * @name asContact
  * @function asContact
- * @description convert party to contact
+ * @description Convert party to contact
+ * @returns {object|Error} valid instance or error
+ *
+ * @author lally elias <lallyelias87@gmail.com>
  * @since 2.2.0
  * @version 0.1.0
  * @instance
@@ -963,9 +981,9 @@ PartySchema.statics.PARTY_TYPES = PARTY_TYPES;
 /**
  * @name prepareSeedCriteria
  * @function prepareSeedCriteria
- * @description prepare party seeding upsert criteria
- * @param {Object} seed plain object party seed
- * @return {Object} criteria used to upsert party
+ * @description Prepare party seeding upsert criteria
+ * @param {object} seed plain object party seed
+ * @returns {object} criteria used to upsert party
  *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 1.5.0
@@ -973,14 +991,12 @@ PartySchema.statics.PARTY_TYPES = PARTY_TYPES;
  * @public
  */
 PartySchema.statics.prepareSeedCriteria = (seed) => {
-  // prepare party upsert criteria by _id or fields
-  let criteria = copyInstance(seed);
-  /* jshint ignore:start */
-  criteria = criteria._id
-    ? _.pick(criteria, '_id')
-    : _.pick(criteria, 'name', 'email', 'mobile');
-  /* jshint ignore:end */
-  // return party upsert criteria
+  const copyOfSeed = copyInstance(seed);
+
+  const criteria = idOf(copyOfSeed)
+    ? _.pick(copyOfSeed, '_id')
+    : _.pick(copyOfSeed, 'name', 'email', 'mobile');
+
   return criteria;
 };
 
@@ -988,18 +1004,18 @@ PartySchema.statics.prepareSeedCriteria = (seed) => {
  * @name fetchContacts
  * @function fetchContacts
  * @description Obtain parties contacts based on specified criteria
- * @param {Object} [criteria] valid query criteria
- * @param {function} done a callback to invoke on success or error
- * @return {String[]|Error}
+ * @param {object} [criteria] valid query criteria
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct contacts or error
  * @since 1.9.0
  * @version 1.0.0
  * @static
  */
 PartySchema.statics.fetchContacts = function fetchContacts(criteria, done) {
-  //refs
+  // refs
   const Party = this;
 
-  //normalize arguments
+  // normalize arguments
   let conditions = _.isFunction(criteria) ? {} : _.merge({}, criteria);
   const cb = _.isFunction(criteria) ? criteria : done;
 
@@ -1007,7 +1023,7 @@ PartySchema.statics.fetchContacts = function fetchContacts(criteria, done) {
   conditions = Party.where(conditions).cast(Party);
 
   // execute fetch query
-  Party.find(conditions)
+  return Party.find(conditions)
     .select({ name: 1, email: 1, mobile: 1 })
     .exec(function onGetParties(error, parties) {
       let contacts;
@@ -1025,28 +1041,29 @@ PartySchema.statics.fetchContacts = function fetchContacts(criteria, done) {
  * @name getPhones
  * @function getPhones
  * @description pull distinct party phones
- * @param {Object} [criteria] valid query criteria
- * @param {function} done a callback to invoke on success or error
- * @return {String[]|Error}
+ * @param {object} [criteria] valid query criteria
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct phones or error
  * @since 0.1.0
  * @version 1.0.0
  * @static
  */
 PartySchema.statics.getPhones = function getPhones(criteria, done) {
-  //refs
+  // refs
   const Party = this;
 
-  //normalize arguments
-  const _criteria = _.isFunction(criteria) ? {} : _.merge({}, criteria);
-  const _done = _.isFunction(criteria) ? criteria : done;
+  // normalize arguments
+  const copyOfcriteria = _.isFunction(criteria) ? {} : _.merge({}, criteria);
+  const cb = _.isFunction(criteria) ? criteria : done;
 
-  Party.find(_criteria)
+  return Party.find(copyOfcriteria)
     .distinct('mobile')
     .exec(function onGetPhones(error, phones) {
-      if (!error) {
-        phones = _.uniq(_.compact([].concat(phones)));
+      if (error) {
+        return cb(error);
       }
-      return _done(error, phones);
+      const copyOfPhones = _.uniq(_.compact([].concat(phones)));
+      return cb(null, copyOfPhones);
     });
 };
 
@@ -1054,28 +1071,29 @@ PartySchema.statics.getPhones = function getPhones(criteria, done) {
  * @name getEmails
  * @function getEmails
  * @description pull distinct party emails
- * @param {Object} [criteria] valid query criteria
- * @param {function} done a callback to invoke on success or error
- * @return {String[]|Error}
+ * @param {object} [criteria] valid query criteria
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct emails or error
  * @since 0.1.0
  * @version 1.0.0
  * @static
  */
 PartySchema.statics.getEmails = function getEmails(criteria, done) {
-  //refs
+  // refs
   const Party = this;
 
-  //normalize arguments
-  const _criteria = _.isFunction(criteria) ? {} : _.merge({}, criteria);
-  const _done = _.isFunction(criteria) ? criteria : done;
+  // normalize arguments
+  const copyOfcriteria = _.isFunction(criteria) ? {} : _.merge({}, criteria);
+  const cb = _.isFunction(criteria) ? criteria : done;
 
-  Party.find(_criteria)
+  return Party.find(copyOfcriteria)
     .distinct('email')
     .exec(function onGetEmails(error, emails) {
-      if (!error) {
-        emails = _.uniq(_.compact([].concat(emails)));
+      if (error) {
+        return cb(error);
       }
-      return _done(error, emails);
+      const copyOfEmails = _.uniq(_.compact([].concat(emails)));
+      return cb(null, copyOfEmails);
     });
 };
 
@@ -1083,12 +1101,12 @@ PartySchema.statics.getEmails = function getEmails(criteria, done) {
  * @name notify
  * @function notify
  * @description send provide notification to parties
- * @param {Object} notification valid notification payload
+ * @param {object} notification valid notification payload
  * @param {Party} notification.to valid criteria to find party to notify
- * @param {Object} notification.to valid criteria to find party to notify
- * @param {String} notification.subject valid title for notification
- * @param {String} notification.body valid title for notification
+ * @param {string} notification.subject valid title for notification
+ * @param {string} notification.body valid title for notification
  * @param {Function} done a callback to invoke on success or failure
+ * @returns {object | Error} valid emails and phones or error
  * @since 0.1.0
  * @version 0.1.0
  * @instance
@@ -1097,19 +1115,19 @@ PartySchema.statics.notify = function notify(notification, done) {
   // ref
   const Party = this;
 
-  //ensure callback
-  const _done = done || function () {};
+  // ensure callback
+  const cb = done || function noop() {};
 
   // ensure notification
-  const _notification = _.merge({ to: {} }, notification);
+  const copyOfNotification = _.merge({ to: {} }, notification);
 
   // ensure valid notification payload
-  const { to, subject, body } = _notification;
+  const { to, subject, body } = copyOfNotification;
   const isValidNotification = !_.isEmpty(subject) || !_.isEmpty(body);
   if (!isValidNotification) {
-    let error = new Error('Invalid Notification Payload');
+    const error = new Error('Invalid Notification Payload');
     error.status = 400;
-    return _done(error);
+    return cb(error);
   }
 
   // prepare receivers distinct emails and phones
@@ -1128,10 +1146,10 @@ PartySchema.statics.notify = function notify(notification, done) {
   };
 
   // query receivers
-  parallel(works, function onGetContacts(error, results) {
+  return parallel(works, function onGetContacts(error, results) {
     // back off on error
     if (error) {
-      return _done(error);
+      return cb(error);
     }
 
     // collect email addresses
@@ -1139,10 +1157,10 @@ PartySchema.statics.notify = function notify(notification, done) {
     emails = _.uniq(_.compact([].concat(emails)));
 
     // notify
-    _.forEach(emails, function (_to) {
+    _.forEach(emails, function queueNotification(_to) {
       // prepare email payload
       const SMTP_FROM = getString('SMTP_FROM');
-      const mail = { sender: SMTP_FROM, to: _to, subject: subject, body: body };
+      const mail = { sender: SMTP_FROM, to: _to, subject, body };
 
       // queue emails
       const email = new Email(mail);
@@ -1150,7 +1168,7 @@ PartySchema.statics.notify = function notify(notification, done) {
     });
 
     // return
-    _done(null, results);
+    return cb(null, results);
   });
 };
 
@@ -1158,10 +1176,10 @@ PartySchema.statics.notify = function notify(notification, done) {
  * @name findByJwt
  * @function findByJwt
  * @description find existing party from jwt payload
- * @param {Object} jwt valid jwt payload
+ * @param {object} jwt valid jwt payload
  * @param {string} [jwt.id] valid party id
- * @param {function} done a callback to invoke on success or error
- * @return {String[]|Error}
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object | Error} valid party
  * @since 0.2.0
  * @version 0.1.0
  * @static
@@ -1199,8 +1217,8 @@ PartySchema.statics.findByJwt = function findByJwt(jwt, done) {
  * @name findDistinctAreas
  * @function findDistinctAreas
  * @description find distict areas from parties areas
- * @param {function} done a callback to invoke on success or error
- * @return {Object[]|Error}
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct areas or error
  * @since 2.3.0
  * @version 0.1.0
  * @static
@@ -1224,8 +1242,8 @@ PartySchema.statics.findDistinctAreas = function findDistinctAreas(done) {
  * @name findDistinctRoles
  * @function findDistinctRoles
  * @description find distict roles from parties roles
- * @param {function} done a callback to invoke on success or error
- * @return {Object[]|Error}
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct roles or error
  * @since 2.3.0
  * @version 0.1.0
  * @static
@@ -1249,8 +1267,8 @@ PartySchema.statics.findDistinctRoles = function findDistinctRoles(done) {
  * @name findDistinctGroups
  * @function findDistinctGroups
  * @description find distict groups from parties groups
- * @param {function} done a callback to invoke on success or error
- * @return {Object[]|Error}
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object[] | Error} distinct groups or error
  * @since 2.3.0
  * @version 0.1.0
  * @static
@@ -1274,8 +1292,8 @@ PartySchema.statics.findDistinctGroups = function findDistinctGroups(done) {
  * @name findDistincts
  * @function findDistincts
  * @description find distict areas, roles and groups from parties
- * @param {function} done a callback to invoke on success or error
- * @return {Object[]|Error}
+ * @param {Function} done a callback to invoke on success or error
+ * @returns {object | Error} distict distict areas, roles and groups or error
  * @since 2.3.0
  * @version 0.1.0
  * @static
@@ -1445,4 +1463,4 @@ PartySchema.plugin(exportable);
 PartySchema.plugin(runInBackground);
 
 /* export party model */
-module.exports = exports = model(PARTY_MODEL_NAME, PartySchema);
+export default model(PARTY_MODEL_NAME, PartySchema);

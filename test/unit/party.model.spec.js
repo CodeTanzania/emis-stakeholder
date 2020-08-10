@@ -1,10 +1,7 @@
-'use strict';
-
-/* dependencies */
-const { expect } = require('chai');
-const { areSameObjectId } = require('@lykmapipo/mongoose-common');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import { expect } from '@lykmapipo/test-helpers';
+import { areSameObjectId } from '@lykmapipo/mongoose-common';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 describe('Party Instance', () => {
   it('`preValidate` should be a function', () => {

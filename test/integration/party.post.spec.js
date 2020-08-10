@@ -1,15 +1,12 @@
-'use strict';
-
-/* dependencies */
-const { expect } = require('chai');
-const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import { expect } from '@lykmapipo/test-helpers';
+import { clear } from '@lykmapipo/mongoose-test-helpers';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 describe('Party Static Post', () => {
   let role = Predefine.fake();
   let area = Predefine.fake();
-  let party = Party.fake();
+  const party = Party.fake();
 
   before((done) => clear(done));
 
@@ -58,7 +55,7 @@ describe('Party Static Post', () => {
 describe('Party Instance Post', () => {
   let role = Predefine.fake();
   let area = Predefine.fake();
-  let party = Party.fake();
+  const party = Party.fake();
 
   before((done) => clear(done));
 

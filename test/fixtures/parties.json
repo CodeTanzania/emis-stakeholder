@@ -1,6 +1,6 @@
 [
 {
-  "type": "Other",
+  "type": "Focal",
   "phases": ["Mitigation"],
   "name": "John Doe",
   "nickname": "Doo",
@@ -9,9 +9,9 @@
   "locale": "en",
   "timezone": "Africa/Tripoli",
   "email": "minnie.abernathy@gmail.com",
-  "mobile": "(798) 682-0677",
-  "landline": "979.807.4687",
-  "fax": "(731) 297-7147 x171",
+  "mobile": "0714820677",
+  "landline": "0229798074",
+  "fax": "0229798074",
   "website": "http://rick.net",
   "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/anjhero/128.jpg",
   "physicalAddress": "648 Keeling Shore",

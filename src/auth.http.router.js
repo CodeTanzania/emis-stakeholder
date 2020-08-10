@@ -1,25 +1,16 @@
-'use strict';
+import { waterfall } from 'async';
+import _ from 'lodash';
+import { idOf, normalizeError } from '@lykmapipo/common';
+import { getString } from '@lykmapipo/env';
+import { encode } from '@lykmapipo/jwt-common';
+import { Router } from '@lykmapipo/express-common';
+import { parsePhoneNumber } from '@lykmapipo/phone';
 
-/**
- * Application authentication router
- *
- * @version 0.1.0
- * @since 1.5.0
- */
+import Party from './party.model';
 
-/* dependencies */
-const { waterfall } = require('async');
-const _ = require('lodash');
-const { encode } = require('@lykmapipo/jwt-common');
-const { Router } = require('@lykmapipo/express-common');
-const { getString } = require('@lykmapipo/env');
-const { parsePhoneNumber } = require('@lykmapipo/phone');
-
-/* local constants */
+/* constants */
 const API_VERSION = getString('API_VERSION', '1.0.0');
 
-/* declarations */
-const Party = require('./party.model');
 const router = new Router({
   version: API_VERSION,
 });
@@ -54,7 +45,7 @@ router.post('/signin', (request, response, next) => {
     }
 
     const credentials = {
-      $or: [{ email: email }, { mobile: phone || username }],
+      $or: [{ email }, { mobile: phone || username }],
       deletedAt: {
         $eq: null,
       },
@@ -74,7 +65,7 @@ router.post('/signin', (request, response, next) => {
         },
 
         function encodePartyToJWT(party, then) {
-          encode({ id: party._id }, function afterEncode(error, jwtToken) {
+          encode({ id: idOf(party) }, function afterEncode(error, jwtToken) {
             if (error) {
               then(error);
             } else {
@@ -91,8 +82,7 @@ router.post('/signin', (request, response, next) => {
         // return error message
         if (error) {
           // Set forbidden status code
-          error.status = 403;
-
+          normalizeError({ status: 403 });
           next(error);
         }
 
@@ -111,4 +101,4 @@ router.post('/signin', (request, response, next) => {
 });
 
 /* expose authentication router */
-module.exports = exports = router;
+export default router;

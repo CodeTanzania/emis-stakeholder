@@ -77,6 +77,7 @@
     "@commitlint/travis-cli": "^9.1.1",
     "@lykmapipo/express-test-helpers": "^0.9.12",
     "@lykmapipo/mongoose-test-helpers": "^0.8.4",
+    "@lykmapipo/test-helpers": "^0.5.30",
     "chai": "^4.2.0",
     "commitizen": "^4.1.2",
     "coveralls": "^3.1.0",
@@ -103,7 +104,8 @@
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.23.1",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "winston": "^3.3.3"
   },
   "peerDependencies": {
     "mongoose": ">=5.9.28"

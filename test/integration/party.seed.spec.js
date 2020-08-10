@@ -1,19 +1,16 @@
-'use strict';
+import path from 'path';
+import _ from 'lodash';
+import { expect } from '@lykmapipo/test-helpers';
+import { clear } from '@lykmapipo/mongoose-test-helpers';
+import { Party } from '../../src';
 
-/* dependencies */
-const path = require('path');
-const _ = require('lodash');
-const { expect } = require('chai');
-const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Party } = require('../..');
-
-describe.skip('Party Seed', () => {
-  const SEEDS_PATH = process.env.SEEDS_PATH;
+describe('Party Seed', () => {
+  const { SEED_PATH } = process.env;
 
   before((done) => clear(done));
 
   before(() => {
-    process.env.SEEDS_PATH = path.join(__dirname, '..', 'fixtures');
+    process.env.SEED_PATH = path.join(__dirname, '..', 'fixtures');
   });
 
   it('should be able to seed from environment', (done) => {
@@ -26,8 +23,9 @@ describe.skip('Party Seed', () => {
     });
   });
 
-  it('should not throw if seed from environment exist', (done) => {
+  it.skip('should not throw if seed from environment exist', (done) => {
     Party.seed((error, seeded) => {
+      console.log(error);
       expect(error).to.not.exist;
       expect(seeded).to.exist;
       expect(seeded).to.length.at.least(1);
@@ -39,6 +37,6 @@ describe.skip('Party Seed', () => {
   after((done) => clear(done));
 
   after(() => {
-    process.env.SEEDS_PATH = SEEDS_PATH;
+    process.env.SEED_PATH = SEED_PATH;
   });
 });

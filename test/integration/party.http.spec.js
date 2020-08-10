@@ -1,168 +1,167 @@
-'use strict';
+import {
+  clear as clearHttp,
+  testRouter,
+} from '@lykmapipo/express-test-helpers';
+import {
+  create,
+  clear as clearDb,
+  expect,
+} from '@lykmapipo/mongoose-test-helpers';
+import { Predefine } from '@lykmapipo/predefine';
+import { createModels } from '@lykmapipo/file';
+import { Party, partyRouter } from '../../src';
 
-/* dependencies */
-const request = require('supertest');
-const { expect } = require('chai');
-const { clear } = require('@lykmapipo/mongoose-test-helpers');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party, apiVersion, app } = require('../..');
+describe('Party Rest API', () => {
+  const area = Predefine.fakeAdministrativeArea();
+  const role = Predefine.fakePartyRole();
 
-describe('Party Rest API', function () {
-  let role = Predefine.fake();
-  let area = Predefine.fake();
-  let party = Party.fake();
+  const party = Party.fake();
+  party.set({ role, area });
 
-  before((done) => clear(done));
+  const options = {
+    pathSingle: '/parties/:id',
+    pathList: '/parties',
+    pathSchema: '/parties/schema/',
+    pathExport: '/parties/export/',
+  };
 
-  before((done) => {
-    role.post((error, created) => {
-      role = created;
-      party.role = created;
-      done(error, created);
-    });
-  });
+  before((done) => clearDb(Party, done));
 
-  before((done) => {
-    area.post((error, created) => {
-      area = created;
-      party.area = created;
-      done(error, created);
-    });
-  });
+  before(() => clearHttp());
+
+  beforeEach(() => createModels());
+
+  before((done) => create(role, area, done));
 
   it('should handle HTTP POST on /parties', (done) => {
-    request(app)
-      .post(`/${apiVersion}/parties`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .send(party)
+    const { testPost } = testRouter(options, partyRouter);
+    testPost({ ...party.toObject() })
       .expect(201)
-      .end((error, response) => {
+      .expect('Content-Type', /json/)
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        const created = new Party(response.body);
-
-        expect(created._id).to.exist;
-        expect(created._id).to.be.eql(party._id);
+        expect(body).to.exist;
+        const created = new Party(body);
+        expect(created._id).to.exist.and.be.eql(party._id);
         expect(created.name).to.exist;
-
-        //set
-        party = created;
-
-        done(error, response);
+        expect(created.role).to.exist;
+        expect(created.area).to.exist;
+        done(error, body);
       });
   });
 
   it('should handle HTTP GET on /parties', (done) => {
-    request(app)
-      .get(`/${apiVersion}/parties`)
-      .set('Accept', 'application/json')
+    const { testGet } = testRouter(options, partyRouter);
+    testGet()
       .expect(200)
       .expect('Content-Type', /json/)
-      .end((error, response) => {
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        //assert payload
-        const result = response.body;
-        expect(result.data).to.exist;
-        expect(result.total).to.exist;
-        expect(result.limit).to.exist;
-        expect(result.skip).to.exist;
-        expect(result.page).to.exist;
-        expect(result.pages).to.exist;
-        expect(result.lastModified).to.exist;
-        done(error, response);
+        expect(body).to.exist;
+        expect(body.data).to.exist;
+        expect(body.total).to.exist;
+        expect(body.limit).to.exist;
+        expect(body.skip).to.exist;
+        expect(body.page).to.exist;
+        expect(body.pages).to.exist;
+        expect(body.lastModified).to.exist;
+        done(error, body);
       });
   });
 
-  it('should handle HTTP GET on /parties/id:', (done) => {
-    request(app)
-      .get(`/${apiVersion}/parties/${party._id}`)
-      .set('Accept', 'application/json')
+  it('should handle GET /parties/schema', (done) => {
+    const { testGetSchema } = testRouter(options, partyRouter);
+    testGetSchema().expect(200, done);
+  });
+
+  it('should handle GET /parties/export', (done) => {
+    const { testGetExport } = testRouter(options, partyRouter);
+    testGetExport()
+      .expect('Content-Type', 'text/csv; charset=utf-8')
+      .expect(({ headers }) => {
+        expect(headers['content-disposition']).to.exist;
+      })
+      .expect(200, done);
+  });
+
+  it('should handle HTTP GET on /parties/:id', (done) => {
+    const { testGet } = testRouter(options, partyRouter);
+    const params = { id: party._id.toString() };
+    testGet(params)
       .expect(200)
-      .end((error, response) => {
+      .expect('Content-Type', /json/)
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        const found = new Party(response.body);
-
-        expect(found._id).to.exist;
-        expect(found._id).to.be.eql(party._id);
-        expect(found.name).to.be.equal(party.name);
-
-        done(error, response);
+        expect(body).to.exist;
+        const found = new Party(body);
+        expect(found._id).to.exist.and.be.eql(party._id);
+        expect(found.name).to.exist;
+        expect(found.role).to.exist;
+        expect(found.area).to.exist;
+        done(error, body);
       });
   });
 
-  it('should handle HTTP PATCH on /parties/id:', (done) => {
+  it('should handle HTTP PATCH on /parties/:id', (done) => {
+    const { testPatch } = testRouter(options, partyRouter);
     const { name } = party.fakeOnly('name');
-    request(app)
-      .patch(`/${apiVersion}/parties/${party._id}`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .send({ name })
+    const params = { id: party._id.toString() };
+    testPatch(params, { name })
       .expect(200)
-      .end((error, response) => {
+      .expect('Content-Type', /json/)
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        const patched = new Party(response.body);
-
-        expect(patched._id).to.exist;
-        expect(patched._id).to.be.eql(party._id);
-        expect(patched.name).to.be.equal(party.name);
-
-        //set
-        party = patched;
-
-        done(error, response);
+        expect(body).to.exist;
+        const patched = new Party(body);
+        expect(patched._id).to.exist.and.be.eql(party._id);
+        expect(patched.name).to.exist;
+        expect(patched.name).to.exist.and.be.eql(name);
+        expect(patched.role).to.exist;
+        expect(patched.area).to.exist;
+        done(error, body);
       });
   });
 
-  it('should handle HTTP PUT on /parties/id:', (done) => {
+  it('should handle HTTP PUT on /parties/:id', (done) => {
+    const { testPut } = testRouter(options, partyRouter);
     const { name } = party.fakeOnly('name');
-    request(app)
-      .put(`/${apiVersion}/parties/${party._id}`)
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .send({ name })
+    const params = { id: party._id.toString() };
+    testPut(params, { name })
       .expect(200)
-      .end((error, response) => {
+      .expect('Content-Type', /json/)
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        const updated = new Party(response.body);
-
-        expect(updated._id).to.exist;
-        expect(updated._id).to.be.eql(party._id);
-        expect(updated.name).to.be.equal(party.name);
-
-        //set
-        party = updated;
-
-        done(error, response);
+        expect(body).to.exist;
+        const patched = new Party(body);
+        expect(patched._id).to.exist.and.be.eql(party._id);
+        expect(patched.name).to.exist;
+        expect(patched.name).to.exist.and.be.eql(name);
+        expect(patched.role).to.exist;
+        expect(patched.area).to.exist;
+        done(error, body);
       });
   });
 
   it('should handle HTTP DELETE on /parties/:id', (done) => {
-    request(app)
-      .delete(`/${apiVersion}/parties/${party._id}`)
-      .set('Accept', 'application/json')
+    const { testDelete } = testRouter(options, partyRouter);
+    const params = { id: party._id.toString() };
+    testDelete(params)
       .expect(200)
-      .end((error, response) => {
+      .expect('Content-Type', /json/)
+      .end((error, { body }) => {
         expect(error).to.not.exist;
-        expect(response).to.exist;
-
-        const deleted = new Party(response.body);
-
-        expect(deleted._id).to.exist;
-        expect(deleted._id).to.be.eql(party._id);
-        expect(deleted.name).to.be.equal(party.name);
-        done(error, response);
+        expect(body).to.exist;
+        const deleted = new Party(body);
+        expect(deleted._id).to.exist.and.be.eql(party._id);
+        expect(deleted.name).to.exist;
+        expect(deleted.role).to.exist;
+        expect(deleted.area).to.exist;
+        expect(deleted.deletedAt).to.exist;
+        done(error, body);
       });
   });
 
-  after((done) => clear(done));
+  after(() => clearHttp());
+
+  after((done) => clearDb(Party, done));
 });

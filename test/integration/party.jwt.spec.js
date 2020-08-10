@@ -1,14 +1,11 @@
-'use strict';
-
-/* dependencies */
-const { expect } = require('chai');
-const { clear, create } = require('@lykmapipo/mongoose-test-helpers');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import { expect } from '@lykmapipo/test-helpers';
+import { clear, create } from '@lykmapipo/mongoose-test-helpers';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 describe('Party JWT', () => {
-  let role = Predefine.fake();
-  let area = Predefine.fake();
+  const role = Predefine.fakePartyRole();
+  const area = Predefine.fakeAdministrativeArea();
   let party = Party.fake();
 
   before((done) => clear(done));
@@ -52,8 +49,8 @@ describe('Party JWT', () => {
   });
 
   it('should throw if party not exists', (done) => {
-    const party = Party.fake();
-    Party.findByJwt({ id: party._id }, (error, found) => {
+    const notExist = Party.fake();
+    Party.findByJwt({ id: notExist._id }, (error, found) => {
       expect(error).to.exist;
       expect(error.status).to.exist.and.be.equal(403);
       expect(error.code).to.exist.and.be.equal(403);
