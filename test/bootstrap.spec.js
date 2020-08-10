@@ -3,7 +3,7 @@
 process.env.NODE_ENV = 'test';
 process.env.DEFAULT_LOCALE = 'en';
 process.env.DEFAULT_COUNTRY_CODE = 'TZ';
-process.env.PREDEFINE_NAMESPACES = 'PartyRole,PartyGroup,AdministrativeArea';
+process.env.PREDEFINE_NAMESPACES = 'PartyRole,PartyGroup,PartyGender,PartyOwnership,AdministrativeLevel,AdministrativeArea';
 process.env.JWT_SECRET = '978+4fsw6_1n63.hs~ns*ma?4!2#@!4';
 process.env.JWT_ALGORITHM = 'HS256';
 process.env.JWT_AUDIENCE = 'ewea';
