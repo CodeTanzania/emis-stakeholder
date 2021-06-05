@@ -1,9 +1,7 @@
-'use strict';
-
-/* dependencies */
-const { expect } = require('chai');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import { expect } from '@lykmapipo/test-helpers';
+import { areSameObjectId } from '@lykmapipo/mongoose-common';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 describe('Party Instance', () => {
   it('`preValidate` should be a function', () => {
@@ -49,7 +47,7 @@ describe('Party Instance', () => {
 
     child.preValidate(() => {
       expect(child.ownership).to.exist;
-      console.log(child);
+      expect(areSameObjectId(parent.ownership, child.ownership)).to.be.true;
       done();
     });
   });

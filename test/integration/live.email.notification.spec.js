@@ -1,25 +1,22 @@
-'use strict';
+import async from 'async';
+import { expect } from '@lykmapipo/test-helpers';
+import kue from 'kue';
+import { worker } from 'mongoose-kue';
+import { Message } from '@lykmapipo/postman';
+import { Party } from '../../src';
 
-/* dependencies */
-const async = require('async');
-const { expect } = require('chai');
-const kue = require('kue');
-const { worker } = require('mongoose-kue');
-const { Message } = require('@lykmapipo/postman');
-const { Party } = require('../..');
-
-//TODO refactor
+// TODO refactor
 const redis = kue.redis.createClientFactory({
   redis: {},
 });
 const cleanup = (callback) => {
-  redis.keys('q*', function (error, rows) {
+  redis.keys('q*', (error, rows) => {
     if (error) {
       callback(error);
     } else {
       async.each(
         rows,
-        function (row, next) {
+        (row, next) => {
           redis.del(row, next);
         },
         callback
@@ -71,7 +68,7 @@ describe.skip('Live Email Notification', () => {
         body: 'EMIS Test Email',
       };
 
-      //listen queue events
+      // listen queue events
       worker.queue
         .on('job complete', (id, result) => {
           expect(id).to.exist;

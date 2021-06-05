@@ -1,9 +1,6 @@
-'use strict';
-
-/* dependencies */
-const { idOf } = require('@lykmapipo/common');
-const { expect, clear, create } = require('@lykmapipo/mongoose-test-helpers');
-const { Party } = require('../..');
+import { idOf } from '@lykmapipo/common';
+import { expect, clear, create } from '@lykmapipo/mongoose-test-helpers';
+import { Party } from '../../src';
 
 describe('Party Aggregation', () => {
   const grand = Party.fake();

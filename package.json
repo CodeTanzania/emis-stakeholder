@@ -1,23 +1,29 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "test": "grunt test",
-    "integration:test": "NODE_ENV=test grunt integration",
-    "http:test": "NODE_ENV=test grunt http",
-    "unit:test": "NODE_ENV=test grunt unit",
-    "doc": "grunt doc",
+    "clean": "rimraf lib dist es umd logs",
+    "prepare": "husky install",
+    "prebuild": "npm test && npm run clean",
+    "build": "rollup -c",
+    "lint": "eslint --fix --ext .js src/ test/ rollup.config.js examples/",
+    "pretest": "npm run lint",
+    "posttest": "rimraf test/fixtures/*.csv",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit --timeout=20000 --require @babel/register test/**/*.spec.js",
+    "test:unit": "NODE_ENV=test npm run pretest && NODE_ENV=test mocha --exit --timeout=20000 --require @babel/register test/unit/**/*.spec.js",
+    "test:integration": "NODE_ENV=test npm run pretest && NODE_ENV=test mocha --exit --timeout=20000 --require @babel/register test/integration/**/*.spec.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "docs": "doxdox 'lib/**/*.js' -p package.json -l markdown -o DOCUMENTATION.md",
+    "cmt": "git add -A && git-cz",
+    "changelog": "changelog",
+    "chore:deps": "ncu -u && npm install --save",
+    "lint:config": "eslint --print-config rollup.config.js",
     "dev": "npm run seed && npm run start",
-    "start": "BASE_PATH=./examples node ./examples/app.js",
-    "seed": "BASE_PATH=./examples node ./examples/seed.js",
-    "format": "prettier --write \"{lib,test,.}/**/*.js\" --loglevel silent",
-    "changelog": "changelog"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CodeTanzania/emis-stakeholder.git"
+    "start": "NODE_ENV=development BASE_PATH=./examples babel-node ./examples/app.js",
+    "seed": "NODE_ENV=development BASE_PATH=./examples babel-node ./examples/seed.js"
   },
   "keywords": [
     "codetanzania",
@@ -35,8 +41,18 @@
     "organization",
     "committee",
     "person",
-    "people"
+    "people",
+    "contact"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codetanzania/emis-stakeholder.git"
+  },
+  "author": {
+    "name": "lykmapipo",
+    "email": "lallyelias87@gmail.com",
+    "url": "https://github.com/lykmapipo"
+  },
   "contributors": [
     {
       "name": "lykmapipo",
@@ -46,108 +62,107 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CodeTanzania/emis-stakeholder/issues",
+    "url": "https://github.com/codetanzania/emis-stakeholder/issues",
     "email": "lallyelias87@gmail.com"
   },
-  "homepage": "https://github.com/CodeTanzania/emis-stakeholder",
-  "sandbox": {
-    "url": "https://emis-stakeholders.herokuapp.com",
-    "apidoc": "https://codetanzania.github.io/emis-stakeholder/",
-    "client_id": "",
-    "client_secret": "",
-    "urls": [
-      {
-        "resource": "Party",
-        "schema": "https://emis-stakeholders.herokuapp.com/v1/parties/schema",
-        "link": "https://emis-stakeholders.herokuapp.com/v1/parties",
-        "scopes": [
-          "party:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
-      },
-      {
-        "resource": "Role",
-        "schema": "https://emis-stakeholders.herokuapp.com/v1/roles/schema",
-        "link": "https://emis-stakeholders.herokuapp.com/v1/roles",
-        "scopes": [
-          "role:*"
-        ],
-        "methods": [
-          "get",
-          "post",
-          "put",
-          "patch"
-        ]
-      },
-      {
-        "resource": "Permission",
-        "schema": "https://emis-stakeholders.herokuapp.com/v1/permissions/schema",
-        "link": "https://emis-stakeholders.herokuapp.com/v1/permissions",
-        "scopes": [
-          "permission:*"
-        ],
-        "methods": [
-          "get",
-          "put",
-          "patch"
-        ]
-      }
-    ]
-  },
+  "homepage": "https://github.com/codetanzania/emis-stakeholder",
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/register": "^7.13.16",
     "@benmaruchu/faker": "^4.3.0",
-    "@codetanzania/majifix-common": "^0.19.1",
-    "@lykmapipo/mongoose-test-helpers": ">=0.7.45",
-    "acorn": "^7.1.1",
-    "chai": "^4.2.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/travis-cli": "^12.1.4",
+    "@lykmapipo/express-test-helpers": "^0.9.16",
+    "@lykmapipo/mongoose-test-helpers": "^0.8.6",
+    "@lykmapipo/test-helpers": "^0.6.17",
+    "bipsms": "^0.6.23",
+    "chai": "^4.3.4",
+    "commitizen": "^4.2.4",
+    "coveralls": "^3.1.0",
+    "csv-parse": "^4.15.4",
+    "csv-to-array": "^1.0.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "doxdox": "^3.0.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsdoc": "^35.1.2",
+    "eslint-plugin-mocha": "^9.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "generate-changelog": "^1.8.0",
-    "grunt": "^1.1.0",
-    "grunt-apidoc": "^0.11.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-mocha-test": "^0.13.3",
-    "handlebars": "^4.7.6",
-    "jshint-stylish": "^2.2.1",
-    "kind-of": "^6.0.3",
-    "minimist": "^1.2.5",
-    "mocha": "^7.1.2",
-    "mongoose": ">=5.9.12",
-    "prettier": "^2.0.5",
-    "supertest": "^4.0.2"
+    "handlebars": "^4.7.7",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "lodash.template": "^4.5.0",
+    "mocha": "^8.4.0",
+    "mongoose": ">=5.12.13",
+    "npm-check-updates": "^11.6.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.50.6",
+    "shelljs": "^0.8.4",
+    "winston": "^3.3.3"
   },
   "peerDependencies": {
-    "mongoose": ">=5.9.12"
+    "mongoose": ">=5.12.13"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.33.1",
-    "@lykmapipo/env": ">=0.17.4",
-    "@lykmapipo/express-common": ">=0.18.2",
-    "@lykmapipo/jwt-common": ">=0.4.4",
-    "@lykmapipo/mongoose-common": ">=0.33.1",
-    "@lykmapipo/mongoose-exportable": ">=0.3.28",
-    "@lykmapipo/permission": ">=0.8.26",
-    "@lykmapipo/phone": ">=0.6.1",
-    "@lykmapipo/postman": ">=0.18.10",
-    "@lykmapipo/predefine": ">=1.15.1",
+    "@codetanzania/ewea-common": ">=0.21.2",
+    "@codetanzania/ewea-internals": ">=0.23.2",
+    "@lykmapipo/common": ">=0.43.2",
+    "@lykmapipo/env": ">=0.17.33",
+    "@lykmapipo/express-common": ">=0.18.16",
+    "@lykmapipo/express-rest-actions": ">=0.8.28",
+    "@lykmapipo/file": ">=0.1.32",
+    "@lykmapipo/jwt-common": ">=0.4.29",
+    "@lykmapipo/mongoose-common": ">=0.39.0",
+    "@lykmapipo/mongoose-exportable": ">=0.3.36",
+    "@lykmapipo/mongoose-sequenceable": ">=0.2.22",
+    "@lykmapipo/permission": ">=0.8.35",
+    "@lykmapipo/phone": ">=0.7.14",
+    "@lykmapipo/postman": ">=0.19.5",
+    "@lykmapipo/predefine": ">=1.19.6",
     "async": ">=3.2.0",
-    "extend": ">=3.0.2",
-    "irina": ">=0.7.17",
+    "irina": ">=0.7.25",
     "kue": ">=0.11.6",
-    "lodash": ">=4.17.15",
-    "moment": ">=2.25.3",
-    "moment-timezone": ">=0.5.28",
-    "mongoose-geojson-schemas": ">=0.12.1",
-    "mongoose-kue": ">=0.9.18",
-    "mongoose-rest-actions": ">=0.29.22",
-    "redis": ">=3.0.2"
+    "lodash": ">=4.17.21",
+    "moment": ">=2.29.1",
+    "moment-timezone": ">=0.5.33",
+    "mongoose-geojson-schemas": ">=0.12.9",
+    "mongoose-kue": ">=0.9.26",
+    "mongoose-rest-actions": ">=0.30.6",
+    "redis": ">=3.1.2"
   },
   "engines": {
-    "node": ">=8.11.1",
-    "npm": ">=5.6.0"
+    "node": ">=12.4.0",
+    "npm": ">=6.9.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint",
+      "git add -A"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

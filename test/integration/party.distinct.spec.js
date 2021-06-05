@@ -1,10 +1,7 @@
-'use strict';
-
-/* dependencies */
-const _ = require('lodash');
-const { clear, create, expect } = require('@lykmapipo/mongoose-test-helpers');
-const { Predefine } = require('@lykmapipo/predefine');
-const { Party } = require('../..');
+import _ from 'lodash';
+import { clear, create, expect } from '@lykmapipo/mongoose-test-helpers';
+import { Predefine } from '@lykmapipo/predefine';
+import { Party } from '../../src';
 
 const toStrings = (items) => {
   return _.map([...items], (item) => {

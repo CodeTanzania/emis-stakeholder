@@ -1,23 +1,24 @@
 # emis-stakeholder
 
-[![Build Status](https://travis-ci.org/CodeTanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/CodeTanzania/emis-stakeholder)
-[![Dependencies Status](https://david-dm.org/CodeTanzania/emis-stakeholder/status.svg?style=flat-square)](https://david-dm.org/CodeTanzania/emis-stakeholder)
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/CodeTanzania/emis-stakeholder/tree/develop)
+[![Build Status](https://travis-ci.org/codetanzania/emis-stakeholder.svg?branch=develop)](https://travis-ci.org/codetanzania/emis-stakeholder)
+[![Dependencies Status](https://david-dm.org/codetanzania/emis-stakeholder.svg)](https://david-dm.org/codetanzania/emis-stakeholder)
+[![Coverage Status](https://coveralls.io/repos/github/CodeTanzania/emis-stakeholder/badge.svg?branch=develop)](https://coveralls.io/github/CodeTanzania/emis-stakeholder?branch=develop)
+[![GitHub License](https://img.shields.io/github/license/codetanzania/emis-stakeholder)](https://github.com/codetanzania/emis-stakeholder/blob/develop/LICENSE)
+
+[![Commitizen Friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Code Style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
+[![npm version](https://img.shields.io/npm/v/@codetanzania/emis-stakeholder)](https://www.npmjs.com/package/@codetanzania/emis-stakeholder)
 
 A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.
 
-[Demo](https://emis-stakeholders.herokuapp.com/v1/parties)
-
-## Domain Model
-
-![EMIS Stakeholder Domain Model](https://raw.githubusercontent.com/CodeTanzania/emis-stakeholder/develop/specifications/stakeholder.model.png)
-
 ## Requirements
 
-- [nodejs v8.11.1+](https://nodejs.org)
-- [npm v5.6.0+](https://www.npmjs.com/)
-- [MongoDB v3.4.10+](https://www.mongodb.com/)
-- [mongoose v5.2.5+](https://github.com/Automattic/mongoose)
+- [NodeJS v14.5+](https://nodejs.org)
+- [Npm v6.14+](https://www.npmjs.com/)
+- [MongoDB v4+](https://www.mongodb.com/)
+- [Redis v5+](https://redis.io/)
+- [Mongoose v5.7+](https://github.com/Automattic/mongoose)
 
 ## Installation
 
@@ -28,22 +29,11 @@ npm install @codetanzania/emis-stakeholder --save
 ## Usage
 
 ```js
-const mongoose = require('mongoose');
-const { app } = require('@codetanzania/emis-stakeholder');
+import { start } from '@codetanzania/emis-stakeholder';
 
-//connect to mongodb
-mongoose.connect(process.env.MONGODB_URI);
-
-//fire the app
-app.start((error, env) => {
-  ...
-});
-
+// fire the http server
+start(error => { ... });
 ```
-
-## Demo
-[View Demo](https://emis-stakeholders.herokuapp.com/v1/parties)
-[View apidoc](https://codetanzania.github.io/emis-stakeholder/)
 
 ## Testing
 
@@ -77,11 +67,11 @@ It will be nice, if you open an issue first so that we can know what is going on
 - [Open Civic Data](http://docs.opencivicdata.org/en/latest/index.html)
 - [https://opengovdata.io/](https://opengovdata.io/)
 
-## Licence
+## License
 
 The MIT License (MIT)
 
-Copyright (c) 2018 CodeTanzania & Contributors
+Copyright (c) CodeTanzania & Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
