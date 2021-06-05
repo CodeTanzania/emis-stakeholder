@@ -1,4 +1,4 @@
-#### 2.8.0 (2021-06-05)
+#### 2.9.0 (2021-06-05)
 
 ##### Chores
 
@@ -21,6 +21,7 @@
 
 ##### Documentation Changes
 
+* **changelog:**  generate latest release notes ([e406a0d6](https://github.com/codetanzania/emis-stakeholder/commit/e406a0d6d09931a7c2477b7c4307609ebcd3e8c9))
 * **readme:**
   *  update test coverage badge ([cbfb3640](https://github.com/codetanzania/emis-stakeholder/commit/cbfb364071166e160c800ed143b38d6b0a8de76a))
   *  use common format & badges ([d5452469](https://github.com/codetanzania/emis-stakeholder/commit/d545246932a6fce44f9e74aa88c826da61411fa5))
