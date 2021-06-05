@@ -9,7 +9,6 @@
  *
  * It may be a self managed entity or division within another
  * entity(party) in case there is hierarchy.
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -26,7 +25,6 @@
  *
  * // start http server
  * start(error => { ... });
- *
  */
 // import '@codetanzania/ewea-internals';
 import { pkg } from '@lykmapipo/common';
@@ -46,7 +44,6 @@ import authenticationRouter from './auth.http.router';
  * @name info
  * @description package information
  * @type {object}
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 1.0.0
  * @version 0.1.0
@@ -67,7 +64,6 @@ export const info = pkg(
 /**
  * @name Permission
  * @description Permission model
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -77,7 +73,6 @@ export { Permission };
 /**
  * @name Predefine
  * @description Predefine model
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -87,7 +82,6 @@ export { Predefine };
 /**
  * @name Party
  * @description Party model
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -98,7 +92,6 @@ export { Party };
  * @name permissionRouter
  * @description Permission http router
  * @type {object}
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -109,7 +102,6 @@ export { permissionRouter };
  * @name predefineRouter
  * @description Predefine http router
  * @type {object}
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -120,7 +112,6 @@ export { predefineRouter };
  * @name partyRouter
  * @description Party http router
  * @type {object}
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -131,7 +122,6 @@ export { partyRouter };
  * @name authenticationRouter
  * @description Authentication http router
  * @type {object}
- *
  * @author Benson Maruchu <benmaruchu@gmail.com>
  * @since 1.6.0
  * @version 0.1.0
@@ -142,7 +132,6 @@ export { authenticationRouter };
  * @name apiVersion
  * @description http router api version
  * @type {string}
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0

@@ -6,10 +6,8 @@ import irinaUtils from 'irina/lib/utils';
 /**
  * @name ensurePassword
  * @description Set plain password on party details
- *
  * @param {object} party valid party details
  * @returns {object} party with plain password
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 3.0.0

@@ -26,12 +26,10 @@ const PATH_NOTIFICATION = '/notifications';
 /**
  * @name PartyHttpRouter
  * @namespace PartyHttpRouter
- *
  * @description A representation of an entity (e.g municipal, individual,
  * agency, organization etc) consisting of contact information (e.g. name,
  * e-mail addresses, phone numbers) and other descriptive information of
  * interest in emergency(or disaster) management.
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -166,11 +164,9 @@ router.get(
  * @name GetSubParties
  * @memberof PartyHttpRouter
  * @description Send new notification to parties
- *
  * @example
  *
  * POST /notifications
- *
  */
 router.post(
   PATH_NOTIFICATION,

@@ -8,12 +8,10 @@ import {
 /**
  * @name ensurePassword
  * @description Ensure party password
- *
  * @param {object} request valid http request
  * @param {object} response valid http response
  * @param {Function} next next middlware to invoke
  * @returns {Function} next middlware to invoke
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -31,12 +29,10 @@ export const ensurePassword = (request, response, next) => {
 /**
  * @name encryptPassword
  * @description Encrypt party plain password
- *
  * @param {object} request valid http request
  * @param {object} response valid http response
  * @param {Function} next next middlware to invoke
  * @returns {Function} next middlware to invoke
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0

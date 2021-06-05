@@ -17,7 +17,6 @@ const router = new Router({
 
 /**
  * @description A route to handle authentication/signin to the application
- *
  * @version 0.2.0
  * @since 1.5.0
  */

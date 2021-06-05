@@ -8,7 +8,6 @@
  *
  * It may be a self managed entity or division within another
  * entity(party) in case there is hierarchy.
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @license MIT
  * @since 0.1.0
@@ -27,7 +26,7 @@ import {
   mergeObjects,
   normalizeError,
 } from '@lykmapipo/common';
-import { getString, getStrings } from '@lykmapipo/env';
+import { getString, getStrings, getStringSet } from '@lykmapipo/env';
 import { refresh as jwtRefresh } from '@lykmapipo/jwt-common';
 import {
   Schema,
@@ -52,7 +51,7 @@ const PARTY_COLLECTION_NAME = getString('PARTY_COLLECTION_NAME', 'parties');
 const DEFAULT_LOCALE = getString('DEFAULT_LOCALE', 'en');
 const LOCALES = getStrings('LOCALES', DEFAULT_LOCALE);
 const DEFAULT_PARTY_TYPE = getString('DEFAULT_PARTY_TYPE', 'Focal');
-const PARTY_TYPES = getStrings('PARTY_TYPES', ['Focal', 'Agency']);
+const PARTY_TYPES = getStringSet('PARTY_TYPES', ['Focal', 'Agency']);
 const DEFAULT_PASSWORD = _.trim(getString('DEFAULT_PASSWORD', '123456789'));
 const OPTION_AUTOPOPULATE_GROUP = {
   select: {
@@ -129,7 +128,6 @@ const PartySchema = new Schema(
      *
      * If not set the party will be treated as a top party and will be affected
      * by any logics implemented accordingly.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced collection
@@ -137,7 +135,6 @@ const PartySchema = new Schema(
      * @property {boolean} exists - ensure ref exists before save
      * @property {object} autopopulate - auto population(eager loading) options
      * @property {boolean} taggable - allow field use for tagging
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -165,7 +162,6 @@ const PartySchema = new Schema(
     /**
      * @name type
      * @description Human readable type of a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -175,7 +171,6 @@ const PartySchema = new Schema(
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -196,7 +191,6 @@ const PartySchema = new Schema(
     /**
      * @name group
      * @description Human readable group of a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -206,7 +200,6 @@ const PartySchema = new Schema(
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -242,7 +235,6 @@ const PartySchema = new Schema(
      *
      * It may be organization name e.g ACME Inc., person name e.g Juma John,
      * division withing organization e.g HR Dept etc.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -251,7 +243,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -275,7 +266,6 @@ const PartySchema = new Schema(
     /**
      * @name abbreviation
      * @description Human readable short form of a party name.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -284,7 +274,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -309,9 +298,7 @@ const PartySchema = new Schema(
      * @name locale
      * @description Defines the party's language, region and any
      * special variant preferences.
-     *
      * @see {@link https://en.wikipedia.org/wiki/Locale_(computer_software)}
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -321,7 +308,6 @@ const PartySchema = new Schema(
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -344,7 +330,6 @@ const PartySchema = new Schema(
      * @description Primary email address used to contact a party.
      *
      * Used when another party want to send direct mail to the other party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -356,7 +341,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -386,7 +370,6 @@ const PartySchema = new Schema(
      *
      * Used when another party want to send a direct message or
      * call the other party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -396,7 +379,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -422,7 +404,6 @@ const PartySchema = new Schema(
     /**
      * @name radio
      * @description Human readable radio call sign used to contact a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -431,7 +412,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -458,7 +438,6 @@ const PartySchema = new Schema(
      * used to contact a party.
      *
      * Used when another party want to direct call the other party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -466,7 +445,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -485,7 +463,6 @@ const PartySchema = new Schema(
     /**
      * @name fax
      * @description Primary fax number used to contact a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -493,7 +470,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -515,7 +491,6 @@ const PartySchema = new Schema(
      *
      * Used when another party want to obtain specific information about
      * other party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -524,7 +499,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -550,7 +524,6 @@ const PartySchema = new Schema(
      *
      * Used when another party what to physical go or visit the other
      * party office.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -558,7 +531,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -586,7 +558,6 @@ const PartySchema = new Schema(
      *
      * Used when another party what to send letter, percerls etc to anther
      * party office.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
@@ -594,7 +565,6 @@ const PartySchema = new Schema(
      * @property {boolean} searchable - allow for searching
      * @property {boolean} taggable - allow field use for tagging
      * @property {object} fake - fake data generator options
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -623,13 +593,11 @@ const PartySchema = new Schema(
      *
      * Its a coordinates(longitude and latidude) pair of office reachable by
      * other party or boundary of an area.
-     *
      * @type {object}
      * @property {object} location - geo json point
      * @property {string} location.type - Point
      * @property {number[]} location.coordinates - longitude, latitude pair of
      * the geo point
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -644,7 +612,6 @@ const PartySchema = new Schema(
     /**
      * @name level
      * @description Administrative level of area of operation.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced model(or collection)
@@ -652,7 +619,6 @@ const PartySchema = new Schema(
      * @property {boolean} exists - ensure ref exists before save
      * @property {object} autopopulate - auto population(eager loading) options
      * @property {boolean} taggable - allow field use for tagging
-     *
      * @since 2.4.0
      * @version 0.1.0
      * @instance
@@ -684,7 +650,6 @@ const PartySchema = new Schema(
      * @name area
      * @description Geographical location of a party main office or area of
      * operation.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced model(or collection)
@@ -692,7 +657,6 @@ const PartySchema = new Schema(
      * @property {boolean} exists - ensure ref exists before save
      * @property {object} autopopulate - auto population(eager loading) options
      * @property {boolean} taggable - allow field use for tagging
-     *
      * @since 1.1.0
      * @version 0.1.0
      * @instance
@@ -723,7 +687,6 @@ const PartySchema = new Schema(
     /**
      * @name ownership
      * @description Assignable or given ownership to a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced collection
@@ -732,7 +695,6 @@ const PartySchema = new Schema(
      * @property {object} autopopulate - population options
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
-     *
      * @since 2.6.0
      * @version 0.1.0
      * @instance
@@ -764,7 +726,6 @@ const PartySchema = new Schema(
     /**
      * @name role
      * @description Assignable or given role to a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced collection
@@ -773,7 +734,6 @@ const PartySchema = new Schema(
      * @property {object} autopopulate - population options
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
-     *
      * @since 0.1.0
      * @version 0.1.0
      * @instance
@@ -808,7 +768,6 @@ const PartySchema = new Schema(
     /**
      * @name gender
      * @description Assignable or given gender to a party.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {string} ref - referenced collection
@@ -817,7 +776,6 @@ const PartySchema = new Schema(
      * @property {object} autopopulate - population options
      * @property {boolean} taggable - allow field use for tagging
      * @property {boolean} default - default value set when none provided
-     *
      * @since 2.6.0
      * @version 0.1.0
      * @instance
@@ -851,12 +809,10 @@ const PartySchema = new Schema(
      * @description Valid api access token for the party.
      *
      * Mainly used for parties that operate as client i.e mobile apps etc.
-     *
      * @type {object}
      * @property {object} type - schema(data) type
      * @property {boolean} trim - force trimming
      * @property {object} fake - fake data generator options
-     *
      * @since 2.2.0
      * @version 0.1.0
      * @instance
@@ -881,7 +837,6 @@ const PartySchema = new Schema(
  * @description Party schema pre validation hook
  * @param {Function} done callback to invoke on success or error
  * @returns {object|Error} valid instance or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -903,7 +858,6 @@ PartySchema.pre('validate', function onPreValidate(done) {
  * @description Party schema pre validation hook logic
  * @param {Function} done callback to invoke on success or error
  * @returns {object|Error} valid instance or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -939,10 +893,13 @@ PartySchema.methods.preValidate = function preValidate(done) {
   // generate api token
   return this.generateToken(done);
 
-  // TODO: set default ownership
-  // TODO: set default level
   // TODO: set default group
+  // TODO: set default level
   // TODO: set default area
+  // TODO: set default ownership
+  // TODO: set default role
+  // TODO: set default gender
+  // TODO: extract relations from parent if its (agency)
 };
 
 /**
@@ -951,7 +908,6 @@ PartySchema.methods.preValidate = function preValidate(done) {
  * @description Generate party api token
  * @param {Function} done callback to invoke on success or error
  * @returns {object|Error} valid instance or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 0.1.0
  * @version 0.1.0
@@ -983,7 +939,6 @@ PartySchema.methods.generateToken = function generateToken(done) {
  * @function asContact
  * @description Convert party to contact
  * @returns {object|Error} valid instance or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 2.2.0
  * @version 0.1.0
@@ -1022,7 +977,6 @@ PartySchema.statics.PARTY_TYPES = PARTY_TYPES;
  * @description Prepare party seeding upsert criteria
  * @param {object} seed plain object party seed
  * @returns {object} criteria used to upsert party
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 1.5.0
  * @version 0.1.0
@@ -1358,7 +1312,6 @@ PartySchema.statics.findDistincts = function findDistincts(done) {
  * @param {object} criteria valid parent query options
  * @param {Function} done callback to invoke on success or error
  * @returns {object|Error} found parties or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 2.5.0
  * @version 0.1.0
@@ -1368,7 +1321,6 @@ PartySchema.statics.findDistincts = function findDistincts(done) {
  * const criteria = { _id: ... };
  * Party.findChildren(criteria, (error, results) => { ... });
  * // => [ Party{ ... }, ... ]
- *
  */
 PartySchema.statics.findChildren = function findChildren(criteria, done) {
   // TODO: use $graphLookUp
@@ -1424,7 +1376,6 @@ PartySchema.statics.findChildren = function findChildren(criteria, done) {
  * @param {object} criteria valid child query options
  * @param {Function} done callback to invoke on success or error
  * @returns {object|Error} found parties or error
- *
  * @author lally elias <lallyelias87@gmail.com>
  * @since 2.5.0
  * @version 0.1.0
@@ -1434,7 +1385,6 @@ PartySchema.statics.findChildren = function findChildren(criteria, done) {
  * const criteria = { _id: ... };
  * Party.findParents(criteria, (error, results) => { ... });
  * // => [ Party{ ... }, ... ]
- *
  */
 PartySchema.statics.findParents = function findParents(criteria, done) {
   // TODO: use $graphLookUp
