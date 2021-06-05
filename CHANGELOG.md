@@ -1,3 +1,45 @@
+#### 2.8.0 (2021-06-05)
+
+##### Chores
+
+* **build:**  externalize irina utils ([05c89dd9](https://github.com/codetanzania/emis-stakeholder/commit/05c89dd9f20f6ea363ee843c5ad7e053566c8ea1))
+* **deps:**
+  *  force latest version & audit fix ([32fe9c9e](https://github.com/codetanzania/emis-stakeholder/commit/32fe9c9ef77fae9aadcd014226d0b60c610a1105))
+  *  force latest version ([75dc10d0](https://github.com/codetanzania/emis-stakeholder/commit/75dc10d09aae539a4c4eaee7072c291e560a28ba))
+  *  bump nodemailer from 6.4.11 to 6.6.0 ([31be7557](https://github.com/codetanzania/emis-stakeholder/commit/31be755747a191bf86fba796e6324a5d327c4945))
+  *  bump hosted-git-info from 2.7.1 to 2.8.9 ([6eb671e7](https://github.com/codetanzania/emis-stakeholder/commit/6eb671e76e2b00588a8936eeab69d1ce20533ea7))
+  *  bump lodash from 4.17.19 to 4.17.21 ([b244e431](https://github.com/codetanzania/emis-stakeholder/commit/b244e431c83303659133ebeeaf2e9a111823fff8))
+  *  bump underscore from 1.9.1 to 1.13.1 ([82e593df](https://github.com/codetanzania/emis-stakeholder/commit/82e593df88e538cfbb6aa13f52e931982bf5e8ee))
+  *  bump redis from 3.0.2 to 3.1.1 ([d5108118](https://github.com/codetanzania/emis-stakeholder/commit/d51081182587ad4a4df40b6d70f3093c31030f62))
+  *  bump y18n from 3.2.1 to 3.2.2 ([b2e7f710](https://github.com/codetanzania/emis-stakeholder/commit/b2e7f710b9ce82f4a4e09f2eb3027dd078162a04))
+  *  bump pug-code-gen from 2.0.1 to 2.0.3 ([c6ba3428](https://github.com/codetanzania/emis-stakeholder/commit/c6ba3428a7bc5e7d55ae9d3f108baca6964911df))
+  *  bump ini from 1.3.5 to 1.3.7 ([4a2b942c](https://github.com/codetanzania/emis-stakeholder/commit/4a2b942c1cb08f6cf831fe1d8e6e33d62737ec30))
+  *  bump bl from 2.2.0 to 2.2.1 ([346fe989](https://github.com/codetanzania/emis-stakeholder/commit/346fe98909058f4be9cdf49d8a91d7a38c60338d))
+  *  force latest version & audit fix ([7a26dd63](https://github.com/codetanzania/emis-stakeholder/commit/7a26dd631277e1dc4c2cc14ae703f7a0221775d2))
+* **deps-dev:**  bump handlebars from 4.7.6 to 4.7.7 ([bb4940ba](https://github.com/codetanzania/emis-stakeholder/commit/bb4940ba8f401d9812e5db76d4dfb01fced201c3))
+* **config:**  add editors & config files on git ignore ([76f82ba4](https://github.com/codetanzania/emis-stakeholder/commit/76f82ba41198227bf34218d1e4f81315deb1b95c))
+
+##### Documentation Changes
+
+* **readme:**
+  *  update test coverage badge ([cbfb3640](https://github.com/codetanzania/emis-stakeholder/commit/cbfb364071166e160c800ed143b38d6b0a8de76a))
+  *  use common format & badges ([d5452469](https://github.com/codetanzania/emis-stakeholder/commit/d545246932a6fce44f9e74aa88c826da61411fa5))
+
+##### New Features
+
+* **schema:**  add radio call sign ([be4a8bf0](https://github.com/codetanzania/emis-stakeholder/commit/be4a8bf079c919b22538f89b7353c94aa5afc27d))
+* **model:**  add administrative level ([024522b6](https://github.com/codetanzania/emis-stakeholder/commit/024522b69ca502894eb3860b1715970c6d5d098d))
+
+##### Refactors
+
+*  re-write using es6 ([73ba536c](https://github.com/codetanzania/emis-stakeholder/commit/73ba536c445a272596279c1542fca16d53d6fbc3))
+*  drop docs and add common predefine namespaces ([4f7dc7f1](https://github.com/codetanzania/emis-stakeholder/commit/4f7dc7f16f4b3883a4bbf6fd5b0e3373e08e66f2))
+*  introduce es6 config ([0a43ca8e](https://github.com/codetanzania/emis-stakeholder/commit/0a43ca8eca532fade3f32d236e15634eebf3379b))
+
+##### Tests
+
+* **unit:**  derive ownership from parent ([846436f8](https://github.com/codetanzania/emis-stakeholder/commit/846436f8a0c2aed4c4e8b86cda0153732c3ab410))
+
 #### 2.8.0 (2020-05-08)
 
 ##### Chores
