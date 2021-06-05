@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/emis-stakeholder",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "A representation of an entity (e.g municipal, individual, agency, organization etc) consisting of contact information (e.g. name, e-mail addresses, phone numbers) and other descriptive information of interest in emergency(or disaster) management.",
   "main": "lib/index.js",
   "module": "es/index.js",
