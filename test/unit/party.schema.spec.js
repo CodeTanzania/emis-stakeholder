@@ -144,6 +144,21 @@ describe('Party Schema', () => {
     expect(mobile.options.unique).to.be.true;
   });
 
+  it('should have radio field', () => {
+    const radio = Party.path('radio');
+
+    expect(radio).to.exist;
+    expect(radio).to.be.an.instanceof(Schema.Types.String);
+    expect(radio.options).to.exist;
+    expect(radio.options).to.be.an('object');
+    expect(radio.options.type).to.exist;
+    expect(radio.options.trim).to.be.true;
+    expect(radio.options.uppercase).to.be.true;
+    expect(radio.options.index).to.be.true;
+    expect(radio.options.searchable).to.be.true;
+    expect(radio.options.fake).to.exist;
+  });
+
   it('should have landline field', () => {
     const landline = Party.path('landline');
 

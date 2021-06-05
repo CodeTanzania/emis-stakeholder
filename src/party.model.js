@@ -420,6 +420,39 @@ const PartySchema = new Schema(
     },
 
     /**
+     * @name radio
+     * @description Human readable radio call sign used to contact a party.
+     *
+     * @type {object}
+     * @property {object} type - schema(data) type
+     * @property {boolean} trim - force trimming
+     * @property {boolean} uppercase - force upper-casing
+     * @property {boolean} index - ensure database index
+     * @property {boolean} searchable - allow for searching
+     * @property {boolean} taggable - allow field use for tagging
+     * @property {object} fake - fake data generator options
+     *
+     * @since 0.1.0
+     * @version 0.1.0
+     * @instance
+     * @example
+     * ACME.
+     */
+    radio: {
+      type: String,
+      trim: true,
+      uppercase: true,
+      index: true,
+      searchable: true,
+      taggable: true,
+      exportable: { header: 'Call Sign', order: 4 },
+      fake: {
+        generator: 'commerce',
+        type: 'color',
+      },
+    },
+
+    /**
      * @name landline
      * @description Primary main-line(or fixed-line) phone number
      * used to contact a party.
@@ -512,7 +545,7 @@ const PartySchema = new Schema(
     },
 
     /**
-     * @name pysicalAddress
+     * @name physicalAddress
      * @description Primary physical address of party office.
      *
      * Used when another party what to physical go or visit the other
@@ -905,6 +938,11 @@ PartySchema.methods.preValidate = function preValidate(done) {
 
   // generate api token
   return this.generateToken(done);
+
+  // TODO: set default ownership
+  // TODO: set default level
+  // TODO: set default group
+  // TODO: set default area
 };
 
 /**
